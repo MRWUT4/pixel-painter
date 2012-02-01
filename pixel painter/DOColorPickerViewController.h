@@ -10,4 +10,13 @@
 
 @interface DOColorPickerViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *colorMapOutlet;
+
+@property (nonatomic) CGPoint touchPosition;
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesHandler:(NSSet *)touches;
+
+
 @end

@@ -35,6 +35,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="6"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="colorMapOutlet" destination="hxU-ys-Dgu" id="jNz-KI-hb0"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="653" y="498"/>
@@ -64,14 +67,6 @@
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DOCanvasViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOCanvasViewController.h"/>
-        </class>
-        <class className="DOColorPickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

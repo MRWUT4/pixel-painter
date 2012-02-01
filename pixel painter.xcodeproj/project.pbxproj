@@ -20,6 +20,7 @@
 		CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */; };
 		CE161C2F14D5AAF800B8C7DE /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2E14D5AAF800B8C7DE /* second.png */; };
 		CE161C3114D5AAF800B8C7DE /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE161C3014D5AAF800B8C7DE /* second@2x.png */; };
+		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE7E831D14D5ED440093B921 /* colorMapImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7E831C14D5ED440093B921 /* colorMapImage.png */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerViewController.m; sourceTree = "<group>"; };
 		CE161C2E14D5AAF800B8C7DE /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		CE161C3014D5AAF800B8C7DE /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIImageView-ColorUtils.h"; sourceTree = "<group>"; };
+		CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView-ColorUtils.m"; sourceTree = "<group>"; };
 		CE7E831C14D5ED440093B921 /* colorMapImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorMapImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +100,8 @@
 				CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */,
 				CE161C2B14D5AAF800B8C7DE /* DOColorPickerViewController.h */,
 				CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */,
+				CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */,
+				CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */,
 				CE161C1614D5AAF800B8C7DE /* Supporting Files */,
 			);
 			path = "pixel painter";
@@ -189,6 +194,7 @@
 				CE161C2014D5AAF800B8C7DE /* DOAppDelegate.m in Sources */,
 				CE161C2614D5AAF800B8C7DE /* DOCanvasViewController.m in Sources */,
 				CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */,
+				CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
