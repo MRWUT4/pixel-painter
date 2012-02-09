@@ -21,7 +21,21 @@
 		CE161C2F14D5AAF800B8C7DE /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2E14D5AAF800B8C7DE /* second.png */; };
 		CE161C3114D5AAF800B8C7DE /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE161C3014D5AAF800B8C7DE /* second@2x.png */; };
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
+		CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */; };
+		CE7BEE3C14E47EC90011D567 /* rSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2F14E47EC90011D567 /* rSeparator.png */; };
+		CE7BEE3D14E47EC90011D567 /* rFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3014E47EC90011D567 /* rFolder.png */; };
+		CE7BEE3E14E47EC90011D567 /* rIconColorPicker.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3114E47EC90011D567 /* rIconColorPicker.png */; };
+		CE7BEE3F14E47EC90011D567 /* rIconColorPickerHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3214E47EC90011D567 /* rIconColorPickerHorizontal.png */; };
+		CE7BEE4014E47EC90011D567 /* rIconMoveActive.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3314E47EC90011D567 /* rIconMoveActive.png */; };
+		CE7BEE4114E47EC90011D567 /* rIconMoveInactive.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3414E47EC90011D567 /* rIconMoveInactive.png */; };
+		CE7BEE4214E47EC90011D567 /* rIconZoomOut.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3514E47EC90011D567 /* rIconZoomOut.png */; };
+		CE7BEE4314E47EC90011D567 /* rIconZoomIn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3614E47EC90011D567 /* rIconZoomIn.png */; };
+		CE7BEE4414E47EC90011D567 /* iIconColor.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3714E47EC90011D567 /* iIconColor.png */; };
+		CE7BEE4514E47EC90011D567 /* rIconSave.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3814E47EC90011D567 /* rIconSave.png */; };
+		CE7BEE4614E47EC90011D567 /* rIconSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3914E47EC90011D567 /* rIconSelect.png */; };
+		CE7BEE4714E47EC90011D567 /* rIconPull.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3A14E47EC90011D567 /* rIconPull.png */; };
 		CE7E831D14D5ED440093B921 /* colorMapImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7E831C14D5ED440093B921 /* colorMapImage.png */; };
+		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,9 +58,24 @@
 		CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerViewController.m; sourceTree = "<group>"; };
 		CE161C2E14D5AAF800B8C7DE /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		CE161C3014D5AAF800B8C7DE /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIImageView-ColorUtils.h"; sourceTree = "<group>"; };
+		CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView-ColorUtils.h"; sourceTree = "<group>"; };
 		CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView-ColorUtils.m"; sourceTree = "<group>"; };
+		CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pixel-painter.psd"; sourceTree = "<group>"; };
+		CE7BEE2F14E47EC90011D567 /* rSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rSeparator.png; sourceTree = "<group>"; };
+		CE7BEE3014E47EC90011D567 /* rFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolder.png; sourceTree = "<group>"; };
+		CE7BEE3114E47EC90011D567 /* rIconColorPicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconColorPicker.png; sourceTree = "<group>"; };
+		CE7BEE3214E47EC90011D567 /* rIconColorPickerHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconColorPickerHorizontal.png; sourceTree = "<group>"; };
+		CE7BEE3314E47EC90011D567 /* rIconMoveActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconMoveActive.png; sourceTree = "<group>"; };
+		CE7BEE3414E47EC90011D567 /* rIconMoveInactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconMoveInactive.png; sourceTree = "<group>"; };
+		CE7BEE3514E47EC90011D567 /* rIconZoomOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconZoomOut.png; sourceTree = "<group>"; };
+		CE7BEE3614E47EC90011D567 /* rIconZoomIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconZoomIn.png; sourceTree = "<group>"; };
+		CE7BEE3714E47EC90011D567 /* iIconColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iIconColor.png; sourceTree = "<group>"; };
+		CE7BEE3814E47EC90011D567 /* rIconSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconSave.png; sourceTree = "<group>"; };
+		CE7BEE3914E47EC90011D567 /* rIconSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconSelect.png; sourceTree = "<group>"; };
+		CE7BEE3A14E47EC90011D567 /* rIconPull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPull.png; sourceTree = "<group>"; };
 		CE7E831C14D5ED440093B921 /* colorMapImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorMapImage.png; sourceTree = "<group>"; };
+		CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterViewContoller.h; sourceTree = "<group>"; };
+		CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterViewContoller.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +127,8 @@
 				CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */,
 				CE161C2414D5AAF800B8C7DE /* DOCanvasViewController.h */,
 				CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */,
+				CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */,
+				CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */,
 				CE161C2B14D5AAF800B8C7DE /* DOColorPickerViewController.h */,
 				CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */,
 				CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */,
@@ -110,6 +141,19 @@
 		CE161C1614D5AAF800B8C7DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */,
+				CE7BEE2F14E47EC90011D567 /* rSeparator.png */,
+				CE7BEE3014E47EC90011D567 /* rFolder.png */,
+				CE7BEE3114E47EC90011D567 /* rIconColorPicker.png */,
+				CE7BEE3214E47EC90011D567 /* rIconColorPickerHorizontal.png */,
+				CE7BEE3314E47EC90011D567 /* rIconMoveActive.png */,
+				CE7BEE3414E47EC90011D567 /* rIconMoveInactive.png */,
+				CE7BEE3514E47EC90011D567 /* rIconZoomOut.png */,
+				CE7BEE3614E47EC90011D567 /* rIconZoomIn.png */,
+				CE7BEE3714E47EC90011D567 /* iIconColor.png */,
+				CE7BEE3814E47EC90011D567 /* rIconSave.png */,
+				CE7BEE3914E47EC90011D567 /* rIconSelect.png */,
+				CE7BEE3A14E47EC90011D567 /* rIconPull.png */,
 				CE7E831C14D5ED440093B921 /* colorMapImage.png */,
 				CE161C2714D5AAF800B8C7DE /* first.png */,
 				CE161C2914D5AAF800B8C7DE /* first@2x.png */,
@@ -180,6 +224,19 @@
 				CE161C2F14D5AAF800B8C7DE /* second.png in Resources */,
 				CE161C3114D5AAF800B8C7DE /* second@2x.png in Resources */,
 				CE7E831D14D5ED440093B921 /* colorMapImage.png in Resources */,
+				CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */,
+				CE7BEE3C14E47EC90011D567 /* rSeparator.png in Resources */,
+				CE7BEE3D14E47EC90011D567 /* rFolder.png in Resources */,
+				CE7BEE3E14E47EC90011D567 /* rIconColorPicker.png in Resources */,
+				CE7BEE3F14E47EC90011D567 /* rIconColorPickerHorizontal.png in Resources */,
+				CE7BEE4014E47EC90011D567 /* rIconMoveActive.png in Resources */,
+				CE7BEE4114E47EC90011D567 /* rIconMoveInactive.png in Resources */,
+				CE7BEE4214E47EC90011D567 /* rIconZoomOut.png in Resources */,
+				CE7BEE4314E47EC90011D567 /* rIconZoomIn.png in Resources */,
+				CE7BEE4414E47EC90011D567 /* iIconColor.png in Resources */,
+				CE7BEE4514E47EC90011D567 /* rIconSave.png in Resources */,
+				CE7BEE4614E47EC90011D567 /* rIconSelect.png in Resources */,
+				CE7BEE4714E47EC90011D567 /* rIconPull.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +252,7 @@
 				CE161C2614D5AAF800B8C7DE /* DOCanvasViewController.m in Sources */,
 				CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */,
 				CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */,
+				CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

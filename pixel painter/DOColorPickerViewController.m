@@ -50,6 +50,11 @@
     NSLog(@"%@", color);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepare fpr seque");
+}
+
 - (void)viewDidUnload 
 {
     [self setColorMapOutlet:nil];
