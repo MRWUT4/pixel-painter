@@ -63,7 +63,6 @@
 		CE7BEE4514E47EC90011D567 /* rIconSave.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3814E47EC90011D567 /* rIconSave.png */; };
 		CE7BEE4614E47EC90011D567 /* rIconSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3914E47EC90011D567 /* rIconSelect.png */; };
 		CE7BEE4714E47EC90011D567 /* rIconPull.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE3A14E47EC90011D567 /* rIconPull.png */; };
-		CE7E831D14D5ED440093B921 /* colorMapImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7E831C14D5ED440093B921 /* colorMapImage.png */; };
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 /* End PBXBuildFile section */
 
@@ -131,7 +130,6 @@
 		CE7BEE3814E47EC90011D567 /* rIconSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconSave.png; sourceTree = "<group>"; };
 		CE7BEE3914E47EC90011D567 /* rIconSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconSelect.png; sourceTree = "<group>"; };
 		CE7BEE3A14E47EC90011D567 /* rIconPull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPull.png; sourceTree = "<group>"; };
-		CE7E831C14D5ED440093B921 /* colorMapImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorMapImage.png; sourceTree = "<group>"; };
 		CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterViewContoller.h; sourceTree = "<group>"; };
 		CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterViewContoller.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,7 +239,6 @@
 				CE7BEE3814E47EC90011D567 /* rIconSave.png */,
 				CE7BEE3914E47EC90011D567 /* rIconSelect.png */,
 				CE7BEE3A14E47EC90011D567 /* rIconPull.png */,
-				CE7E831C14D5ED440093B921 /* colorMapImage.png */,
 				CE161C2714D5AAF800B8C7DE /* first.png */,
 				CE161C2914D5AAF800B8C7DE /* first@2x.png */,
 				CE161C2E14D5AAF800B8C7DE /* second.png */,
@@ -310,7 +307,6 @@
 				CE161C2A14D5AAF800B8C7DE /* first@2x.png in Resources */,
 				CE161C2F14D5AAF800B8C7DE /* second.png in Resources */,
 				CE161C3114D5AAF800B8C7DE /* second@2x.png in Resources */,
-				CE7E831D14D5ED440093B921 /* colorMapImage.png in Resources */,
 				CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */,
 				CE7BEE3C14E47EC90011D567 /* rSeparator.png in Resources */,
 				CE7BEE3D14E47EC90011D567 /* rFolder.png in Resources */,
