@@ -35,11 +35,11 @@
 		CE161C2614D5AAF800B8C7DE /* DOCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */; };
 		CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */; };
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
+		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
+		CE6D7A3514EF0B6000D707E4 /* DONavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A3314EF0B6000D707E4 /* DONavigationViewController.m */; };
 		CE7BE39B14EC5F3900A74E0C /* rFolderClose.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BE39A14EC5F3800A74E0C /* rFolderClose.png */; };
 		CE7BE39F14EC631C00A74E0C /* rIconFile.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BE39D14EC631A00A74E0C /* rIconFile.png */; };
 		CE7BE3A014EC631C00A74E0C /* rIconFileSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BE39E14EC631B00A74E0C /* rIconFileSelected.png */; };
-		CE7BE3A814EC676500A74E0C /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7BE3A714EC676500A74E0C /* DONavigationView.m */; };
-		CE7BE3B114EC6A0400A74E0C /* DONavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7BE3AF14EC6A0300A74E0C /* DONavigationViewController.m */; };
 		CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */; };
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 /* End PBXBuildFile section */
@@ -80,13 +80,13 @@
 		CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerViewController.m; sourceTree = "<group>"; };
 		CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView-ColorUtils.h"; sourceTree = "<group>"; };
 		CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView-ColorUtils.m"; sourceTree = "<group>"; };
+		CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
+		CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
+		CE6D7A3214EF0B6000D707E4 /* DONavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationViewController.h; sourceTree = "<group>"; };
+		CE6D7A3314EF0B6000D707E4 /* DONavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationViewController.m; sourceTree = "<group>"; };
 		CE7BE39A14EC5F3800A74E0C /* rFolderClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolderClose.png; sourceTree = "<group>"; };
 		CE7BE39D14EC631A00A74E0C /* rIconFile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconFile.png; sourceTree = "<group>"; };
 		CE7BE39E14EC631B00A74E0C /* rIconFileSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconFileSelected.png; sourceTree = "<group>"; };
-		CE7BE3A614EC676400A74E0C /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
-		CE7BE3A714EC676500A74E0C /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
-		CE7BE3AE14EC6A0300A74E0C /* DONavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationViewController.h; sourceTree = "<group>"; };
-		CE7BE3AF14EC6A0300A74E0C /* DONavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationViewController.m; sourceTree = "<group>"; };
 		CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pixel-painter.psd"; sourceTree = "<group>"; };
 		CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterViewContoller.h; sourceTree = "<group>"; };
 		CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterViewContoller.m; sourceTree = "<group>"; };
@@ -147,11 +147,11 @@
 				CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */,
 				CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */,
 				CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */,
-				CE7BE3A614EC676400A74E0C /* DONavigationView.h */,
-				CE7BE3A714EC676500A74E0C /* DONavigationView.m */,
+				CE6D7A3214EF0B6000D707E4 /* DONavigationViewController.h */,
+				CE6D7A3314EF0B6000D707E4 /* DONavigationViewController.m */,
+				CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */,
+				CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */,
 				CE161C1614D5AAF800B8C7DE /* Supporting Files */,
-				CE7BE3AE14EC6A0300A74E0C /* DONavigationViewController.h */,
-				CE7BE3AF14EC6A0300A74E0C /* DONavigationViewController.m */,
 			);
 			path = "pixel painter";
 			sourceTree = "<group>";
@@ -279,8 +279,8 @@
 				CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */,
 				CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */,
 				CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */,
-				CE7BE3A814EC676500A74E0C /* DONavigationView.m in Sources */,
-				CE7BE3B114EC6A0400A74E0C /* DONavigationViewController.m in Sources */,
+				CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */,
+				CE6D7A3514EF0B6000D707E4 /* DONavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

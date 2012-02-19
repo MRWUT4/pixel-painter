@@ -2,7 +2,7 @@
 //  DONavigationViewController.m
 //  pixel painter
 //
-//  Created by David Ochmann on 15.02.12.
+//  Created by David Ochmann on 17.02.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,7 +13,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self) 
+    {
         // Custom initialization
     }
     return self;
@@ -48,4 +49,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (IBAction)buttonHideTouchDown:(id)sender 
+{
+}
+
+- (IBAction)buttonHideTouchUpInsideHandler:(id)sender {
+}
 @end

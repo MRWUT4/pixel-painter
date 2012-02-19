@@ -2,7 +2,7 @@
 //  DONavigationView.m
 //  pixel painter
 //
-//  Created by David Ochmann on 15.02.12.
+//  Created by David Ochmann on 17.02.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,19 +13,9 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) 
-    {
-        NSLog(@"view did init");
+    if (self) {
         // Initialization code
     }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    NSLog(@"initWithCoder");
-    
-    self = [super initWithCoder:aDecoder];
     return self;
 }
 

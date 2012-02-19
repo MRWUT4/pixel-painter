@@ -14,8 +14,11 @@
 
 @property (nonatomic) CGPoint touchPosition;
 
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
 - (void)touchesHandler:(NSSet *)touches;
 
 
