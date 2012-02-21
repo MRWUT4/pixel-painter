@@ -14,11 +14,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) 
-    {
-//        [navigationViewController setView:navigationView];
-    }
+    if (self) {}
     return self;
+}
+
+- (IBAction)folderButtonTouchUpInsideHandler:(id)sender 
+{
 }
 
 /*

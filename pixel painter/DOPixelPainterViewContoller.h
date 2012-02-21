@@ -10,4 +10,6 @@
 
 @interface DOPixelPainterViewContoller : UIViewController
 
+- (IBAction)folderButtonTouchUpInsideHandler:(id)sender;
+
 @end
