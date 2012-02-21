@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DOFolderView.h"
+#import "DONavigationView.h"
+#import "DOPixelPainterModel.h"
 
 @interface DOPixelPainterViewContoller : UIViewController
 
+@property (strong, nonatomic) DOPixelPainterModel *model;
+
+@property (strong, nonatomic) IBOutlet DONavigationView *navigationView;
+
+@property (strong, nonatomic) IBOutlet DOFolderView *folderView;
+
 - (IBAction)folderButtonTouchUpInsideHandler:(id)sender;
+
+- (void)closeFolder:(BOOL)to;
 
 @end

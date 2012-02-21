@@ -10,6 +10,10 @@
 
 @implementation DOPixelPainterViewContoller
 
+@synthesize navigationView = _navigationView;
+@synthesize folderView = _folderView;
+@synthesize model = _model;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -18,9 +22,49 @@
     return self;
 }
 
+
+/* GETTER / SETTER */
+
+- (DOPixelPainterModel *) model
+{    
+    if(!_model) _model = [[DOPixelPainterModel alloc] init];
+    return _model;
+}
+
+
+/* ACTIONS */
+
 - (IBAction)folderButtonTouchUpInsideHandler:(id)sender 
 {
+//    NSLog(@"model %d", self.model.folderIsOpen);
+    
+    BOOL switchedFolderIsOpen = !self.model.folderIsOpen;
+        
+    [self closeFolder: switchedFolderIsOpen]; 
+    self.model.folderIsOpen = switchedFolderIsOpen;
 }
+
+
+- (void)closeFolder:(BOOL)to
+{
+    NSLog(@"closeFolder %d", to);
+    
+    CGRect navigationFrame = self.navigationView.frame; 
+    
+    if(to)
+    {
+        navigationFrame.origin.y = NAVIGATION_POSITION_0;
+        [self.navigationView setFrame:navigationFrame];
+    }
+    else
+    {
+        navigationFrame.origin.y = NAVIGATION_POSITION_1;
+        [self.navigationView setFrame:navigationFrame];        
+    }
+}
+
+
+
 
 /*
 - (void)didReceiveMemoryWarning
@@ -57,6 +101,8 @@
 
 - (void)viewDidUnload 
 {
+    [self setFolderView:nil];
+    [self setNavigationView:nil];
     [super viewDidUnload];
 }
 
