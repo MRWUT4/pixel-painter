@@ -8,12 +8,15 @@
 
 #import "DOPixelPainterModel.h"
 
-const int NAVIGATION_POSITION_0 = -352;
-const int NAVIGATION_POSITION_1 = -288;
-const int NAVIGATION_POSITION_2 = 0;
 
 @implementation DOPixelPainterModel
 
-@synthesize folderIsOpen = _folderIsOpen;
+@synthesize navigationStatus = _navigationStatus;
+
+- (void)setNavigationStatus:(unsigned int)navigationStatus
+{
+    _navigationStatus = navigationStatus > 2 ? 2 : navigationStatus;
+}
+
 
 @end

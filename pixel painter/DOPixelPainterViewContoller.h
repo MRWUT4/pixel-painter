@@ -21,6 +21,6 @@
 
 - (IBAction)folderButtonTouchUpInsideHandler:(id)sender;
 
-- (void)closeFolder:(BOOL)to;
+- (void)changeNavigationStatus:(NSNumber *)to;
 
 @end

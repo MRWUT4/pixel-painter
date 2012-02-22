@@ -14,59 +14,94 @@
 @synthesize folderView = _folderView;
 @synthesize model = _model;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     
-    if (self) {}
+    if(self)
+    {
+        self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    }
+    
     return self;
 }
 
-
 /* GETTER / SETTER */
 
-- (DOPixelPainterModel *) model
+- (DOPixelPainterModel *)model
 {    
-    if(!_model) _model = [[DOPixelPainterModel alloc] init];
+    if(!_model) 
+    {
+        _model = [[DOPixelPainterModel alloc] init];
+        [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
+    }
+    
     return _model;
 }
-
 
 /* ACTIONS */
 
 - (IBAction)folderButtonTouchUpInsideHandler:(id)sender 
 {
-//    NSLog(@"model %d", self.model.folderIsOpen);
-    
-    BOOL switchedFolderIsOpen = !self.model.folderIsOpen;
-        
-    [self closeFolder: switchedFolderIsOpen]; 
-    self.model.folderIsOpen = switchedFolderIsOpen;
+    switch (self.model.navigationStatus) 
+    {
+        case NAVIGATION_STATUS_NAVIGATION:
+            self.model.navigationStatus = NAVIGATION_STATUS_CLOSED;
+            break;
+            
+        case NAVIGATION_STATUS_CLOSED:
+            self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+            break;
+    }
 }
 
-
-- (void)closeFolder:(BOOL)to
+- (void)changeNavigationStatus:(NSNumber *)to
 {
-    NSLog(@"closeFolder %d", to);
-    
-    CGRect navigationFrame = self.navigationView.frame; 
-    
-    if(to)
+    CGRect navigationFrame = self.navigationView.frame;
+ 
+    switch([to intValue]) 
     {
-        navigationFrame.origin.y = NAVIGATION_POSITION_0;
-        [self.navigationView setFrame:navigationFrame];
+        case NAVIGATION_STATUS_CLOSED:
+            navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
+            break;
+
+        case NAVIGATION_STATUS_NAVIGATION:
+            navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
+            break;
+            
+        case NAVIGATION_STATUS_SUBVIEW:
+            navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
+            break;
     }
-    else
-    {
-        navigationFrame.origin.y = NAVIGATION_POSITION_1;
-        [self.navigationView setFrame:navigationFrame];        
-    }
+    
+    [self.navigationView setFrame:navigationFrame];
 }
 
+/* OBSERVER IMPLEMENTATION */
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"observer %@", (NSNumber *)[change valueForKey:@"new"]);
+    
+    if(keyPath == @"navigationStatus")
+    {
+        [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"]];
+    }
+}
 
 
 /*
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+ {
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ 
+ if (self) 
+ {
+ NSLog(@"initWithNibName");
+ }
+ return self;
+ }
+ 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
