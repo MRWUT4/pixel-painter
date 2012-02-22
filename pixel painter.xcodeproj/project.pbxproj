@@ -46,6 +46,11 @@
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
+		CE73F70314F59A0D003B9C12 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70214F59A0D003B9C12 /* GradientView.m */; };
+		CE73F70714F59C37003B9C12 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */; };
+		CE73F70A14F59C4F003B9C12 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70914F59C4F003B9C12 /* UIColor-Expanded.m */; };
+		CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70C14F59FBE003B9C12 /* DOColorPreviewView.m */; };
+		CE73F71014F5A081003B9C12 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70E14F5A081003B9C12 /* DrawingView.m */; };
 		CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */; };
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 /* End PBXBuildFile section */
@@ -103,6 +108,16 @@
 		CE62227314F4429600B94622 /* DOPixelPainterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterModel.m; sourceTree = "<group>"; };
 		CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
 		CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
+		CE73F70114F59A0D003B9C12 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		CE73F70214F59A0D003B9C12 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-HSVAdditions.m"; sourceTree = "<group>"; };
+		CE73F70614F59C37003B9C12 /* UIColor-HSVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-HSVAdditions.h"; sourceTree = "<group>"; };
+		CE73F70814F59C4F003B9C12 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		CE73F70914F59C4F003B9C12 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		CE73F70B14F59FBE003B9C12 /* DOColorPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOColorPreviewView.h; sourceTree = "<group>"; };
+		CE73F70C14F59FBE003B9C12 /* DOColorPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorPreviewView.m; sourceTree = "<group>"; };
+		CE73F70E14F5A081003B9C12 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		CE73F70F14F5A081003B9C12 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pixel-painter.psd"; sourceTree = "<group>"; };
 		CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterViewContoller.h; sourceTree = "<group>"; };
 		CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterViewContoller.m; sourceTree = "<group>"; };
@@ -152,6 +167,14 @@
 		CE161C1514D5AAF800B8C7DE /* pixel painter */ = {
 			isa = PBXGroup;
 			children = (
+				CE73F70E14F5A081003B9C12 /* DrawingView.m */,
+				CE73F70F14F5A081003B9C12 /* DrawingView.h */,
+				CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */,
+				CE73F70614F59C37003B9C12 /* UIColor-HSVAdditions.h */,
+				CE73F70814F59C4F003B9C12 /* UIColor-Expanded.h */,
+				CE73F70914F59C4F003B9C12 /* UIColor-Expanded.m */,
+				CE73F70114F59A0D003B9C12 /* GradientView.h */,
+				CE73F70214F59A0D003B9C12 /* GradientView.m */,
 				CE62227214F4429600B94622 /* DOPixelPainterModel.h */,
 				CE62227314F4429600B94622 /* DOPixelPainterModel.m */,
 				CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */,
@@ -175,6 +198,8 @@
 				A214F74714F538E400D71C06 /* DOFileSettingsView.m */,
 				A214F74C14F53F7300D71C06 /* DOSubviewManager.h */,
 				A214F74D14F53F7300D71C06 /* DOSubviewManager.m */,
+				CE73F70B14F59FBE003B9C12 /* DOColorPreviewView.h */,
+				CE73F70C14F59FBE003B9C12 /* DOColorPreviewView.m */,
 				CE161C1614D5AAF800B8C7DE /* Supporting Files */,
 			);
 			path = "pixel painter";
@@ -313,6 +338,11 @@
 				A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */,
 				A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */,
 				A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */,
+				CE73F70314F59A0D003B9C12 /* GradientView.m in Sources */,
+				CE73F70714F59C37003B9C12 /* UIColor-HSVAdditions.m in Sources */,
+				CE73F70A14F59C4F003B9C12 /* UIColor-Expanded.m in Sources */,
+				CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */,
+				CE73F71014F5A081003B9C12 /* DrawingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

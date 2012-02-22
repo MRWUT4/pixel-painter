@@ -13,6 +13,8 @@
 #import "DOColorPickerView.h"
 #import "DOFileSettingsView.h"
 #import "DOSubviewManager.h"
+#import "DOColorPreviewView.h"
+#import "GradientView.h"
 
 @interface DOPixelPainterViewContoller : UIViewController
 
@@ -27,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet DOColorPickerView *colorPickerView;
 
 @property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
+
+@property (strong, nonatomic) IBOutlet GradientView *gradientView;
+
+@property (strong, nonatomic) IBOutlet DOColorPreviewView *colorPreviewView;
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 

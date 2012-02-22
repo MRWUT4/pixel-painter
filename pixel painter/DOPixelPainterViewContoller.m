@@ -12,6 +12,8 @@
 
 @synthesize colorPickerView = _colorPickerView;
 @synthesize fileSettingsView = _fileSettingsView;
+@synthesize gradientView = _gradientView;
+@synthesize colorPreviewView = _colorPreviewView;
 @synthesize navigationView = _navigationView;
 @synthesize folderView = _folderView;
 @synthesize model = _model;
@@ -33,7 +35,16 @@
     
     [self.subviewManager displaySubview:self.colorPickerView];
     
+    
+//    [self.gradientView setTheColor:[[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1]];
+//    [self.gradientView setNeedsDisplay];
+    
+    
+//    self.colorPreviewView.color = [[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1];
+    
 //  self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    
+    self.model.color = [[UIColor alloc] initWithRed:0 green:1 blue:0 alpha:1];
 }
 
 /* GETTER / SETTER */
@@ -44,6 +55,7 @@
     {
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
+        [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
     }
     
     return _model;
@@ -61,6 +73,19 @@
 {
     if(keyPath == @"navigationStatus") 
         [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"]];
+    
+    if(keyPath == @"color")
+    {
+        UIColor *color = (UIColor *)[change valueForKey:@"new"];
+        
+        NSLog(@"observer %@", color);
+        
+        self.gradientView.theColor = color;
+        [self.gradientView setupGradient];
+        [self.gradientView setNeedsDisplay];
+        
+        self.colorPreviewView.color = color;
+    }
 }
 
 
@@ -141,6 +166,8 @@
     [self setFolderView:nil];
     [self setColorPickerView:nil];
     [self setFileSettingsView:nil];
+    [self setGradientView:nil];
+    [self setColorPreviewView:nil];
     [super viewDidUnload];
 }
 

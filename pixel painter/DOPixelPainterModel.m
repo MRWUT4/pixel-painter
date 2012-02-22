@@ -12,6 +12,7 @@
 @implementation DOPixelPainterModel
 
 @synthesize navigationStatus = _navigationStatus;
+@synthesize color = _color;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {

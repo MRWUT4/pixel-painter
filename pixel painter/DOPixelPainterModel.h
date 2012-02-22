@@ -26,6 +26,9 @@ enum
 @interface DOPixelPainterModel : NSObject
 
 
-@property(nonatomic, assign) unsigned int navigationStatus;
+@property(assign, nonatomic) unsigned int navigationStatus;
+
+@property(strong, nonatomic) UIColor *color;
+
 
 @end
