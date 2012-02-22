@@ -7,20 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DOFolderView.h"
 #import "DONavigationView.h"
 #import "DOPixelPainterModel.h"
+#import "DOSubviewContainerView.h"
+#import "DOColorPickerView.h"
+#import "DOFileSettingsView.h"
+#import "DOSubviewManager.h"
 
 @interface DOPixelPainterViewContoller : UIViewController
 
 @property (strong, nonatomic) DOPixelPainterModel *model;
 
+@property (strong, nonatomic) DOSubviewManager *subviewManager;
+
 @property (strong, nonatomic) IBOutlet DONavigationView *navigationView;
 
-@property (strong, nonatomic) IBOutlet DOFolderView *folderView;
+@property (weak, nonatomic) IBOutlet UIImageView *folderView;
 
-- (IBAction)folderButtonTouchUpInsideHandler:(id)sender;
+@property (weak, nonatomic) IBOutlet DOColorPickerView *colorPickerView;
 
-- (void)changeNavigationStatus:(NSNumber *)to;
+@property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
+
+- (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonFileTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonColorTouchUpInsideHandler:(id)sender;
+
+- (void)changeNavigationStatus:(NSNumber *)status;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static float const NAVIGATION_ANIMATION_TIME = .4;
+
 enum 
 {
     NAVIGATION_STATUS_CLOSED = 0,
@@ -25,6 +27,5 @@ enum
 
 
 @property(nonatomic, assign) unsigned int navigationStatus;
-
 
 @end

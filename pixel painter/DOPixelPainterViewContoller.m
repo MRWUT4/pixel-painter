@@ -10,20 +10,30 @@
 
 @implementation DOPixelPainterViewContoller
 
+@synthesize colorPickerView = _colorPickerView;
+@synthesize fileSettingsView = _fileSettingsView;
 @synthesize navigationView = _navigationView;
 @synthesize folderView = _folderView;
 @synthesize model = _model;
+@synthesize subviewManager = _subviewManager;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
-    if(self)
-    {
-        self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    }
+    if(self){}
     
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.subviewManager addSubview:self.colorPickerView];
+    [self.subviewManager addSubview:self.fileSettingsView];
+    [self.subviewManager hideAlleSubviews];
+    
+    [self.subviewManager displaySubview:self.colorPickerView];
+    
+//  self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
 }
 
 /* GETTER / SETTER */
@@ -39,105 +49,98 @@
     return _model;
 }
 
-/* ACTIONS */
-
-- (IBAction)folderButtonTouchUpInsideHandler:(id)sender 
+- (DOSubviewManager *) subviewManager
 {
-    switch (self.model.navigationStatus) 
-    {
-        case NAVIGATION_STATUS_NAVIGATION:
-            self.model.navigationStatus = NAVIGATION_STATUS_CLOSED;
-            break;
-            
-        case NAVIGATION_STATUS_CLOSED:
-            self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-            break;
-    }
-}
-
-- (void)changeNavigationStatus:(NSNumber *)to
-{
-    CGRect navigationFrame = self.navigationView.frame;
- 
-    switch([to intValue]) 
-    {
-        case NAVIGATION_STATUS_CLOSED:
-            navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
-            break;
-
-        case NAVIGATION_STATUS_NAVIGATION:
-            navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
-            break;
-            
-        case NAVIGATION_STATUS_SUBVIEW:
-            navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
-            break;
-    }
-    
-    [self.navigationView setFrame:navigationFrame];
+    if(!_subviewManager) _subviewManager = [[DOSubviewManager alloc] init];    
+    return _subviewManager;
 }
 
 /* OBSERVER IMPLEMENTATION */
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"observer %@", (NSNumber *)[change valueForKey:@"new"]);
-    
-    if(keyPath == @"navigationStatus")
-    {
+    if(keyPath == @"navigationStatus") 
         [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"]];
+}
+
+
+/* NAVIGATION ANIMATION */
+
+- (IBAction)buttonFolderTouchUpInsideHandler:(id)sender 
+{
+    switch (self.model.navigationStatus) 
+    {            
+        case NAVIGATION_STATUS_CLOSED:
+            self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+            break;
+            
+        default:
+            self.model.navigationStatus = NAVIGATION_STATUS_CLOSED;
+            break;
     }
 }
 
-
-/*
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
- {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- 
- if (self) 
- {
- NSLog(@"initWithNibName");
- }
- return self;
- }
- 
-- (void)didReceiveMemoryWarning
+- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender 
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+}
+
+- (void)changeNavigationStatus:(NSNumber *)status
+{
+    CGRect navigationFrame = self.navigationView.frame;
+        
+    switch([status intValue]) 
+    {
+        case NAVIGATION_STATUS_CLOSED:
+            navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
+            break;
+            
+        case NAVIGATION_STATUS_NAVIGATION:
+            navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+            break;
+            
+        case NAVIGATION_STATUS_SUBVIEW:
+            navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+            break;
+    }
     
-    // Release any cached data, images, etc that aren't in use.
+    [UIView beginAnimations:@"animationID" context:NULL];
+    [UIView setAnimationDuration:NAVIGATION_ANIMATION_TIME];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    
+    [self.navigationView setFrame:navigationFrame];
+    
+    [UIView commitAnimations];
 }
 
-#pragma mark - View lifecycle
+/* FILE IMPLEMENTATION */
 
-- (void)viewDidLoad
+- (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.subviewManager displaySubview:self.fileSettingsView];
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
 }
 
-- (void)viewDidUnload
+/* COLOR IMPLEMENTATION */
+
+- (IBAction)buttonColorTouchUpInsideHandler:(id)sender 
 {
-    [self setNavigationView:nil];
-    [self setScrollView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [self.subviewManager displaySubview:self.colorPickerView];
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+/* UIVIEW IMPLEMENTATION */
 
 - (void)viewDidUnload 
 {
     [self setFolderView:nil];
     [self setNavigationView:nil];
+    [self setFolderView:nil];
+    [self setColorPickerView:nil];
+    [self setFileSettingsView:nil];
     [super viewDidUnload];
 }
 

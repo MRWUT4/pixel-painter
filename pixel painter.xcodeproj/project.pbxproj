@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A214F74214F534BA00D71C06 /* DOSubviewContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */; };
+		A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74414F534F700D71C06 /* DOColorPickerView.m */; };
+		A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74714F538E400D71C06 /* DOFileSettingsView.m */; };
+		A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74D14F53F7300D71C06 /* DOSubviewManager.m */; };
 		A2AEDCD914F3FB31000BD340 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC214F3FB31000BD340 /* first.png */; };
 		A2AEDCDA14F3FB31000BD340 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC314F3FB31000BD340 /* first@2x.png */; };
 		A2AEDCDB14F3FB31000BD340 /* rColorMap.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC414F3FB31000BD340 /* rColorMap.png */; };
@@ -42,12 +46,19 @@
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
-		CE6D9EE214F4412000A28E2D /* DOFolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D9EE114F4412000A28E2D /* DOFolderView.m */; };
 		CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */; };
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A214F74014F534BA00D71C06 /* DOSubviewContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOSubviewContainerView.h; sourceTree = "<group>"; };
+		A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOSubviewContainerView.m; sourceTree = "<group>"; };
+		A214F74314F534F700D71C06 /* DOColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOColorPickerView.h; sourceTree = "<group>"; };
+		A214F74414F534F700D71C06 /* DOColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerView.m; sourceTree = "<group>"; };
+		A214F74614F538E400D71C06 /* DOFileSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOFileSettingsView.h; sourceTree = "<group>"; };
+		A214F74714F538E400D71C06 /* DOFileSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOFileSettingsView.m; sourceTree = "<group>"; };
+		A214F74C14F53F7300D71C06 /* DOSubviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOSubviewManager.h; sourceTree = "<group>"; };
+		A214F74D14F53F7300D71C06 /* DOSubviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOSubviewManager.m; sourceTree = "<group>"; };
 		A2AEDCC214F3FB31000BD340 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		A2AEDCC314F3FB31000BD340 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		A2AEDCC414F3FB31000BD340 /* rColorMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorMap.png; sourceTree = "<group>"; };
@@ -92,8 +103,6 @@
 		CE62227314F4429600B94622 /* DOPixelPainterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterModel.m; sourceTree = "<group>"; };
 		CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
 		CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
-		CE6D9EE014F4412000A28E2D /* DOFolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOFolderView.h; sourceTree = "<group>"; };
-		CE6D9EE114F4412000A28E2D /* DOFolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOFolderView.m; sourceTree = "<group>"; };
 		CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pixel-painter.psd"; sourceTree = "<group>"; };
 		CE7FE17814E1D68200DB367B /* DOPixelPainterViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterViewContoller.h; sourceTree = "<group>"; };
 		CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterViewContoller.m; sourceTree = "<group>"; };
@@ -155,11 +164,17 @@
 				CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */,
 				CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */,
 				CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */,
-				CE6D9EE014F4412000A28E2D /* DOFolderView.h */,
-				CE6D9EE114F4412000A28E2D /* DOFolderView.m */,
 				CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */,
 				CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */,
+				A214F74014F534BA00D71C06 /* DOSubviewContainerView.h */,
+				A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */,
+				A214F74314F534F700D71C06 /* DOColorPickerView.h */,
+				A214F74414F534F700D71C06 /* DOColorPickerView.m */,
 				CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */,
+				A214F74614F538E400D71C06 /* DOFileSettingsView.h */,
+				A214F74714F538E400D71C06 /* DOFileSettingsView.m */,
+				A214F74C14F53F7300D71C06 /* DOSubviewManager.h */,
+				A214F74D14F53F7300D71C06 /* DOSubviewManager.m */,
 				CE161C1614D5AAF800B8C7DE /* Supporting Files */,
 			);
 			path = "pixel painter";
@@ -293,8 +308,11 @@
 				CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */,
 				CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */,
 				CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */,
-				CE6D9EE214F4412000A28E2D /* DOFolderView.m in Sources */,
 				CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */,
+				A214F74214F534BA00D71C06 /* DOSubviewContainerView.m in Sources */,
+				A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */,
+				A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */,
+				A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
