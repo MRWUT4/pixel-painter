@@ -17,9 +17,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="9zd-cE-wcd" customClass="DODrawingView">
+                                    <view contentMode="scaleToFill" id="RqU-9j-0H1" customClass="DODrawingView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="xRS-6Z-G8t">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -31,6 +37,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="TDM-5A-9xu">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="srd-Qx-0Ji">
                                         <rect key="frame" x="0.0" y="-96" width="320" height="384"/>
@@ -171,7 +178,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
                                                 <rect key="frame" x="60" y="60" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -183,7 +190,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -191,7 +198,7 @@
                     <connections>
                         <outlet property="colorPickerView" destination="Mu0-8J-NR7" id="VO2-DW-7rk"/>
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
-                        <outlet property="drawingView" destination="9zd-cE-wcd" id="tOE-p8-6h0"/>
+                        <outlet property="drawingView" destination="RqU-9j-0H1" id="Fq8-Ji-OwC"/>
                         <outlet property="fileSettingsView" destination="J09-qT-LtS" id="hFH-cW-0ri"/>
                         <outlet property="folderView" destination="TDM-5A-9xu" id="yBL-UA-ITr"/>
                         <outlet property="gradientView" destination="rnB-QS-9wj" id="N9o-R1-ndU"/>

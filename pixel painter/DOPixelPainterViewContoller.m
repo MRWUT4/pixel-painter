@@ -91,6 +91,8 @@
         [self.gradientView setNeedsDisplay];
         
         self.colorPreviewView.color = color;
+        
+        self.drawingView.color = color;
     }
 }
 

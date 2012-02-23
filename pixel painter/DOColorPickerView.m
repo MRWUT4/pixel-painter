@@ -25,6 +25,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {}
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if(self)
+    {
+        [self.colorPicker setUserInteractionEnabled:NO];
+        [self.colorPickerHorizontal setUserInteractionEnabled:NO];   
+    }
     
     return self;
 }

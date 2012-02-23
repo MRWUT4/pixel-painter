@@ -10,22 +10,84 @@
 
 @implementation DODrawingView
 
+
+@synthesize color = _color;
+@synthesize scale = _scale;
+@synthesize touchPosition = _touchPosition;
+@synthesize imageView = _imageView;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if (self) {}
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if(self)
+    {
+        self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        [self addSubview:self.imageView];
     }
+    
     return self;
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+ * GETTER / SETTER
+ */
+
+/*
+-(UIImage *)image
 {
-    // Drawing code
+    id subview = [[self subviews] objectAtIndex:0];
+    UIImageView *imageView = [subview isKindOfClass:[UIImageView class]] ? subview : nil;
+    
+    NSLog(@"imageView %@", imageView.image);
+    
+    return imageView.image;
 }
 */
+ 
+-(unsigned int)scale
+{
+    _scale = _scale <= 0 ? 10 : _scale;
+    return _scale;
+}
+
+
+/*
+ * TOUCHES MOVED HANDLER
+ */
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.touchPosition = [[touches anyObject] locationInView:self];
+    
+    self.touchPosition = CGPointMake((int) (self.touchPosition.x / self.scale), 
+                                     (int) (self.touchPosition.y / self.scale));
+    
+    NSLog(@"%@", self.imageView.image);
+    
+
+    UIGraphicsBeginImageContext(self.frame.size);
+    [self.imageView.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+
+    CGContextScaleCTM(cgContext, self.scale, self.scale);
+
+    CGContextSetFillColorWithColor(cgContext, self.color.CGColor); 
+    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
+    CGContextFlush(UIGraphicsGetCurrentContext());
+
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+}
+
 
 @end

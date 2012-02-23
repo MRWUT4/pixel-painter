@@ -10,4 +10,10 @@
 
 @interface DODrawingView : UIView
 
+@property(strong, nonatomic) UIColor *color;
+
+@property (nonatomic, assign) unsigned int scale; 
+@property (nonatomic, assign) CGPoint touchPosition;
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end
