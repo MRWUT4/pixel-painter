@@ -14,6 +14,8 @@
 @synthesize fileSettingsView = _fileSettingsView;
 @synthesize gradientView = _gradientView;
 @synthesize colorPreviewView = _colorPreviewView;
+@synthesize drawingView = _drawingView;
+@synthesize scrollView = _scrollView;
 @synthesize navigationView = _navigationView;
 @synthesize folderView = _folderView;
 @synthesize model = _model;
@@ -184,6 +186,8 @@
     [self setFileSettingsView:nil];
     [self setGradientView:nil];
     [self setColorPreviewView:nil];
+    [self setDrawingView:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 

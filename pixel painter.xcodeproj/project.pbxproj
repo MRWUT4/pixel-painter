@@ -14,6 +14,7 @@
 		A24FB40414F65A3700CB1143 /* DOColorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FB40314F65A3700CB1143 /* DOColorMapView.m */; };
 		A24FB40714F67C6400CB1143 /* colorspectrum.fla in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40514F67C6400CB1143 /* colorspectrum.fla */; };
 		A24FB40814F67C6400CB1143 /* colorspectrum.swf in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40614F67C6400CB1143 /* colorspectrum.swf */; };
+		A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FB40A14F6851400CB1143 /* DODrawingView.m */; };
 		A2AEDCD914F3FB31000BD340 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC214F3FB31000BD340 /* first.png */; };
 		A2AEDCDA14F3FB31000BD340 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC314F3FB31000BD340 /* first@2x.png */; };
 		A2AEDCDB14F3FB31000BD340 /* rColorMap.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC414F3FB31000BD340 /* rColorMap.png */; };
@@ -72,6 +73,8 @@
 		A24FB40314F65A3700CB1143 /* DOColorMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorMapView.m; sourceTree = "<group>"; };
 		A24FB40514F67C6400CB1143 /* colorspectrum.fla */ = {isa = PBXFileReference; lastKnownFileType = file; path = colorspectrum.fla; sourceTree = "<group>"; };
 		A24FB40614F67C6400CB1143 /* colorspectrum.swf */ = {isa = PBXFileReference; lastKnownFileType = file; path = colorspectrum.swf; sourceTree = "<group>"; };
+		A24FB40914F6851300CB1143 /* DODrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DODrawingView.h; sourceTree = "<group>"; };
+		A24FB40A14F6851400CB1143 /* DODrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DODrawingView.m; sourceTree = "<group>"; };
 		A2AEDCC214F3FB31000BD340 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		A2AEDCC314F3FB31000BD340 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		A2AEDCC414F3FB31000BD340 /* rColorMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorMap.png; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				CE73F70214F59A0D003B9C12 /* GradientView.m */,
 				CE73F70F14F5A081003B9C12 /* DrawingView.h */,
 				CE73F70E14F5A081003B9C12 /* DrawingView.m */,
+				A24FB40914F6851300CB1143 /* DODrawingView.h */,
+				A24FB40A14F6851400CB1143 /* DODrawingView.m */,
 				A24FB40214F65A3600CB1143 /* DOColorMapView.h */,
 				A24FB40314F65A3700CB1143 /* DOColorMapView.m */,
 				CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */,
@@ -359,6 +364,7 @@
 				CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */,
 				CE73F71014F5A081003B9C12 /* DrawingView.m in Sources */,
 				A24FB40414F65A3700CB1143 /* DOColorMapView.m in Sources */,
+				A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@
 @property (strong, nonatomic) GradientView *gradientView;
 @property (strong, nonatomic) DOColorMapView *colorMapView;
 @property (strong, nonatomic) UIImageView *colorMapViewImage; 
+@property (strong, nonatomic) UIImageView *colorPicker;
+@property (strong, nonatomic) UIImageView *colorPickerHorizontal;
 @property (strong, nonatomic) UIColor *color;
 @property (assign, nonatomic) CGPoint touchPosition;
 

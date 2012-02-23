@@ -16,6 +16,13 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Hhk-gl-51F">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="9zd-cE-wcd" customClass="DODrawingView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                             </scrollView>
                             <view contentMode="scaleToFill" id="f0P-aM-3ak" customClass="DONavigationView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
@@ -164,6 +171,14 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
+                                                <rect key="frame" x="60" y="60" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rIconColorPickerHorizontal.png" id="Yv6-ja-7PY">
+                                                <rect key="frame" x="136" y="214" width="16" height="10"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -176,20 +191,24 @@
                     <connections>
                         <outlet property="colorPickerView" destination="Mu0-8J-NR7" id="VO2-DW-7rk"/>
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
+                        <outlet property="drawingView" destination="9zd-cE-wcd" id="tOE-p8-6h0"/>
                         <outlet property="fileSettingsView" destination="J09-qT-LtS" id="hFH-cW-0ri"/>
                         <outlet property="folderView" destination="TDM-5A-9xu" id="yBL-UA-ITr"/>
                         <outlet property="gradientView" destination="rnB-QS-9wj" id="N9o-R1-ndU"/>
                         <outlet property="navigationView" destination="f0P-aM-3ak" id="MAw-Bj-YpY"/>
+                        <outlet property="scrollView" destination="Hhk-gl-51F" id="DFe-jU-8Kn"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="109" y="9"/>
+            <point key="canvasLocation" x="289" y="29"/>
         </scene>
     </scenes>
     <resources>
         <image name="rColorMap.png" width="576" height="352"/>
         <image name="rFolderClose.png" width="640" height="768"/>
         <image name="rIconColor.png" width="128" height="128"/>
+        <image name="rIconColorPicker.png" width="48" height="48"/>
+        <image name="rIconColorPickerHorizontal.png" width="32" height="20"/>
         <image name="rIconColorSelected.png" width="128" height="128"/>
         <image name="rIconFile.png" width="128" height="128"/>
         <image name="rIconFileSelected.png" width="128" height="128"/>
@@ -211,6 +230,9 @@
         <class className="DOColorPreviewView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
         </class>
+        <class className="DODrawingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
+        </class>
         <class className="DOFileSettingsView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
         </class>
@@ -226,10 +248,12 @@
                 <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
                 <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
                 <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
+                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
                 <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
                 <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="gradientView" candidateClass="GradientView"/>
                 <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
         <class className="GradientView" superclassName="UIView">
