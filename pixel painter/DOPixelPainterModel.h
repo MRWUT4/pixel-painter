@@ -27,7 +27,6 @@ enum
 
 
 @property(assign, nonatomic) unsigned int navigationStatus;
-
 @property(strong, nonatomic) UIColor *color;
 
 

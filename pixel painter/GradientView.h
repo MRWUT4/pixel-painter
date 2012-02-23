@@ -44,6 +44,8 @@ CGPoint demoLGStart(CGRect bounds);
 CGPoint demoLGEnd(CGRect bounds);
 
 @property (readwrite,nonatomic,retain) UIColor *theColor;
+@property (nonatomic, assign) BOOL lock;
 
 - (void) setupGradient;
+
 @end

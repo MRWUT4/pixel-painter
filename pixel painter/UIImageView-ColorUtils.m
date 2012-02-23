@@ -10,12 +10,17 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <QuartzCore/CoreAnimation.h>
 
-@implementation UIImageView (ColorUtils)
+@implementation UIView (ColorUtils)
 
 - (UIColor*) getPixelColorAtLocation:(CGPoint)point 
 {
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
 	UIColor* color = nil;
-	CGImageRef inImage = self.image.CGImage;
+	CGImageRef inImage = viewImage.CGImage;
     
 	// Create off screen bitmap context to draw the image into. Format ARGB is 4 bytes for each pixel: Alpa, Red, Green, Blue
 	CGContextRef cgctx = [self createARGBBitmapContextFromImage:inImage];

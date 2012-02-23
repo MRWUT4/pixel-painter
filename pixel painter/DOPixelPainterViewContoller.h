@@ -15,6 +15,7 @@
 #import "DOSubviewManager.h"
 #import "DOColorPreviewView.h"
 #import "GradientView.h"
+#import "DOConstants.h"
 
 @interface DOPixelPainterViewContoller : UIViewController
 

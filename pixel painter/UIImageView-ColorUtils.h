@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UIImageView (ColorUtils)
+@interface UIView (ColorUtils)
 
 - (CGContextRef) createARGBBitmapContextFromImage:(CGImageRef)inImage;
 - (UIColor*) getPixelColorAtLocation:(CGPoint)point;

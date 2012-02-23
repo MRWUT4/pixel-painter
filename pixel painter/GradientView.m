@@ -35,6 +35,7 @@
 @implementation GradientView
 
 @synthesize theColor;
+@synthesize lock = _lock;
 
 - (id)initWithFrame:(CGRect)frame 
 {
@@ -69,65 +70,73 @@ CGPoint demoLGEnd(CGRect bounds)
 
 - (void) setupGradient 
 {
-    NSLog(@"gradient color %@", theColor);
-    
-	// Create a color equivalent to the current color with brightness maximized
-	const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[theColor hue] 
-                                                      saturation:[theColor saturation]
-                                                      brightness:1.0
-                                                      alpha:1.0] CGColor]);
-	CGFloat colors[] =
-	{		
-		c[0],c[1],c[2],1.00, //THE COLOR with maximized brightness
-		0.0/255.0,0.0/255.0,0.0/255.0,1.0, //BLACK
-	};
+    if(self.lock == NO)
+    {
+        // Create a color equivalent to the current color with brightness maximized
+        const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[theColor hue] 
+                                                            saturation:[theColor saturation]
+                                                            brightness:1.0
+                                                            alpha:1.0] CGColor]);
+        CGFloat colors[] =
+        {		
+            c[0],c[1],c[2],1.00, //THE COLOR with maximized brightness
+            0.0/255.0,0.0/255.0,0.0/255.0,1.0, //BLACK
+        };
 	
-	CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
+        CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
 	
-    if (gradient!=nil) {
-        CGGradientRelease(gradient);
-    }
-	gradient = CGGradientCreateWithColorComponents(rgb, colors, NULL, sizeof(colors)/(sizeof(colors[0])*4));
-	CGColorSpaceRelease(rgb);
-	
+        if (gradient!=nil) 
+        {
+            CGGradientRelease(gradient);
+        }
+        
+        gradient = CGGradientCreateWithColorComponents(rgb, colors, NULL, sizeof(colors)/(sizeof(colors[0])*4));
+        CGColorSpaceRelease(rgb);
+	}
 //    [self setNeedsDisplay];
 }
 
 
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)drawRect:(CGRect)rect 
+{
+    if(self.lock == NO)
+    {
+        // Drawing code
 	
-	CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	// The clipping rects we plan to use, which also defines the locations of each gradient
-	CGRect clips[] =
-	{
-		CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height),
-		//self.frame,
-	};
+        // The clipping rects we plan to use, which also defines the locations of each gradient
+        CGRect clips[] =
+        {
+            CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height),
+            //self.frame,
+        };
 	
-	CGPoint points[] =
-	{
-		CGPointMake(0,0),
-		CGPointMake(self.frame.size.width,0),
-	};
-	// Linear Gradients
-	CGPoint start, end;
-	
-	// Clip to area to draw the gradient, and draw it. Since we are clipping, we save the graphics state
-	// so that we can revert to the previous larger area.
-	CGContextSaveGState(context);
-	CGContextClipToRect(context, clips[0]);
-	
-	start = points[0];
-	end = points[1];
-	CGContextDrawLinearGradient(context, gradient, start, end, 0);
-	CGContextRestoreGState(context);
-	
-	CGContextSaveGState(context);
+        
+        CGPoint points[] =
+        {
+            CGPointMake(0,0),
+            CGPointMake(self.frame.size.width,0),
+        };
+        // Linear Gradients
+        CGPoint start, end;
+        
+        // Clip to area to draw the gradient, and draw it. Since we are clipping, we save the graphics state
+        // so that we can revert to the previous larger area.
+        CGContextSaveGState(context);
+        CGContextClipToRect(context, clips[0]);
+        
+        start = points[0];
+        end = points[1];
+        CGContextDrawLinearGradient(context, gradient, start, end, 0);
+        CGContextRestoreGState(context);
+        
+        CGContextSaveGState(context);
+    }
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
 	CGGradientRelease(gradient);
     theColor = nil;
 //    [super dealloc];

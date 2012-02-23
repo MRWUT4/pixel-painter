@@ -8,16 +8,74 @@
 
 #import "DOColorPickerView.h"
 
+
 @implementation DOColorPickerView
+
+
+@synthesize gradientView = _gradientView;
+@synthesize colorMapView = _colorMapView;
+@synthesize colorMapViewImage = _colorMapViewImage;
+@synthesize touchPosition = _touchPosition;
+@synthesize color = _color;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self) 
+    {
         // Initialization code
     }
+    
     return self;
 }
+
+
+/* GETTER / SETTER */
+
+- (UIView *)gradientView
+{
+    id subview = [[self subviews] objectAtIndex:0];
+    UIView *gradientView = [subview isKindOfClass:[GradientView class]] ? subview : nil;
+                            
+    return gradientView;
+}
+
+- (UIImageView *)colorMapView
+{
+    id subview = [[self subviews] objectAtIndex:1];
+    UIImageView *colorMapView = [subview isKindOfClass:[DOColorMapView class]] ? subview : nil;
+    
+    return colorMapView;    
+}
+
+- (UIImageView *)colorMapViewImage
+{
+    id subview = [[self.colorMapView subviews] objectAtIndex:0];
+    UIImageView *colorMapSubview = [subview isKindOfClass:[UIImageView class]] ? subview : nil;
+    
+    return colorMapSubview;    
+}
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.touchPosition = [[touches anyObject] locationInView:self];    
+ 
+    UIView *subview = [self hitTest:[[touches anyObject] locationInView:self] withEvent:nil];
+        
+    if(subview == self.colorMapView)
+    {    
+        self.color = [self getPixelColorAtLocation: self.touchPosition];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_PICKED object:self];
+    }
+    if(subview == self.gradientView)
+    {    
+        self.color = [self getPixelColorAtLocation: self.touchPosition];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_GRADIENT_PICKED object:self];
+    }
+    
+}
+
 
 /*
  

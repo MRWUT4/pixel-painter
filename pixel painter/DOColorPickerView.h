@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientView.h"
+#import "UIImageView-ColorUtils.h"
+#import "DOConstants.h"
+#import "DOColorMapView.h"
 
 @interface DOColorPickerView : UIView
+
+@property (strong, nonatomic) GradientView *gradientView;
+@property (strong, nonatomic) DOColorMapView *colorMapView;
+@property (strong, nonatomic) UIImageView *colorMapViewImage; 
+@property (strong, nonatomic) UIColor *color;
+@property (assign, nonatomic) CGPoint touchPosition;
 
 @end

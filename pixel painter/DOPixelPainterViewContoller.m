@@ -43,8 +43,12 @@
 //    self.colorPreviewView.color = [[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1];
     
 //  self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+      
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
     
-    self.model.color = [[UIColor alloc] initWithRed:0 green:1 blue:0 alpha:1];
+    self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+    self.gradientView.lock = YES;
 }
 
 /* GETTER / SETTER */
@@ -86,6 +90,18 @@
         
         self.colorPreviewView.color = color;
     }
+}
+
+- (void)colorPickedNotificationHandler:(NSNotification*)notification
+{
+    self.gradientView.lock = NO;
+    self.model.color = self.colorPickerView.color;
+}
+
+- (void)colorGradientPickedNotificationHandler:(NSNotification*)notification
+{
+    self.gradientView.lock = YES;
+    self.model.color = self.colorPickerView.color;    
 }
 
 
