@@ -51,6 +51,16 @@
     
     self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
     self.gradientView.lock = YES;
+    
+    
+    self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
+    self.scrollView.maximumZoomScale = 10;
+    self.scrollView.minimumZoomScale = 0;
+    self.scrollView.clipsToBounds = YES;
+    self.scrollView.delegate = self;
+    self.scrollView.scrollEnabled = NO;
+    
+    [self.scrollView setZoomScale:1 animated:NO];
 }
 
 /* GETTER / SETTER */
@@ -175,6 +185,11 @@
 {
     [self.subviewManager displaySubview:self.colorPickerView];
     self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.drawingView;
 }
 
 /* UIVIEW IMPLEMENTATION */

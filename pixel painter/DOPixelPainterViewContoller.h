@@ -19,7 +19,7 @@
 #import "GradientView.h"
 
 
-@interface DOPixelPainterViewContoller : UIViewController
+@interface DOPixelPainterViewContoller : UIViewController <UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) DOPixelPainterModel *model;

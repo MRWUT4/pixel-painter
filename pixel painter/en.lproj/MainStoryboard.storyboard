@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -29,6 +29,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="RqU-9j-0H1" id="efv-CC-sEn"/>
+                                </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="f0P-aM-3ak" customClass="DONavigationView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
@@ -203,7 +206,7 @@
                         <outlet property="folderView" destination="TDM-5A-9xu" id="yBL-UA-ITr"/>
                         <outlet property="gradientView" destination="rnB-QS-9wj" id="N9o-R1-ndU"/>
                         <outlet property="navigationView" destination="f0P-aM-3ak" id="MAw-Bj-YpY"/>
-                        <outlet property="scrollView" destination="Hhk-gl-51F" id="DFe-jU-8Kn"/>
+                        <outlet property="scrollView" destination="Hhk-gl-51F" id="rKU-wK-aeB"/>
                     </connections>
                 </viewController>
             </objects>
@@ -227,46 +230,6 @@
         <image name="rIconZoomOut.png" width="128" height="128"/>
         <image name="rIconZoomOutSelected.png" width="128" height="128"/>
     </resources>
-    <classes>
-        <class className="DOColorMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorMapView.h"/>
-        </class>
-        <class className="DOColorPickerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
-        </class>
-        <class className="DOColorPreviewView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
-        </class>
-        <class className="DODrawingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
-        </class>
-        <class className="DOFileSettingsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
-        </class>
-        <class className="DONavigationView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
-        </class>
-        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
-                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
-                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
-                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
-                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
-                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="gradientView" candidateClass="GradientView"/>
-                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="GradientView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
