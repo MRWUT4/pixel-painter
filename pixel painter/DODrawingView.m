@@ -74,17 +74,13 @@
     self.touchPosition = CGPointMake((int) (self.touchPosition.x), (int) (self.touchPosition.y));
 
     
-    NSLog(@"%@", self.imageView.image);
-    
-
-
     UIGraphicsBeginImageContext(self.frame.size);
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
 
-//    CGContextSetAllowsAntialiasing(cgContext, NO);
-//    CGContextSetShouldAntialias(cgContext, NO);
+    CGContextSetAllowsAntialiasing(cgContext, NO);
+    CGContextSetShouldAntialias(cgContext, NO);
     
     CGContextScaleCTM(cgContext, self.scale, self.scale);
 

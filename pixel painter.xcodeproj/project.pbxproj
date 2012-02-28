@@ -50,6 +50,7 @@
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
+		CE70CE1C14FD76520024B002 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE70CE1B14FD76520024B002 /* QuartzCore.framework */; };
 		CE7160BD14FA45D100A577B7 /* DOScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7160BC14FA45D100A577B7 /* DOScrollView.m */; };
 		CE73F70314F59A0D003B9C12 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70214F59A0D003B9C12 /* GradientView.m */; };
 		CE73F70714F59C37003B9C12 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */; };
@@ -119,6 +120,7 @@
 		CE62227314F4429600B94622 /* DOPixelPainterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPixelPainterModel.m; sourceTree = "<group>"; };
 		CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
 		CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
+		CE70CE1B14FD76520024B002 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE7160BB14FA45D000A577B7 /* DOScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOScrollView.h; sourceTree = "<group>"; };
 		CE7160BC14FA45D100A577B7 /* DOScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOScrollView.m; sourceTree = "<group>"; };
 		CE73F70114F59A0D003B9C12 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE70CE1C14FD76520024B002 /* QuartzCore.framework in Frameworks */,
 				CE161C1014D5AAF800B8C7DE /* UIKit.framework in Frameworks */,
 				CE161C1214D5AAF800B8C7DE /* Foundation.framework in Frameworks */,
 				CE161C1414D5AAF800B8C7DE /* CoreGraphics.framework in Frameworks */,
@@ -168,6 +171,7 @@
 		CE161C0E14D5AAF800B8C7DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE70CE1B14FD76520024B002 /* QuartzCore.framework */,
 				CE161C0F14D5AAF800B8C7DE /* UIKit.framework */,
 				CE161C1114D5AAF800B8C7DE /* Foundation.framework */,
 				CE161C1314D5AAF800B8C7DE /* CoreGraphics.framework */,

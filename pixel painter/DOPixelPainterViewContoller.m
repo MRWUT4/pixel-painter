@@ -54,11 +54,11 @@
     
     
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
+    self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 10;
-    self.scrollView.minimumZoomScale = 0;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;
-    self.scrollView.scrollEnabled = NO;
+    self.scrollView.scrollEnabled = YES;
     
     [self.scrollView setZoomScale:1 animated:NO];
 }
@@ -187,9 +187,29 @@
     self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
 }
 
+/* SCROLL VIEW IMPLEMENTATION */
+
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.drawingView;
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"drawingView %f", self.scrollView.contentOffset.y);
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    NSLog(@"zoom %f", scale);
+    [self.drawingView setNeedsDisplay];
+    
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithBool:YES] forKey:kCATransactionDisableActions];
+//    uglyBlurryTextLayer.contentsScale = scale;
+//    self.drawingView.contentScaleFactor = scale;
+    self.scrollView.contentScaleFactor = scale;
+    [CATransaction commit];
 }
 
 /* UIVIEW IMPLEMENTATION */
