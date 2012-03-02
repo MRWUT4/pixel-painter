@@ -12,8 +12,12 @@
 
 @property(strong, nonatomic) UIColor *color;
 
-@property (nonatomic, assign) unsigned int scale; 
+@property (nonatomic, assign) unsigned int scale;
+@property (nonatomic, assign) float previousScale;
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
+
+- (void)setTransformWithoutScaling:(CGAffineTransform)newTransform;
+- (void)setTransform:(CGAffineTransform)newValue;
 
 @end
