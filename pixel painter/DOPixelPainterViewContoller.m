@@ -189,39 +189,22 @@
 
 /* SCROLL VIEW IMPLEMENTATION */
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.drawingView;
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     NSLog(@"drawingView %f", self.scrollView.contentSize.width);
 }
 
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+}
+
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
-//    [self.scrollView setZoomScale:4 animated:NO];
-//    [self.drawingView setNeedsDisplay];
-
-//    NSLog(@"drawingView %f", self.scrollView.contentSize.width);
-    
-    [self.drawingView setTransformWithoutScaling:CGAffineTransformIdentity];
-    // Code to manually redraw view at new scale here
-    self.drawingView.previousScale = scale;
-    self.scrollView.contentSize = self.drawingView.frame.size;
-    
-    /*
-    NSLog(@"zoom %f", scale);
-    [self.drawingView setNeedsDisplay];
-    
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithBool:YES] forKey:kCATransactionDisableActions];
-//    uglyBlurryTextLayer.contentsScale = scale;
-//    self.drawingView.contentScaleFactor = scale;
-    self.scrollView.contentScaleFactor = scale;
-    [CATransaction commit];
-     */
 }
 
 /* UIVIEW IMPLEMENTATION */
