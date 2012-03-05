@@ -16,6 +16,6 @@
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
 
-- (UIImage *)resizedImage:(CGSize)newSize transform:(CGAffineTransform)transform drawTransposed:(BOOL)transpose interpolationQuality:(CGInterpolationQuality)quality;
+- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize;
 
 @end

@@ -75,14 +75,17 @@
         [self.imageView setNeedsDisplay];
         */
 
+            /*
         CGRect newRect = CGRectIntegral(CGRectMake(0, 0, imageFrame.size.width, imageFrame.size.height));
 //        CGRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
         CGImageRef imageRef = self.imageView.image.CGImage;
         
+        NSLog(@"imageRef %@", self.imageView.image.CGImage);
+        
         // Build a context that's the same dimensions as the new size
         CGContextRef bitmap = CGBitmapContextCreate(NULL,
-                                                    newRect.size.width,
-                                                    newRect.size.height,
+                                                    imageFrame.size.width * 2,
+                                                    imageFrame.size.height * 2,
                                                     CGImageGetBitsPerComponent(imageRef),
                                                     0,
                                                     CGImageGetColorSpace(imageRef),
@@ -101,11 +104,47 @@
         CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
         UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
         
+        NSLog(@"newImage %f", newImage.size.width);
+        
         [self.imageView setImage:newImage];
+             */
+
+        UIImage *scaledImage = [self resizeImage:self.imageView.image newSize:imageFrame.size];
+//        [self.imageView setImage:scaledImage];
+        
+        NSLog(@"scaledImage %f", scaledImage.size.width);
+
     }
     
     return self;
 }
+
+- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize 
+{
+    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
+    CGImageRef imageRef = image.CGImage;
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Set the quality level to use when rescaling
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
+    
+    CGContextConcatCTM(context, flipVertical);  
+    // Draw into the context; this scales the image
+    CGContextDrawImage(context, newRect, imageRef);
+    
+    // Get the resized image from the context and a UIImage
+    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
+    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+    
+    CGImageRelease(newImageRef);
+    UIGraphicsEndImageContext();    
+    
+    return newImage;
+}
+
 
 +(Class)layerClass
 {
@@ -118,6 +157,7 @@
     return _scale;
 }
 
+/*
 - (UIImage *)resizedImage:(CGSize)newSize transform:(CGAffineTransform)transform drawTransposed:(BOOL)transpose interpolationQuality:(CGInterpolationQuality)quality 
 {    
     CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
@@ -152,7 +192,7 @@
     
     return newImage;
 }
-
+*/
 
 /*
  * TOUCHES MOVED HANDLER
