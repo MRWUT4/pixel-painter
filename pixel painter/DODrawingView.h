@@ -15,7 +15,6 @@
 @property (nonatomic, assign) unsigned int scale;
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
-
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize;
+@property (nonatomic, assign) CGRect originalFrame;
 
 @end

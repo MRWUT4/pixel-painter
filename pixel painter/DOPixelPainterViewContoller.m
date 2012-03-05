@@ -10,6 +10,7 @@
 
 @implementation DOPixelPainterViewContoller
 
+
 @synthesize colorPickerView = _colorPickerView;
 @synthesize fileSettingsView = _fileSettingsView;
 @synthesize gradientView = _gradientView;
@@ -20,6 +21,7 @@
 @synthesize folderView = _folderView;
 @synthesize model = _model;
 @synthesize subviewManager = _subviewManager;
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -58,9 +60,12 @@
     self.scrollView.maximumZoomScale = 10;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;
+
     self.scrollView.scrollEnabled = YES;
     
-//    [self.scrollView setZoomScale:1 animated:NO];
+    self.drawingView.scale = 2;
+    
+//    [self.scrollView setZoomScale:4 animated:NO];
 }
 
 /* GETTER / SETTER */
@@ -191,16 +196,18 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.drawingView;
+    return self.drawingView.imageView;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSLog(@"drawingView %f", self.scrollView.contentSize.width);
+ 
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
+//    NSLog(@"uiview %f %f", self.drawingView.frame.size.width, self.drawingView.frame.size.height);
+//    [self.drawingView setFrame:self.drawingView.imageView.frame];
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
