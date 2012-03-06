@@ -62,9 +62,7 @@
     self.scrollView.delegate = self;
 
     self.scrollView.scrollEnabled = YES;
-    
-    self.drawingView.scale = 2;
-    
+        
 //    [self.scrollView setZoomScale:4 animated:NO];
 }
 

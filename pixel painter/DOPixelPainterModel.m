@@ -22,7 +22,13 @@
 
 - (void)setScale:(int)scale
 {
-    _scale = scale <= 0 ? 1 : scale;
+    _scale = scale == 0 ? 1 : scale;
+}
+
+-(int)scale
+{
+    _scale = _scale == 0 ? 1 : _scale;
+    return _scale;
 }
 
 @end

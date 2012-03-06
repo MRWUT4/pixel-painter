@@ -7,6 +7,7 @@
 //
 
 #import "DODrawingView.h"
+#import "UIImage+Scale.h"
 
 @implementation DODrawingView
 
@@ -16,6 +17,7 @@
 @synthesize touchPosition = _touchPosition;
 @synthesize imageView = _imageView;
 @synthesize originalFrame = _originalFrame;
+@synthesize scaledFrame = _scaledFrame;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -47,15 +49,19 @@
 //    self.originalFrame = CGRectMake(0, 0, self.originalFrame.size.width * _scale, self.originalFrame.size.height * _scale);
 //    self.imageView.bounds = newFrame;
     
-    UIGraphicsGetImageFromCurrentImageContext();
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    CGContextScaleCTM(cgContext, self.scale, self.scale);
-    UIGraphicsPushContext(cgContext);
+//    UIGraphicsGetImageFromCurrentImageContext();
+        
+    self.scaledFrame = CGRectMake(0, 0, self.originalFrame.size.width * self.scale, self.originalFrame.size.height * self.scale);
+    
+    UIImage *scaledImage = [self.imageView.image scaleToSize:CGSizeMake(self.scaledFrame.size.width, self.scaledFrame.size.height)];
+    
+    [self.imageView setImage:scaledImage];
+    [self.imageView setFrame:self.scaledFrame];
 }
 
 -(unsigned int)scale
 {
-    _scale = _scale <= 0 ? 1 : _scale;
+    _scale = _scale == 0 ? 1 : _scale;
     return _scale;
 }
 
@@ -77,11 +83,11 @@
 
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
   
-    CGContextScaleCTM(cgContext, self.scale, self.scale);
+    //CGContextScaleCTM(cgContext, self.scale, self.scale);
 
     CGContextSetFillColorWithColor(cgContext, self.color.CGColor); 
     CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
-    CGContextFlush(UIGraphicsGetCurrentContext());
+//    CGContextFlush(UIGraphicsGetCurrentContext());
 
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
 
