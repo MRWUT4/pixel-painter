@@ -42,9 +42,15 @@
 {
     _scale = scale;
     
-    self.originalFrame = CGRectMake(0, 0, self.originalFrame.size.width * _scale, self.originalFrame.size.height * _scale);
+    NSLog(@"scale %i", scale);
+    
+//    self.originalFrame = CGRectMake(0, 0, self.originalFrame.size.width * _scale, self.originalFrame.size.height * _scale);
 //    self.imageView.bounds = newFrame;
     
+    UIGraphicsGetImageFromCurrentImageContext();
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    CGContextScaleCTM(cgContext, self.scale, self.scale);
+    UIGraphicsPushContext(cgContext);
 }
 
 -(unsigned int)scale
@@ -63,17 +69,13 @@
         
     self.touchPosition = CGPointMake((int) (self.touchPosition.x / self.scale), 
                                      (int) (self.touchPosition.y / self.scale));
-
-//    self.touchPosition = CGPointMake((int) (self.touchPosition.x), (int) (self.touchPosition.y));
-
     
     UIGraphicsBeginImageContext(self.frame.size);
-    [self.imageView.image drawInRect:CGRectMake(0, 0, self.originalFrame.size.width, self.originalFrame.size.height)];
+//    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, self.scale);
+    
+    [self.imageView.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
-
-//    CGContextSetAllowsAntialiasing(cgContext, NO);
-//    CGContextSetShouldAntialias(cgContext, NO);
   
     CGContextScaleCTM(cgContext, self.scale, self.scale);
 

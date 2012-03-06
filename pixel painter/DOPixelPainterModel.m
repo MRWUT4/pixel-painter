@@ -13,11 +13,16 @@
 
 @synthesize navigationStatus = _navigationStatus;
 @synthesize color = _color;
+@synthesize scale = _scale;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {
     _navigationStatus = navigationStatus > 2 ? 2 : navigationStatus;
 }
 
+- (void)setScale:(int)scale
+{
+    _scale = scale <= 0 ? 1 : scale;
+}
 
 @end

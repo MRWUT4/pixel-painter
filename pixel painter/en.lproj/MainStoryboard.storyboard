@@ -71,6 +71,9 @@
                                         <state key="highlighted" image="rIconZoomOutSelected.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonZoomOutTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="eCd-oF-FBv"/>
+                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
                                         <rect key="frame" x="128" y="288" width="64" height="64"/>
@@ -84,6 +87,9 @@
                                         <state key="highlighted" image="rIconZoomInSelected.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonZoomInTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="3at-0t-H0s"/>
+                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
                                         <rect key="frame" x="64" y="288" width="64" height="64"/>
@@ -251,6 +257,8 @@
                 <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonZoomInTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonZoomOutTouchUpInsideHandler:"/>
                 <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
                 <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
                 <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>

@@ -77,6 +77,7 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
+        [_model addObserver:self forKeyPath:@"scale" options:NSKeyValueObservingOptionNew context:@selector(scale)];
     }
     
     return _model;
@@ -93,9 +94,10 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if(keyPath == @"navigationStatus") 
+    {
         [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"]];
-    
-    if(keyPath == @"color")
+    }
+    else if(keyPath == @"color")
     {
         UIColor *color = (UIColor *)[change valueForKey:@"new"];
         
@@ -108,6 +110,10 @@
         self.colorPreviewView.color = color;
         
         self.drawingView.color = color;
+    }
+    else if(keyPath == @"scale")
+    {
+        self.drawingView.scale = self.model.scale;
     }
 }
 
@@ -213,6 +219,17 @@
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
 }
+
+- (IBAction)buttonZoomInTouchUpInsideHandler:(id)sender 
+{
+    self.model.scale ++;
+}
+
+- (IBAction)buttonZoomOutTouchUpInsideHandler:(id)sender 
+{
+    self.model.scale --;
+}
+
 
 /* UIVIEW IMPLEMENTATION */
 

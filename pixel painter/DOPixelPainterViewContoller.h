@@ -52,7 +52,10 @@
 
 - (IBAction)buttonColorTouchUpInsideHandler:(id)sender;
 
-- (void)changeNavigationStatus:(NSNumber *)status;
+- (IBAction)buttonZoomInTouchUpInsideHandler:(id)sender;
 
+- (IBAction)buttonZoomOutTouchUpInsideHandler:(id)sender;
+
+- (void)changeNavigationStatus:(NSNumber *)status;
 
 @end
