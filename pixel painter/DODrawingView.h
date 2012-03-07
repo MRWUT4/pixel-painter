@@ -18,4 +18,6 @@
 @property (nonatomic, assign) CGRect originalFrame;
 @property (nonatomic, assign) CGRect scaledFrame;
 
+- (void)drawAtTouches:(NSSet*)touches;
+
 @end

@@ -39,6 +39,9 @@
     
     [self.subviewManager displaySubview:self.colorPickerView];
     
+    [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
+    
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
     
 //    [self.gradientView setTheColor:[[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1]];
 //    [self.gradientView setNeedsDisplay];

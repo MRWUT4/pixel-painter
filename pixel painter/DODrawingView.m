@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/CoreAnimation.h>
 #import "DODrawingView.h"
 #import "UIImage+Scale.h"
+
 
 @implementation DODrawingView
 
@@ -53,10 +55,14 @@
         
     self.scaledFrame = CGRectMake(0, 0, self.originalFrame.size.width * self.scale, self.originalFrame.size.height * self.scale);
     
-    UIImage *scaledImage = [self.imageView.image scaleToSize:CGSizeMake(self.scaledFrame.size.width, self.scaledFrame.size.height)];
+    //UIImage *scaledImage = [self.imageView.image scaleToSize:CGSizeMake(self.scaledFrame.size.width, self.scaledFrame.size.height)];
     
-    [self.imageView setImage:scaledImage];
+    self.imageView.layer.magnificationFilter = kCAFilterNearest;
+    
+    [self.imageView setBounds:self.scaledFrame];
     [self.imageView setFrame:self.scaledFrame];
+    [self.imageView setNeedsDisplay];
+//    [self.imageView setImage:scaledImage];
 }
 
 -(unsigned int)scale
@@ -69,28 +75,36 @@
  * TOUCHES MOVED HANDLER
  */
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self drawAtTouches:touches];    
+}
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self drawAtTouches:touches];
+}
+
+- (void)drawAtTouches:(NSSet*)touches
+{
     self.touchPosition = [[touches anyObject] locationInView:self];
-        
+    
     self.touchPosition = CGPointMake((int) (self.touchPosition.x / self.scale), 
                                      (int) (self.touchPosition.y / self.scale));
     
     UIGraphicsBeginImageContext(self.frame.size);
-//    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, self.scale);
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-
+    
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
-  
-    //CGContextScaleCTM(cgContext, self.scale, self.scale);
-
+        
     CGContextSetFillColorWithColor(cgContext, self.color.CGColor); 
     CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
-//    CGContextFlush(UIGraphicsGetCurrentContext());
-
+    
+    CGContextFlush(UIGraphicsGetCurrentContext());
+    
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-
+    
     UIGraphicsEndImageContext();
 }
 
