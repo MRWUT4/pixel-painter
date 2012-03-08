@@ -21,6 +21,7 @@
 @synthesize folderView = _folderView;
 @synthesize model = _model;
 @synthesize subviewManager = _subviewManager;
+@synthesize buttonMove = _buttonMove;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -39,37 +40,37 @@
     
     [self.subviewManager displaySubview:self.colorPickerView];
     
-    [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
     
+    self.folderView.userInteractionEnabled = NO;
+    
+    [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
     
-//    [self.gradientView setTheColor:[[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1]];
-//    [self.gradientView setNeedsDisplay];
-    
-    
-//    self.colorPreviewView.color = [[UIColor alloc] initWithRed:1 green:0 blue:0 alpha:1];
-    
-//  self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
       
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
     
     self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
     self.gradientView.lock = YES;
-    
+
+    self.model.scrollEnabled = NO;
     
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
     self.scrollView.minimumZoomScale = 1;
-    self.scrollView.maximumZoomScale = 10;
+    self.scrollView.maximumZoomScale = 20;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;
-
-    self.scrollView.scrollEnabled = YES;
-        
-//    [self.scrollView setZoomScale:4 animated:NO];
 }
 
+
+
 /* GETTER / SETTER */
+
+- (DOSubviewManager *) subviewManager
+{
+    if(!_subviewManager) _subviewManager = [[DOSubviewManager alloc] init];    
+    return _subviewManager;
+}
 
 - (DOPixelPainterModel *)model
 {    
@@ -78,16 +79,10 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
-        [_model addObserver:self forKeyPath:@"scale" options:NSKeyValueObservingOptionNew context:@selector(scale)];
+        [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
     }
     
     return _model;
-}
-
-- (DOSubviewManager *) subviewManager
-{
-    if(!_subviewManager) _subviewManager = [[DOSubviewManager alloc] init];    
-    return _subviewManager;
 }
 
 /* OBSERVER IMPLEMENTATION */
@@ -102,8 +97,6 @@
     {
         UIColor *color = (UIColor *)[change valueForKey:@"new"];
         
-        NSLog(@"observer %@", color);
-        
         self.gradientView.theColor = color;
         [self.gradientView setupGradient];
         [self.gradientView setNeedsDisplay];
@@ -112,9 +105,10 @@
         
         self.drawingView.color = color;
     }
-    else if(keyPath == @"scale")
+    else if(keyPath == @"scrollEnabled")
     {
-        self.drawingView.scale = self.model.scale;
+        self.buttonMove.selected = self.model.scrollEnabled;
+        self.scrollView.scrollEnabled = self.model.scrollEnabled;
     }
 }
 
@@ -203,32 +197,12 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.drawingView.imageView;
+    return self.drawingView;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
 {
- 
-}
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
-{
-//    NSLog(@"uiview %f %f", self.drawingView.frame.size.width, self.drawingView.frame.size.height);
-//    [self.drawingView setFrame:self.drawingView.imageView.frame];
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-}
-
-- (IBAction)buttonZoomInTouchUpInsideHandler:(id)sender 
-{
-    self.model.scale ++;
-}
-
-- (IBAction)buttonZoomOutTouchUpInsideHandler:(id)sender 
-{
-    self.model.scale --;
+    self.model.scrollEnabled = !self.model.scrollEnabled;
 }
 
 
@@ -245,6 +219,7 @@
     [self setColorPreviewView:nil];
     [self setDrawingView:nil];
     [self setScrollView:nil];
+    [self setButtonMove:nil];
     [super viewDidUnload];
 }
 

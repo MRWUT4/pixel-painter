@@ -43,6 +43,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonMove;
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
@@ -52,9 +53,7 @@
 
 - (IBAction)buttonColorTouchUpInsideHandler:(id)sender;
 
-- (IBAction)buttonZoomInTouchUpInsideHandler:(id)sender;
-
-- (IBAction)buttonZoomOutTouchUpInsideHandler:(id)sender;
+- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender;
 
 - (void)changeNavigationStatus:(NSNumber *)status;
 

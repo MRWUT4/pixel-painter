@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -45,19 +45,22 @@
                                         <rect key="frame" x="79" y="303" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
                                         <rect key="frame" x="256" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="move" image="rIconMoveActive.png">
+                                        <state key="normal" title="move" image="rIconMoveInactive.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="disabled" image="rIconMoveInactive.png"/>
-                                        <state key="highlighted" image="rIconMoveSelected.png">
+                                        <state key="selected" image="rIconMoveActive.png"/>
+                                        <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
+                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Ma-h2-TQy">
                                         <rect key="frame" x="192" y="288" width="64" height="64"/>
@@ -71,9 +74,6 @@
                                         <state key="highlighted" image="rIconZoomOutSelected.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="buttonZoomOutTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="eCd-oF-FBv"/>
-                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
                                         <rect key="frame" x="128" y="288" width="64" height="64"/>
@@ -87,9 +87,6 @@
                                         <state key="highlighted" image="rIconZoomInSelected.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="buttonZoomInTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="3at-0t-H0s"/>
-                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
                                         <rect key="frame" x="64" y="288" width="64" height="64"/>
@@ -200,6 +197,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="buttonMove" destination="3Z0-1E-3oV" id="RWJ-vb-Os9"/>
                         <outlet property="colorPickerView" destination="Mu0-8J-NR7" id="VO2-DW-7rk"/>
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
                         <outlet property="drawingView" destination="RqU-9j-0H1" id="Fq8-Ji-OwC"/>
@@ -225,7 +223,6 @@
         <image name="rIconFileSelected.png" width="128" height="128"/>
         <image name="rIconMoveActive.png" width="128" height="128"/>
         <image name="rIconMoveInactive.png" width="128" height="128"/>
-        <image name="rIconMoveSelected.png" width="128" height="128"/>
         <image name="rIconZoomIn.png" width="128" height="128"/>
         <image name="rIconZoomInSelected.png" width="128" height="128"/>
         <image name="rIconZoomOut.png" width="128" height="128"/>
@@ -256,9 +253,9 @@
                 <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonZoomInTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonZoomOutTouchUpInsideHandler:"/>
+                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
                 <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
                 <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
