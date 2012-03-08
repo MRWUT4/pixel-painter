@@ -19,6 +19,14 @@
     return self;
 }
 
+- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event 
+{
+    id hitView = [super hitTest:point withEvent:event];
+    if (hitView == self) return nil;
+    else return hitView;
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -40,9 +40,6 @@
     
     [self.subviewManager displaySubview:self.colorPickerView];
     
-    
-    self.folderView.userInteractionEnabled = NO;
-    
     [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
     
@@ -154,17 +151,17 @@
     {
         case NAVIGATION_STATUS_CLOSED:
             navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
-            [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
+//            [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
             break;
             
         case NAVIGATION_STATUS_NAVIGATION:
             navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
-            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+//            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
             
         case NAVIGATION_STATUS_SUBVIEW:
             navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
-            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+//            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
     }
     
