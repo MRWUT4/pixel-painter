@@ -57,6 +57,8 @@
     self.scrollView.maximumZoomScale = 20;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;
+    
+    [self.scrollView setZoomScale:10 animated:NO];
 }
 
 
@@ -151,17 +153,17 @@
     {
         case NAVIGATION_STATUS_CLOSED:
             navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
-//            [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
             break;
             
         case NAVIGATION_STATUS_NAVIGATION:
             navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
-//            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
             
         case NAVIGATION_STATUS_SUBVIEW:
             navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
-//            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
+            [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
     }
     
