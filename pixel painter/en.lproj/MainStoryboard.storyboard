@@ -45,15 +45,15 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8UL-3f-Mor" customClass="DOColorPreviewView">
-                                        <rect key="frame" x="79" y="303" width="34" height="34"/>
+                                        <rect key="frame" x="106" y="303" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
-                                        <rect key="frame" x="256" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="236" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="move" image="rIconMoveInactive.png">
+                                        <state key="normal" title="move" image="rIconMoveSelected.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -65,34 +65,22 @@
                                             <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Ma-h2-TQy">
-                                        <rect key="frame" x="192" y="288" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="zoomOut" image="rIconZoomOut.png">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="rIconZoomOutSelected.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
-                                        <rect key="frame" x="128" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="164" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="zoomIn" image="rIconZoomIn.png">
+                                        <state key="normal" title="zoomIn" image="rIconPicker.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" image="rIconZoomInSelected.png">
+                                        <state key="selected" image="rIconPickerSelected.png"/>
+                                        <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
-                                        <rect key="frame" x="64" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="91" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -109,7 +97,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
-                                        <rect key="frame" x="0.0" y="287" width="64" height="64"/>
+                                        <rect key="frame" x="20" y="287" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -225,11 +213,9 @@
         <image name="rIconFile.png" width="128" height="128"/>
         <image name="rIconFileSelected.png" width="128" height="128"/>
         <image name="rIconMoveActive.png" width="128" height="128"/>
-        <image name="rIconMoveInactive.png" width="128" height="128"/>
-        <image name="rIconZoomIn.png" width="128" height="128"/>
-        <image name="rIconZoomInSelected.png" width="128" height="128"/>
-        <image name="rIconZoomOut.png" width="128" height="128"/>
-        <image name="rIconZoomOutSelected.png" width="128" height="128"/>
+        <image name="rIconMoveSelected.png" width="128" height="128"/>
+        <image name="rIconPicker.png" width="128" height="128"/>
+        <image name="rIconPickerSelected.png" width="128" height="128"/>
     </resources>
     <classes>
         <class className="DOColorMapView" superclassName="UIView">
