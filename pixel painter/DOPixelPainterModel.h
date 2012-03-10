@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const SUBSITE_FILE;
+extern NSString * const SUBSITE_COLORPICKER;
+
 static float const NAVIGATION_ANIMATION_TIME = .4;
 
 enum 
@@ -22,13 +25,14 @@ enum
     NAVIGATION_POSITION_SUBVIEW = 0,
 };
 
-
 @interface DOPixelPainterModel : NSObject
 
 
 @property(assign, nonatomic) unsigned int navigationStatus;
-@property(strong, nonatomic) UIColor *color;
 @property(assign, nonatomic) BOOL scrollEnabled;
+@property(strong, nonatomic) UIColor *color;
+@property(strong, nonatomic) NSString *subsite;
+
 
 
 @end

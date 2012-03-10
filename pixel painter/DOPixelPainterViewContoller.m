@@ -22,7 +22,10 @@
 @synthesize model = _model;
 @synthesize subviewManager = _subviewManager;
 @synthesize buttonMove = _buttonMove;
-
+@synthesize buttonFile = _buttonFile;
+@synthesize buttonColor = _buttonColor;
+@synthesize buttonPicker = _buttonPicker;
+@synthesize buttonList = _buttonList;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -33,16 +36,16 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{
+{   
+    self.buttonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];
+    
     [self.subviewManager addSubview:self.colorPickerView];
     [self.subviewManager addSubview:self.fileSettingsView];
     [self.subviewManager hideAlleSubviews];
-    
-    [self.subviewManager displaySubview:self.colorPickerView];
-    
+
     [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
+  
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    
       
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
@@ -79,6 +82,8 @@
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
         [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
+        [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
+        
     }
     
     return _model;
@@ -109,7 +114,13 @@
         self.buttonMove.selected = self.model.scrollEnabled;
         self.scrollView.scrollEnabled = self.model.scrollEnabled;
     }
+    else if(keyPath == @"subsite")
+    {
+        [self openSubsite:self.model.subsite];
+    }
 }
+
+/* NOTIFICATIONS */
 
 - (void)colorPickedNotificationHandler:(NSNotification*)notification
 {
@@ -124,7 +135,7 @@
 }
 
 
-/* NAVIGATION ANIMATION */
+/* IBACTION IMPLEMENTATIONS */
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender 
 {
@@ -145,18 +156,57 @@
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
 }
 
-- (void)changeNavigationStatus:(NSNumber *)status
+- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
 {
+    self.model.scrollEnabled = !self.model.scrollEnabled;
+}
+
+- (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+    self.model.subsite = SUBSITE_FILE;
+}
+
+- (IBAction)buttonColorTouchUpInsideHandler:(id)sender 
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+    self.model.subsite = SUBSITE_COLORPICKER;
+}
+
+
+
+/* ASSIST FUNCTIONS */
+
+- (void)openSubsite:(NSString *)subsite
+{   
+    [self unSelectSubsiteButtons];
+    
+    if(subsite == SUBSITE_FILE)
+    {
+        [self.subviewManager displaySubview:self.fileSettingsView];
+        self.buttonFile.selected = YES;
+    }
+    else if(subsite == SUBSITE_COLORPICKER)
+    {
+        [self.subviewManager displaySubview:self.colorPickerView];
+        self.buttonColor.selected = YES;
+    }
+}
+
+- (void)changeNavigationStatus:(NSNumber *)status
+{    
     CGRect navigationFrame = self.navigationView.frame;
-        
+    
     switch([status intValue]) 
     {
         case NAVIGATION_STATUS_CLOSED:
+            [self unSelectSubsiteButtons];
             navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
             break;
             
         case NAVIGATION_STATUS_NAVIGATION:
+            [self unSelectSubsiteButtons];
             navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
@@ -176,21 +226,15 @@
     [UIView commitAnimations];
 }
 
-/* FILE IMPLEMENTATION */
-
-- (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
+- (void)unSelectSubsiteButtons
 {
-    [self.subviewManager displaySubview:self.fileSettingsView];
-    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+    for(uint i = 0; i < self.buttonList.count; ++i)
+    {
+        UIButton *button = [self.buttonList objectAtIndex:i];
+        button.selected = NO;
+    }
 }
 
-/* COLOR IMPLEMENTATION */
-
-- (IBAction)buttonColorTouchUpInsideHandler:(id)sender 
-{
-    [self.subviewManager displaySubview:self.colorPickerView];
-    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
-}
 
 /* SCROLL VIEW IMPLEMENTATION */
 
@@ -199,10 +243,6 @@
     return self.drawingView;
 }
 
-- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
-{
-    self.model.scrollEnabled = !self.model.scrollEnabled;
-}
 
 
 /* UIVIEW IMPLEMENTATION */
@@ -219,6 +259,9 @@
     [self setDrawingView:nil];
     [self setScrollView:nil];
     [self setButtonMove:nil];
+    [self setButtonFile:nil];
+    [self setButtonColor:nil];
+    [self setButtonPicker:nil];
     [super viewDidUnload];
 }
 

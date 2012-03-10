@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
+        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,7 +50,7 @@
                                         <rect key="frame" x="106" y="303" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
                                         <rect key="frame" x="236" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -65,12 +67,12 @@
                                             <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
                                         <rect key="frame" x="164" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="zoomIn" image="rIconPicker.png">
+                                        <state key="normal" title="picker" image="rIconPicker.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -79,7 +81,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
                                         <rect key="frame" x="91" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -89,14 +91,14 @@
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="rIconColorSelected.png"/>
-                                        <state key="highlighted" image="rIconColorSelected.png">
+                                        <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonColorTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="I0X-rN-cav"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
                                         <rect key="frame" x="20" y="287" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -106,7 +108,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="rIconFileSelected.png"/>
-                                        <state key="highlighted" image="rIconFileSelected.png">
+                                        <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -188,7 +190,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="buttonColor" destination="4fx-qR-YzS" id="9Kp-GS-Luc"/>
+                        <outlet property="buttonFile" destination="iDj-Hq-ZhW" id="TLv-tF-oyS"/>
                         <outlet property="buttonMove" destination="3Z0-1E-3oV" id="RWJ-vb-Os9"/>
+                        <outlet property="buttonPicker" destination="DtX-Od-4QE" id="jEO-iC-Dwp"/>
                         <outlet property="colorPickerView" destination="Mu0-8J-NR7" id="VO2-DW-7rk"/>
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
                         <outlet property="drawingView" destination="RqU-9j-0H1" id="Fq8-Ji-OwC"/>
@@ -244,7 +249,10 @@
                 <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
+                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
                 <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
                 <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
