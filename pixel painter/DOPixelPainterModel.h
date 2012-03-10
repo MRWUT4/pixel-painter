@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+//CHANGE CONSTANTS TO ENUM
+
 extern NSString * const SUBSITE_FILE;
 extern NSString * const SUBSITE_COLORPICKER;
 
 static float const NAVIGATION_ANIMATION_TIME = .4;
 
-enum 
+typedef enum navigation 
 {
     NAVIGATION_STATUS_CLOSED = 0,
     NAVIGATION_POSITION_CLOSED = -352,
@@ -23,7 +25,7 @@ enum
 
     NAVIGATION_STATUS_SUBVIEW = 2,
     NAVIGATION_POSITION_SUBVIEW = 0,
-};
+} Navigation;
 
 @interface DOPixelPainterModel : NSObject
 
