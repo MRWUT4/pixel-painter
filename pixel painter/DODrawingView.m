@@ -17,6 +17,7 @@
 @synthesize color = _color;
 @synthesize touchPosition = _touchPosition;
 @synthesize imageView = _imageView;
+@synthesize scrollEnabled = _scrollEnabled;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -45,14 +46,12 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"touches");
-    [self drawAtTouches:touches];    
+    if(!self.scrollEnabled) [self drawAtTouches:touches];    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"touches");
-    [self drawAtTouches:touches];
+    if(!self.scrollEnabled) [self drawAtTouches:touches];
 }
 
 - (void)drawAtTouches:(NSSet*)touches

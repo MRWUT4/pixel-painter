@@ -80,6 +80,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonPickerTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="LcU-Bk-27s"/>
+                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
                                         <rect key="frame" x="91" y="288" width="64" height="64"/>
@@ -175,10 +178,16 @@
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
                                                 <rect key="frame" x="60" y="60" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                                </accessibility>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rIconColorPickerHorizontal.png" id="Yv6-ja-7PY">
                                                 <rect key="frame" x="136" y="214" width="16" height="10"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                                </accessibility>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -248,6 +257,7 @@
                 <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonSubviewTouchUpInsideHandler:"/>
                 <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>

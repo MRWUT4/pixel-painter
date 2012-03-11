@@ -63,9 +63,13 @@
 
 - (IBAction)buttonMoveTouchUpInsideHandler:(id)sender;
 
+- (IBAction)buttonPickerTouchUpInsideHandler:(id)sender;
+
 - (void)changeNavigationStatus:(NSNumber *)status;
 
-- (void)openSubsite:(NSString *)subsite;
+- (void)openSubsite:(unsigned int)subsite;
+
+- (void)switchDrawingState:(unsigned int)state;
 
 - (void)unSelectSubsiteButtons;
 

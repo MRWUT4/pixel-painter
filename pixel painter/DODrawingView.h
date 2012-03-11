@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, assign) BOOL scrollEnabled;
 
 - (void)drawAtTouches:(NSSet*)touches;
 

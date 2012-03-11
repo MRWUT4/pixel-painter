@@ -11,13 +11,11 @@
 
 @implementation DOPixelPainterModel
 
-NSString * const SUBSITE_FILE = @"SUBSITE_FILE";
-NSString * const SUBSITE_COLORPICKER = @"SUBSITE_COLORPICKER";
-
 @synthesize navigationStatus = _navigationStatus;
 @synthesize color = _color;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize subsite = _subsite;
+@synthesize drawingState = _drawingState;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {

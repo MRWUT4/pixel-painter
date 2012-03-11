@@ -83,7 +83,7 @@
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
         [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
-        
+        [_model addObserver:self forKeyPath:@"drawingState" options:NSKeyValueObservingOptionNew context:@selector(drawingState)];        
     }
     
     return _model;
@@ -111,12 +111,19 @@
     }
     else if(keyPath == @"scrollEnabled")
     {
-        self.buttonMove.selected = self.model.scrollEnabled;
-        self.scrollView.scrollEnabled = self.model.scrollEnabled;
+        BOOL enabled = self.model.scrollEnabled;
+        
+        self.buttonMove.selected = enabled;
+        self.scrollView.scrollEnabled = enabled;
+        self.drawingView.scrollEnabled = enabled;
     }
     else if(keyPath == @"subsite")
     {
         [self openSubsite:self.model.subsite];
+    }
+    else if(keyPath == @"drawingState")
+    {
+        [self switchDrawingState:self.model.drawingState];
     }
 }
 
@@ -161,6 +168,11 @@
     self.model.scrollEnabled = !self.model.scrollEnabled;
 }
 
+- (IBAction)buttonPickerTouchUpInsideHandler:(id)sender 
+{
+    self.model.drawingState = self.model.drawingState == STATE_DRAWING ? STATE_PICKING : STATE_DRAWING;
+}
+
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
 {
     self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
@@ -177,7 +189,7 @@
 
 /* ASSIST FUNCTIONS */
 
-- (void)openSubsite:(NSString *)subsite
+- (void)openSubsite:(unsigned int)subsite
 {   
     [self unSelectSubsiteButtons];
     
@@ -232,6 +244,20 @@
     {
         UIButton *button = [self.buttonList objectAtIndex:i];
         button.selected = NO;
+    }
+}
+
+- (void)switchDrawingState:(unsigned int)state
+{
+    switch (self.model.drawingState) 
+    {
+        case STATE_DRAWING:
+            self.buttonPicker.selected = NO;
+            break;
+            
+        case STATE_PICKING:
+            self.buttonPicker.selected = YES;
+            break;
     }
 }
 

@@ -34,8 +34,8 @@
     
     if(self)
     {
-        [self.colorPicker setUserInteractionEnabled:NO];
-        [self.colorPickerHorizontal setUserInteractionEnabled:NO];   
+        self.colorPicker.userInteractionEnabled = NO;
+        self.colorPickerHorizontal.userInteractionEnabled = NO;
     }
     
     return self;
@@ -90,9 +90,10 @@
     self.touchPosition = [[touches anyObject] locationInView:self];    
  
     UIView *subview = [self hitTest:[[touches anyObject] locationInView:self] withEvent:nil];
-        
+    
     if(subview == self.colorMapView)
     {   
+        NSLog(@"hitColorMapView");
         self.colorPicker.hidden = NO;
         self.colorPickerHorizontal.hidden = YES;
         
@@ -102,7 +103,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_PICKED object:self];
     }
     if(subview == self.gradientView)
-    {    
+    {   
+        NSLog(@"hitGradientView");
         self.colorPicker.hidden = YES;
         self.colorPickerHorizontal.hidden = NO;
         
