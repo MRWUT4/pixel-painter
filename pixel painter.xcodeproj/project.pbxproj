@@ -50,8 +50,6 @@
 		CE161C1C14D5AAF800B8C7DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C1B14D5AAF800B8C7DE /* main.m */; };
 		CE161C2014D5AAF800B8C7DE /* DOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C1F14D5AAF800B8C7DE /* DOAppDelegate.m */; };
 		CE161C2314D5AAF800B8C7DE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */; };
-		CE161C2614D5AAF800B8C7DE /* DOCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */; };
-		CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */; };
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
@@ -121,10 +119,6 @@
 		CE161C1E14D5AAF800B8C7DE /* DOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOAppDelegate.h; sourceTree = "<group>"; };
 		CE161C1F14D5AAF800B8C7DE /* DOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOAppDelegate.m; sourceTree = "<group>"; };
 		CE161C2214D5AAF800B8C7DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CE161C2414D5AAF800B8C7DE /* DOCanvasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOCanvasViewController.h; sourceTree = "<group>"; };
-		CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOCanvasViewController.m; sourceTree = "<group>"; };
-		CE161C2B14D5AAF800B8C7DE /* DOColorPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOColorPickerViewController.h; sourceTree = "<group>"; };
-		CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerViewController.m; sourceTree = "<group>"; };
 		CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView-ColorUtils.h"; sourceTree = "<group>"; };
 		CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView-ColorUtils.m"; sourceTree = "<group>"; };
 		CE62227214F4429600B94622 /* DOPixelPainterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPixelPainterModel.h; sourceTree = "<group>"; };
@@ -206,10 +200,6 @@
 				CE73F70914F59C4F003B9C12 /* UIColor-Expanded.m */,
 				CE161C1E14D5AAF800B8C7DE /* DOAppDelegate.h */,
 				CE161C1F14D5AAF800B8C7DE /* DOAppDelegate.m */,
-				CE161C2414D5AAF800B8C7DE /* DOCanvasViewController.h */,
-				CE161C2514D5AAF800B8C7DE /* DOCanvasViewController.m */,
-				CE161C2B14D5AAF800B8C7DE /* DOColorPickerViewController.h */,
-				CE161C2C14D5AAF800B8C7DE /* DOColorPickerViewController.m */,
 				CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */,
 				CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */,
 				CE27CAFE14D9F57000500778 /* UIImageView-ColorUtils.h */,
@@ -377,8 +367,6 @@
 			files = (
 				CE161C1C14D5AAF800B8C7DE /* main.m in Sources */,
 				CE161C2014D5AAF800B8C7DE /* DOAppDelegate.m in Sources */,
-				CE161C2614D5AAF800B8C7DE /* DOCanvasViewController.m in Sources */,
-				CE161C2D14D5AAF800B8C7DE /* DOColorPickerViewController.m in Sources */,
 				CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */,
 				CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */,
 				CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */,

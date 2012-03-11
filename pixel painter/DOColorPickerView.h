@@ -22,4 +22,7 @@
 @property (strong, nonatomic) UIColor *color;
 @property (assign, nonatomic) CGPoint touchPosition;
 
+- (void)pickColorAtTouches:(NSSet *)touches;
+- (void)hideColorPickerAndResetColorPickerHorizontal;
+
 @end

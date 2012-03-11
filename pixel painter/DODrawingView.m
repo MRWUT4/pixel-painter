@@ -8,8 +8,8 @@
 
 #import <QuartzCore/CoreAnimation.h>
 #import "DODrawingView.h"
-#import "UIImage+Scale.h"
-
+#import "UIImageView-ColorUtils.h"
+#import "DOConstants.h"
 
 @implementation DODrawingView
 
@@ -18,6 +18,7 @@
 @synthesize touchPosition = _touchPosition;
 @synthesize imageView = _imageView;
 @synthesize scrollEnabled = _scrollEnabled;
+@synthesize mode = _mode;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -30,6 +31,8 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
+        
+        NSLog(@"mode %i", self.mode);
     }
     
     return self;
@@ -39,19 +42,31 @@
  * TOUCHES MOVED HANDLER
  */
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"touchesCancelled");
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if(!self.scrollEnabled) [self drawAtTouches:touches];    
+    [self modeAction:touches];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if(!self.scrollEnabled) [self drawAtTouches:touches];
+    [self modeAction:touches];    
+}
+
+- (void)modeAction:(NSSet *)touches
+{
+    if(!self.scrollEnabled) 
+    {
+        switch (self.mode) 
+        {
+            case STATE_DRAWING:
+                [self drawAtTouches:touches];
+                break;
+                
+            case STATE_PICKING:
+                [self pickColorAtTouches:touches];
+                break;
+        }
+    }
 }
 
 - (void)drawAtTouches:(NSSet*)touches
@@ -73,6 +88,21 @@
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
+}
+
+- (void)pickColorAtTouches:(NSSet*)touches
+{    
+    self.touchPosition = [[touches anyObject] locationInView:self];
+    self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
+    
+    UIColor *pickedColor = [self.imageView getPixelColorAtLocation:self.touchPosition];
+    
+    if(CGColorGetAlpha(pickedColor.CGColor) != 0)
+    {    
+        self.color = pickedColor;
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:self];
+    }
 }
 
 

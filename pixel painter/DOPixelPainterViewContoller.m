@@ -7,6 +7,7 @@
 //
 
 #import "DOPixelPainterViewContoller.h"
+#import "DOConstants.h"
 
 @implementation DOPixelPainterViewContoller
 
@@ -49,6 +50,7 @@
       
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
     
     self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
     self.gradientView.lock = YES;
@@ -106,8 +108,8 @@
         [self.gradientView setNeedsDisplay];
         
         self.colorPreviewView.color = color;
-        
         self.drawingView.color = color;
+        self.colorPickerView.color = color;
     }
     else if(keyPath == @"scrollEnabled")
     {
@@ -140,6 +142,16 @@
     self.gradientView.lock = YES;
     self.model.color = self.colorPickerView.color;    
 }
+
+- (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
+{
+    self.gradientView.lock = NO;
+    self.model.color = self.drawingView.color;
+    self.model.drawingState = STATE_DRAWING;
+    
+    [self.colorPickerView hideColorPickerAndResetColorPickerHorizontal];
+}
+
 
 
 /* IBACTION IMPLEMENTATIONS */
@@ -253,10 +265,12 @@
     {
         case STATE_DRAWING:
             self.buttonPicker.selected = NO;
+            self.drawingView.mode = STATE_DRAWING;
             break;
             
         case STATE_PICKING:
             self.buttonPicker.selected = YES;
+            self.drawingView.mode = STATE_PICKING;
             break;
     }
 }

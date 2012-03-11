@@ -35,7 +35,7 @@
 @interface GradientView : UIView 
 {
 	CGGradientRef gradient;
-	UIColor *theColor;
+//	UIColor *theColor;
     NSInteger width;
     NSInteger height;
 }

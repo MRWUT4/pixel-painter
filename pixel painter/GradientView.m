@@ -34,7 +34,7 @@
 
 @implementation GradientView
 
-@synthesize theColor;
+@synthesize theColor = _theColor;
 @synthesize lock = _lock;
 
 - (id)initWithFrame:(CGRect)frame 
@@ -73,8 +73,8 @@ CGPoint demoLGEnd(CGRect bounds)
     if(self.lock == NO)
     {
         // Create a color equivalent to the current color with brightness maximized
-        const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[theColor hue] 
-                                                            saturation:[theColor saturation]
+        const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[self.theColor hue] 
+                                                            saturation:[self.theColor saturation]
                                                             brightness:1.0
                                                             alpha:1.0] CGColor]);
         CGFloat colors[] =
@@ -138,7 +138,7 @@ CGPoint demoLGEnd(CGRect bounds)
 - (void)dealloc 
 {
 	CGGradientRelease(gradient);
-    theColor = nil;
+    self.theColor = nil;
 //    [super dealloc];
 }
 

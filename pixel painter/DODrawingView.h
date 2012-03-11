@@ -15,7 +15,10 @@
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) BOOL scrollEnabled;
+@property (nonatomic, assign) unsigned int mode;
 
 - (void)drawAtTouches:(NSSet*)touches;
+- (void)pickColorAtTouches:(NSSet*)touches;
+- (void)modeAction:(NSSet *)touches;
 
 @end

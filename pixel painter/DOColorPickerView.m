@@ -34,6 +34,8 @@
     
     if(self)
     {
+        NSLog(@"initWithCoder");
+        
         self.colorPicker.userInteractionEnabled = NO;
         self.colorPickerHorizontal.userInteractionEnabled = NO;
     }
@@ -84,16 +86,26 @@
     return colorPickerHorizontal;    
 }
 
+/* TOUCHES HANDLER */
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self pickColorAtTouches:touches];    
+}
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self pickColorAtTouches:touches];
+}
+
+- (void)pickColorAtTouches:(NSSet *)touches
+{
     self.touchPosition = [[touches anyObject] locationInView:self];    
- 
+    
     UIView *subview = [self hitTest:[[touches anyObject] locationInView:self] withEvent:nil];
     
     if(subview == self.colorMapView)
     {   
-        NSLog(@"hitColorMapView");
         self.colorPicker.hidden = NO;
         self.colorPickerHorizontal.hidden = YES;
         
@@ -104,20 +116,26 @@
     }
     if(subview == self.gradientView)
     {   
-        NSLog(@"hitGradientView");
         self.colorPicker.hidden = YES;
         self.colorPickerHorizontal.hidden = NO;
         
         CGRect colorPickerHorizontalFrame = self.colorPickerHorizontal.frame;
         colorPickerHorizontalFrame.origin.x = self.touchPosition.x - colorPickerHorizontalFrame.size.width * .5;
-        
         self.colorPickerHorizontal.frame = colorPickerHorizontalFrame; 
         
         self.color = [self getPixelColorAtLocation: self.touchPosition];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_GRADIENT_PICKED object:self];
-    }
-    
+    }   
 }
 
+- (void)hideColorPickerAndResetColorPickerHorizontal
+{
+    CGRect colorPickerHorizontalFrame = self.colorPickerHorizontal.frame;
+    colorPickerHorizontalFrame.origin.x = self.gradientView.frame.origin.x - colorPickerHorizontalFrame.size.width * .5;
+    self.colorPickerHorizontal.frame = colorPickerHorizontalFrame;
+    
+    self.colorPicker.hidden = YES;
+    self.colorPickerHorizontal.hidden = NO;
+}
 
 @end
