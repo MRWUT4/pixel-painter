@@ -69,9 +69,11 @@ CGPoint demoLGEnd(CGRect bounds)
 }
 
 - (void) setupGradient 
-{
+{    
     if(self.lock == NO)
     {
+         NSLog(@"GradientView.setupGradient");
+        
         // Create a color equivalent to the current color with brightness maximized
         const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[self.theColor hue] 
                                                             saturation:[self.theColor saturation]
@@ -93,46 +95,40 @@ CGPoint demoLGEnd(CGRect bounds)
         gradient = CGGradientCreateWithColorComponents(rgb, colors, NULL, sizeof(colors)/(sizeof(colors[0])*4));
         CGColorSpaceRelease(rgb);
 	}
-//    [self setNeedsDisplay];
 }
 
 
 - (void)drawRect:(CGRect)rect 
 {
-    if(self.lock == NO)
+    CGContextRef context = UIGraphicsGetCurrentContext();
+	
+    // The clipping rects we plan to use, which also defines the locations of each gradient
+    CGRect clips[] =
     {
-        // Drawing code
-	
-        CGContextRef context = UIGraphicsGetCurrentContext();
-	
-        // The clipping rects we plan to use, which also defines the locations of each gradient
-        CGRect clips[] =
-        {
-            CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height),
+        CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height),
             //self.frame,
-        };
+    };
 	
         
-        CGPoint points[] =
-        {
-            CGPointMake(0,0),
-            CGPointMake(self.frame.size.width,0),
-        };
-        // Linear Gradients
-        CGPoint start, end;
-        
-        // Clip to area to draw the gradient, and draw it. Since we are clipping, we save the graphics state
-        // so that we can revert to the previous larger area.
-        CGContextSaveGState(context);
-        CGContextClipToRect(context, clips[0]);
-        
-        start = points[0];
-        end = points[1];
-        CGContextDrawLinearGradient(context, gradient, start, end, 0);
-        CGContextRestoreGState(context);
-        
-        CGContextSaveGState(context);
-    }
+    CGPoint points[] =
+    {
+        CGPointMake(0,0),
+        CGPointMake(self.frame.size.width,0),
+    };
+    // Linear Gradients
+    CGPoint start, end;
+    
+    // Clip to area to draw the gradient, and draw it. Since we are clipping, we save the graphics state
+    // so that we can revert to the previous larger area.
+    CGContextSaveGState(context);
+    CGContextClipToRect(context, clips[0]);
+    
+    start = points[0];
+    end = points[1];
+    CGContextDrawLinearGradient(context, gradient, start, end, 0);
+    CGContextRestoreGState(context);
+    
+    CGContextSaveGState(context);
 }
 
 - (void)dealloc 

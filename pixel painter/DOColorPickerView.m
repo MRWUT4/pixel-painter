@@ -115,7 +115,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_PICKED object:self];
     }
     if(subview == self.gradientView)
-    {   
+    {           
         self.colorPicker.hidden = YES;
         self.colorPickerHorizontal.hidden = NO;
         
