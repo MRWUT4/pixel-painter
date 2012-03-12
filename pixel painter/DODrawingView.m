@@ -63,6 +63,10 @@
             case STATE_PICKING:
                 [self pickColorAtTouches:touches];
                 break;
+                
+            case STATE_ERASING:
+                [self clearAtTouches:touches];
+                break;
         }
     }
 }
@@ -75,10 +79,10 @@
     UIGraphicsBeginImageContext(self.imageView.frame.size);
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
-    
+
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));    
-//    CGContextClearRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
+    CGContextSetFillColorWithColor(cgContext, self.color.CGColor);
+    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
     CGContextFlush(UIGraphicsGetCurrentContext());
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();

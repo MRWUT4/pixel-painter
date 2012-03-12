@@ -35,6 +35,8 @@ typedef enum drawingState
 {
     STATE_DRAWING = 0,
     STATE_PICKING = 1,
+    STATE_ERASING = 2,
+    STATE_MOVING = 3,
 } DrawingState;
 
 
