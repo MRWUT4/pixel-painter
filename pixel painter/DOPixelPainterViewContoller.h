@@ -20,7 +20,7 @@
 #import "GradientView.h"
 
 
-@interface DOPixelPainterViewContoller : UIViewController <UIScrollViewDelegate>
+@interface DOPixelPainterViewContoller : UIViewController <UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @property (strong, nonatomic) DOPixelPainterModel *model;
@@ -64,6 +64,10 @@
 - (IBAction)buttonMoveTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonPickerTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonSaveTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonPullTouchUpInsideHandler:(id)sender;
 
 - (void)changeNavigationStatus:(NSNumber *)status;
 

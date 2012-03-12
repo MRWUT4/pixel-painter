@@ -105,5 +105,30 @@
     }
 }
 
+/* SAVE IMAGE DATA */
+
+- (UIImage *) composeImageWithWidth:(NSInteger)_width andHeight:(NSInteger)_height
+{
+    CGSize _size = CGSizeMake(_width, _height);
+    UIGraphicsBeginImageContext(_size);
+   
+    UIImage *_compositeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return _compositeImage;
+}
+
+- (BOOL) writeApplicationData:(NSData *)data toFile:(NSString *)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    if (!documentsDirectory) {
+        NSLog(@"Documents directory not found!");
+        return NO;
+    }
+    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:fileName];
+    return ([data writeToFile:appFile atomically:YES]);
+}
+
+
 
 @end

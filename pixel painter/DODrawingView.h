@@ -21,4 +21,7 @@
 - (void)pickColorAtTouches:(NSSet*)touches;
 - (void)modeAction:(NSSet *)touches;
 
+- (UIImage *) composeImageWithWidth:(NSInteger)_width andHeight:(NSInteger)_height;
+- (BOOL) writeApplicationData:(NSData *)data toFile:(NSString *)fileName;
+
 @end

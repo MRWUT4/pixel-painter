@@ -17,6 +17,8 @@
 		A24FB40714F67C6400CB1143 /* colorspectrum.fla in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40514F67C6400CB1143 /* colorspectrum.fla */; };
 		A24FB40814F67C6400CB1143 /* colorspectrum.swf in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40614F67C6400CB1143 /* colorspectrum.swf */; };
 		A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FB40A14F6851400CB1143 /* DODrawingView.m */; };
+		A2980566150E4036007A83F9 /* rIconPull.png in Resources */ = {isa = PBXBuildFile; fileRef = A2980564150E4036007A83F9 /* rIconPull.png */; };
+		A2980567150E4036007A83F9 /* rIconSave.png in Resources */ = {isa = PBXBuildFile; fileRef = A2980565150E4036007A83F9 /* rIconSave.png */; };
 		A2AEDCD914F3FB31000BD340 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC214F3FB31000BD340 /* first.png */; };
 		A2AEDCDA14F3FB31000BD340 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC314F3FB31000BD340 /* first@2x.png */; };
 		A2AEDCDB14F3FB31000BD340 /* rColorMap.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCC414F3FB31000BD340 /* rColorMap.png */; };
@@ -81,6 +83,8 @@
 		A24FB40614F67C6400CB1143 /* colorspectrum.swf */ = {isa = PBXFileReference; lastKnownFileType = file; path = colorspectrum.swf; sourceTree = "<group>"; };
 		A24FB40914F6851300CB1143 /* DODrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DODrawingView.h; sourceTree = "<group>"; };
 		A24FB40A14F6851400CB1143 /* DODrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DODrawingView.m; sourceTree = "<group>"; };
+		A2980564150E4036007A83F9 /* rIconPull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPull.png; sourceTree = "<group>"; };
+		A2980565150E4036007A83F9 /* rIconSave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconSave.png; sourceTree = "<group>"; };
 		A2AEDCC214F3FB31000BD340 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		A2AEDCC314F3FB31000BD340 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		A2AEDCC414F3FB31000BD340 /* rColorMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorMap.png; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		CE161C1614D5AAF800B8C7DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A2980564150E4036007A83F9 /* rIconPull.png */,
+				A2980565150E4036007A83F9 /* rIconSave.png */,
 				A20B733F150A5463003BA628 /* rIconPicker.png */,
 				A20B7340150A5463003BA628 /* rIconPickerSelected.png */,
 				A24FB40514F67C6400CB1143 /* colorspectrum.fla */,
@@ -350,6 +356,8 @@
 				A2BF88571508E548007AA803 /* rFolderButtonOpen.png in Resources */,
 				A20B7341150A5464003BA628 /* rIconPicker.png in Resources */,
 				A20B7342150A5464003BA628 /* rIconPickerSelected.png in Resources */,
+				A2980566150E4036007A83F9 /* rIconPull.png in Resources */,
+				A2980567150E4036007A83F9 /* rIconSave.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -185,6 +185,37 @@
     self.model.drawingState = self.model.drawingState == STATE_DRAWING ? STATE_PICKING : STATE_DRAWING;
 }
 
+- (IBAction)buttonSaveTouchUpInsideHandler:(id)sender 
+{
+    UIImage *image = [UIImage imageWithCGImage:self.drawingView.imageView.image.CGImage];
+    NSData *imageData = UIImagePNGRepresentation ( image ); 
+    UIImage *imagePNG = [UIImage imageWithData:imageData];
+    
+    UIImageWriteToSavedPhotosAlbum(imagePNG, nil, nil, nil);
+}
+
+- (IBAction)buttonPullTouchUpInsideHandler:(id)sender 
+{
+    UIImagePickerController *imagePicker =
+    [[UIImagePickerController alloc] init];
+    
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker.allowsEditing = NO;
+    [self presentModalViewController:imagePicker animated:YES];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    
+    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    [self.drawingView.imageView setImage: originalImage];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
 {
     self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
@@ -282,6 +313,10 @@
 {
     return self.drawingView;
 }
+
+/* PCIK PHOTO FROM LIBRARY */
+
+
 
 
 

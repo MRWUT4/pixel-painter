@@ -38,6 +38,10 @@
         
         self.colorPicker.userInteractionEnabled = NO;
         self.colorPickerHorizontal.userInteractionEnabled = NO;
+        
+//        [ btn addTarget: self action: @selector( myMethod ) forControlEvents: UIControlEventTouchDown ];
+        
+//        self.gradientView addGestureRecognizer:
     }
     
     return self;
@@ -89,7 +93,7 @@
 /* TOUCHES HANDLER */
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+{    
     [self pickColorAtTouches:touches];    
 }
 
@@ -106,18 +110,19 @@
     
     if(subview == self.colorMapView)
     {   
-        self.colorPicker.hidden = NO;
-        self.colorPickerHorizontal.hidden = YES;
+        self.colorPicker.hidden = YES;
         
         self.colorPicker.center = self.touchPosition; 
         
         self.color = [self getPixelColorAtLocation: self.touchPosition];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_PICKED object:self];
+        
+        self.colorPicker.hidden = NO;
+        self.colorPickerHorizontal.hidden = YES;
     }
     if(subview == self.gradientView)
-    {           
-        self.colorPicker.hidden = YES;
-        self.colorPickerHorizontal.hidden = NO;
+    {                   
+        self.colorPickerHorizontal.hidden = YES;
         
         CGRect colorPickerHorizontalFrame = self.colorPickerHorizontal.frame;
         colorPickerHorizontalFrame.origin.x = self.touchPosition.x - colorPickerHorizontalFrame.size.width * .5;
@@ -125,7 +130,10 @@
         
         self.color = [self getPixelColorAtLocation: self.touchPosition];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_GRADIENT_PICKED object:self];
-    }   
+        
+        self.colorPicker.hidden = YES;
+        self.colorPickerHorizontal.hidden = NO;
+    }
 }
 
 - (void)hideColorPickerAndResetColorPickerHorizontal
