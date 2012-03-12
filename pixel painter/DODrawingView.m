@@ -31,8 +31,6 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
-        
-        NSLog(@"mode %i", self.mode);
     }
     
     return self;
@@ -79,10 +77,26 @@
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
-        
-    CGContextSetFillColorWithColor(cgContext, self.color.CGColor); 
-    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
+    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));    
+//    CGContextClearRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
+    CGContextFlush(UIGraphicsGetCurrentContext());
     
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+}
+
+- (void)clearAtTouches:(NSSet*)touches
+{
+    self.touchPosition = [[touches anyObject] locationInView:self];
+    self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
+    
+    UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
+    
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    CGContextClearRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
     CGContextFlush(UIGraphicsGetCurrentContext());
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
@@ -104,31 +118,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:self];
     }
 }
-
-/* SAVE IMAGE DATA */
-
-- (UIImage *) composeImageWithWidth:(NSInteger)_width andHeight:(NSInteger)_height
-{
-    CGSize _size = CGSizeMake(_width, _height);
-    UIGraphicsBeginImageContext(_size);
-   
-    UIImage *_compositeImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return _compositeImage;
-}
-
-- (BOOL) writeApplicationData:(NSData *)data toFile:(NSString *)fileName
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    if (!documentsDirectory) {
-        NSLog(@"Documents directory not found!");
-        return NO;
-    }
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:fileName];
-    return ([data writeToFile:appFile atomically:YES]);
-}
-
 
 
 @end

@@ -18,10 +18,8 @@
 @property (nonatomic, assign) unsigned int mode;
 
 - (void)drawAtTouches:(NSSet*)touches;
+- (void)clearAtTouches:(NSSet*)touches;
 - (void)pickColorAtTouches:(NSSet*)touches;
 - (void)modeAction:(NSSet *)touches;
-
-- (UIImage *) composeImageWithWidth:(NSInteger)_width andHeight:(NSInteger)_height;
-- (BOOL) writeApplicationData:(NSData *)data toFile:(NSString *)fileName;
 
 @end
