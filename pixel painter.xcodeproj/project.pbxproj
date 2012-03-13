@@ -45,6 +45,10 @@
 		A2BF88551508E548007AA803 /* rFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = A2BF88521508E548007AA803 /* rFolder.png */; };
 		A2BF88561508E548007AA803 /* rFolderButtonClose.png in Resources */ = {isa = PBXBuildFile; fileRef = A2BF88531508E548007AA803 /* rFolderButtonClose.png */; };
 		A2BF88571508E548007AA803 /* rFolderButtonOpen.png in Resources */ = {isa = PBXBuildFile; fileRef = A2BF88541508E548007AA803 /* rFolderButtonOpen.png */; };
+		A2F6BF01150F5F640077CE5B /* rIconPen.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BEFD150F5F630077CE5B /* rIconPen.png */; };
+		A2F6BF02150F5F640077CE5B /* rIconPenSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BEFE150F5F630077CE5B /* rIconPenSelected.png */; };
+		A2F6BF03150F5F640077CE5B /* rColorBackgroundTransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */; };
+		A2F6BF04150F5F640077CE5B /* rIconTransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BF00150F5F640077CE5B /* rIconTransparent.png */; };
 		CE161C1014D5AAF800B8C7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C0F14D5AAF800B8C7DE /* UIKit.framework */; };
 		CE161C1214D5AAF800B8C7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C1114D5AAF800B8C7DE /* Foundation.framework */; };
 		CE161C1414D5AAF800B8C7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C1314D5AAF800B8C7DE /* CoreGraphics.framework */; };
@@ -111,6 +115,10 @@
 		A2BF88521508E548007AA803 /* rFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolder.png; sourceTree = "<group>"; };
 		A2BF88531508E548007AA803 /* rFolderButtonClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolderButtonClose.png; sourceTree = "<group>"; };
 		A2BF88541508E548007AA803 /* rFolderButtonOpen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolderButtonOpen.png; sourceTree = "<group>"; };
+		A2F6BEFD150F5F630077CE5B /* rIconPen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPen.png; sourceTree = "<group>"; };
+		A2F6BEFE150F5F630077CE5B /* rIconPenSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPenSelected.png; sourceTree = "<group>"; };
+		A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorBackgroundTransparent.png; sourceTree = "<group>"; };
+		A2F6BF00150F5F640077CE5B /* rIconTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconTransparent.png; sourceTree = "<group>"; };
 		CE161C0B14D5AAF800B8C7DE /* pixel painter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pixel painter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE161C0F14D5AAF800B8C7DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE161C1114D5AAF800B8C7DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -232,6 +240,10 @@
 		CE161C1614D5AAF800B8C7DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A2F6BEFD150F5F630077CE5B /* rIconPen.png */,
+				A2F6BEFE150F5F630077CE5B /* rIconPenSelected.png */,
+				A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */,
+				A2F6BF00150F5F640077CE5B /* rIconTransparent.png */,
 				A2980564150E4036007A83F9 /* rIconPull.png */,
 				A2980565150E4036007A83F9 /* rIconSave.png */,
 				A20B733F150A5463003BA628 /* rIconPicker.png */,
@@ -358,6 +370,10 @@
 				A20B7342150A5464003BA628 /* rIconPickerSelected.png in Resources */,
 				A2980566150E4036007A83F9 /* rIconPull.png in Resources */,
 				A2980567150E4036007A83F9 /* rIconSave.png in Resources */,
+				A2F6BF01150F5F640077CE5B /* rIconPen.png in Resources */,
+				A2F6BF02150F5F640077CE5B /* rIconPenSelected.png in Resources */,
+				A2F6BF03150F5F640077CE5B /* rColorBackgroundTransparent.png in Resources */,
+				A2F6BF04150F5F640077CE5B /* rIconTransparent.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
