@@ -50,6 +50,8 @@
 		A2F6BF03150F5F640077CE5B /* rColorBackgroundTransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */; };
 		A2F6BF04150F5F640077CE5B /* rIconTransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BF00150F5F640077CE5B /* rIconTransparent.png */; };
 		A2F6BF07150FB0090077CE5B /* rIconGeneric.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BF06150FB0090077CE5B /* rIconGeneric.png */; };
+		A2F6BF0A150FC0200077CE5B /* rIconErase.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BF08150FC0200077CE5B /* rIconErase.png */; };
+		A2F6BF0B150FC0200077CE5B /* rIconEraseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F6BF09150FC0200077CE5B /* rIconEraseSelected.png */; };
 		CE161C1014D5AAF800B8C7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C0F14D5AAF800B8C7DE /* UIKit.framework */; };
 		CE161C1214D5AAF800B8C7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C1114D5AAF800B8C7DE /* Foundation.framework */; };
 		CE161C1414D5AAF800B8C7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE161C1314D5AAF800B8C7DE /* CoreGraphics.framework */; };
@@ -121,6 +123,8 @@
 		A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorBackgroundTransparent.png; sourceTree = "<group>"; };
 		A2F6BF00150F5F640077CE5B /* rIconTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconTransparent.png; sourceTree = "<group>"; };
 		A2F6BF06150FB0090077CE5B /* rIconGeneric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconGeneric.png; sourceTree = "<group>"; };
+		A2F6BF08150FC0200077CE5B /* rIconErase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconErase.png; sourceTree = "<group>"; };
+		A2F6BF09150FC0200077CE5B /* rIconEraseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconEraseSelected.png; sourceTree = "<group>"; };
 		CE161C0B14D5AAF800B8C7DE /* pixel painter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pixel painter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE161C0F14D5AAF800B8C7DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE161C1114D5AAF800B8C7DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -242,6 +246,8 @@
 		CE161C1614D5AAF800B8C7DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A2F6BF08150FC0200077CE5B /* rIconErase.png */,
+				A2F6BF09150FC0200077CE5B /* rIconEraseSelected.png */,
 				A2F6BF06150FB0090077CE5B /* rIconGeneric.png */,
 				A2F6BEFD150F5F630077CE5B /* rIconPen.png */,
 				A2F6BEFE150F5F630077CE5B /* rIconPenSelected.png */,
@@ -378,6 +384,8 @@
 				A2F6BF03150F5F640077CE5B /* rColorBackgroundTransparent.png in Resources */,
 				A2F6BF04150F5F640077CE5B /* rIconTransparent.png in Resources */,
 				A2F6BF07150FB0090077CE5B /* rIconGeneric.png in Resources */,
+				A2F6BF0A150FC0200077CE5B /* rIconErase.png in Resources */,
+				A2F6BF0B150FC0200077CE5B /* rIconEraseSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
