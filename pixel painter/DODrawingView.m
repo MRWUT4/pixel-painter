@@ -54,12 +54,27 @@
 {
     if(!self.scrollEnabled) 
     {
+        switch (self.mode) 
+        {
+            case STATE_DRAWING:
+                [self drawAtTouches:touches];
+                break;
+            case STATE_PICKING:
+                [self pickColorAtTouches:touches];
+                break;
+            case STATE_ERASING:
+                [self clearAtTouches:touches];
+                break;
+        }
+        
+        /*
         if(self.mode == STATE_PICKING) 
             [self pickColorAtTouches:touches];
         else if(self.color != (id)[NSNull null])
             [self drawAtTouches:touches];
         else
             [self clearAtTouches:touches];
+         */
     }
 }
 

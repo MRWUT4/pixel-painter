@@ -29,6 +29,7 @@
 @synthesize subsiteButtonList = _subsiteButtonList;
 @synthesize applicationButtonList = _applicationButtonList;
 @synthesize buttonPen = _buttonPen;
+@synthesize buttonErase = _buttonErase;
 
 
 
@@ -40,7 +41,7 @@
     self.model.navigationAnimationTime = NAVIGATION_ANIMATION_TIME;
     
     self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
-    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, nil];
+    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
     
     [self.subviewManager addSubview:self.colorPickerView];
     [self.subviewManager addSubview:self.fileSettingsView];
@@ -150,8 +151,8 @@
 
 - (void)colorDrawingViewEraseNotificationHandler:(NSNotification*)notification
 {
-    self.model.color = nil;
-    self.model.applicationState = STATE_DRAWING;
+//    self.model.color = nil;
+    self.model.applicationState = STATE_ERASING;
 }
 
 
@@ -210,7 +211,7 @@
 
 - (IBAction)buttonEraseTouchUpInsideHandler:(id)sender 
 {    
-    self.model.color = nil;
+    self.model.applicationState = STATE_ERASING;
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -340,6 +341,11 @@
             self.scrollView.scrollEnabled = YES;
             self.drawingView.scrollEnabled = YES;
             break;
+            
+        case STATE_ERASING:
+            self.buttonErase.selected = YES;
+            self.drawingView.mode = STATE_ERASING;
+            break;
     }
 }
 
@@ -375,6 +381,7 @@
     [self setButtonFile:nil];
     [self setButtonColor:nil];
     [self setButtonPicker:nil];
+    [self setButtonErase:nil];
     [super viewDidUnload];
 }
 
