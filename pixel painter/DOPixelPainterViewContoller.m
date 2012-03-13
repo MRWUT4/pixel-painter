@@ -26,10 +26,9 @@
 @synthesize buttonFile = _buttonFile;
 @synthesize buttonColor = _buttonColor;
 @synthesize buttonPicker = _buttonPicker;
-@synthesize buttonErase = _buttonErase;
 @synthesize subsiteButtonList = _subsiteButtonList;
 @synthesize applicationButtonList = _applicationButtonList;
-
+@synthesize buttonPen = _buttonPen;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -43,7 +42,7 @@
 {   
     self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];
     
-    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPicker, self.buttonErase, self.buttonMove, nil];
+    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, nil];
     
     [self.subviewManager addSubview:self.colorPickerView];
     [self.subviewManager addSubview:self.fileSettingsView];
@@ -134,12 +133,14 @@
 {
     self.gradientView.lock = NO;
     self.model.color = self.colorPickerView.color;
+    self.model.applicationState = STATE_DRAWING;
 }
 
 - (void)colorGradientPickedNotificationHandler:(NSNotification*)notification
 {
     self.gradientView.lock = YES;
     self.model.color = self.colorPickerView.color;    
+    self.model.applicationState = STATE_DRAWING;
 }
 
 - (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
@@ -214,6 +215,11 @@
     [self changeApplicationState:STATE_ERASING];
 }
 
+- (IBAction)buttonPenTouchUpInsideHandler:(id)sender 
+{
+    self.model.applicationState = STATE_DRAWING;
+}
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
@@ -242,7 +248,8 @@
 
 - (void)changeApplicationState:(unsigned int)state
 {
-    self.model.applicationState = self.model.applicationState == state ? STATE_DRAWING : state;
+//    self.model.applicationState = self.model.applicationState == state ? STATE_DRAWING : state;
+    self.model.applicationState = state;
 }
 
 - (void)openSubsite:(unsigned int)subsite
@@ -305,8 +312,6 @@
 
 - (void)switchDrawingState:(unsigned int)state
 {
-    NSLog(@"switchDrawingState: %i", state);
-    
     [self unSelectButtonList: self.applicationButtonList];
 
     self.scrollView.scrollEnabled = NO;
@@ -315,6 +320,7 @@
     switch (self.model.applicationState) 
     {
         case STATE_DRAWING:
+            self.buttonPen.selected = YES;
             self.drawingView.mode = STATE_DRAWING;
             break;
             
@@ -324,7 +330,8 @@
             break;
             
         case STATE_ERASING:
-            self.buttonErase.selected = YES;
+            self.buttonPen.selected = YES;
+            [self.colorPreviewView clear];
             self.drawingView.mode = STATE_ERASING;
             break;
             
@@ -367,7 +374,6 @@
     [self setButtonFile:nil];
     [self setButtonColor:nil];
     [self setButtonPicker:nil];
-    [self setButtonErase:nil];
     [super viewDidUnload];
 }
 

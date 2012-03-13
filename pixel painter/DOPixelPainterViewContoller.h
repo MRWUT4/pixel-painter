@@ -55,7 +55,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonPicker;
 
-@property (strong, nonatomic) IBOutlet UIButton *buttonErase;
+@property (weak, nonatomic) IBOutlet UIButton *buttonPen;
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
@@ -74,6 +74,8 @@
 - (IBAction)buttonPullTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonEraseTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonPenTouchUpInsideHandler:(id)sender;
 
 - (void)changeApplicationState:(unsigned int)state;
 
