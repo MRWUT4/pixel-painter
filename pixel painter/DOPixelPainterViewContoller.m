@@ -26,7 +26,10 @@
 @synthesize buttonFile = _buttonFile;
 @synthesize buttonColor = _buttonColor;
 @synthesize buttonPicker = _buttonPicker;
-@synthesize buttonList = _buttonList;
+@synthesize buttonErase = _buttonErase;
+@synthesize subsiteButtonList = _subsiteButtonList;
+@synthesize applicationButtonList = _applicationButtonList;
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -38,7 +41,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    self.buttonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];
+    self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];
+    
+    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPicker, self.buttonErase, self.buttonMove, nil];
     
     [self.subviewManager addSubview:self.colorPickerView];
     [self.subviewManager addSubview:self.fileSettingsView];
@@ -55,11 +60,12 @@
     self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
     self.gradientView.lock = YES;
 
-    self.model.scrollEnabled = NO;
+    self.model.applicationState = STATE_DRAWING;
+//    self.model.scrollEnabled = NO;
     
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
     self.scrollView.minimumZoomScale = 1;
-    self.scrollView.maximumZoomScale = 20;
+    self.scrollView.maximumZoomScale = 50;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;
     
@@ -83,9 +89,9 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
-        [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
+//        [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
-        [_model addObserver:self forKeyPath:@"drawingState" options:NSKeyValueObservingOptionNew context:@selector(drawingState)];        
+        [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];        
     }
     
     return _model;
@@ -111,21 +117,14 @@
         self.drawingView.color = color;
         self.colorPickerView.color = color;
     }
-    else if(keyPath == @"scrollEnabled")
-    {
-        BOOL enabled = self.model.scrollEnabled;
-        
-        self.buttonMove.selected = enabled;
-        self.scrollView.scrollEnabled = enabled;
-        self.drawingView.scrollEnabled = enabled;
-    }
     else if(keyPath == @"subsite")
     {
+        self.model.applicationState = STATE_DRAWING;
         [self openSubsite:self.model.subsite];
     }
-    else if(keyPath == @"drawingState")
+    else if(keyPath == @"applicationState")
     {
-        [self switchDrawingState:self.model.drawingState];
+        [self switchDrawingState:self.model.applicationState];
     }
 }
 
@@ -147,7 +146,7 @@
 {
     self.gradientView.lock = NO;
     self.model.color = self.drawingView.color;
-    self.model.drawingState = STATE_DRAWING;
+    self.model.applicationState = STATE_DRAWING;
     
     [self.colorPickerView hideColorPickerAndResetColorPickerHorizontal];
 }
@@ -177,12 +176,16 @@
 
 - (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
 {
+    /*
+    [self unSelectButtonList: self.applicationButtonList];
     self.model.scrollEnabled = !self.model.scrollEnabled;
+     */
+    [self changeApplicationState:STATE_MOVING];
 }
 
 - (IBAction)buttonPickerTouchUpInsideHandler:(id)sender 
 {
-    self.model.drawingState = self.model.drawingState == STATE_DRAWING ? STATE_PICKING : STATE_DRAWING;
+    [self changeApplicationState:STATE_PICKING];
 }
 
 - (IBAction)buttonSaveTouchUpInsideHandler:(id)sender 
@@ -204,6 +207,11 @@
     
     imagePicker.allowsEditing = NO;
     [self presentModalViewController:imagePicker animated:YES];
+}
+
+- (IBAction)buttonEraseTouchUpInsideHandler:(id)sender 
+{    
+    [self changeApplicationState:STATE_ERASING];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -232,9 +240,14 @@
 
 /* ASSIST FUNCTIONS */
 
+- (void)changeApplicationState:(unsigned int)state
+{
+    self.model.applicationState = self.model.applicationState == state ? STATE_DRAWING : state;
+}
+
 - (void)openSubsite:(unsigned int)subsite
 {   
-    [self unSelectSubsiteButtons];
+    [self unSelectButtonList: self.subsiteButtonList];
     
     if(subsite == SUBSITE_FILE)
     {
@@ -255,13 +268,13 @@
     switch([status intValue]) 
     {
         case NAVIGATION_STATUS_CLOSED:
-            [self unSelectSubsiteButtons];
+            [self unSelectButtonList: self.subsiteButtonList];
             navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
             break;
             
         case NAVIGATION_STATUS_NAVIGATION:
-            [self unSelectSubsiteButtons];
+            [self unSelectButtonList: self.subsiteButtonList];
             navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
@@ -281,27 +294,44 @@
     [UIView commitAnimations];
 }
 
-- (void)unSelectSubsiteButtons
+- (void)unSelectButtonList:(NSArray *)list;
 {
-    for(uint i = 0; i < self.buttonList.count; ++i)
+    for(uint i = 0; i < list.count; ++i)
     {
-        UIButton *button = [self.buttonList objectAtIndex:i];
+        UIButton *button = [list objectAtIndex:i];
         button.selected = NO;
     }
 }
 
 - (void)switchDrawingState:(unsigned int)state
 {
-    switch (self.model.drawingState) 
+    NSLog(@"switchDrawingState: %i", state);
+    
+    [self unSelectButtonList: self.applicationButtonList];
+
+    self.scrollView.scrollEnabled = NO;
+    self.drawingView.scrollEnabled = NO;
+    
+    switch (self.model.applicationState) 
     {
         case STATE_DRAWING:
-            self.buttonPicker.selected = NO;
             self.drawingView.mode = STATE_DRAWING;
             break;
             
         case STATE_PICKING:
             self.buttonPicker.selected = YES;
             self.drawingView.mode = STATE_PICKING;
+            break;
+            
+        case STATE_ERASING:
+            self.buttonErase.selected = YES;
+            self.drawingView.mode = STATE_ERASING;
+            break;
+            
+        case STATE_MOVING:
+            self.buttonMove.selected = YES;
+            self.scrollView.scrollEnabled = YES;
+            self.drawingView.scrollEnabled = YES;
             break;
     }
 }
@@ -337,6 +367,7 @@
     [self setButtonFile:nil];
     [self setButtonColor:nil];
     [self setButtonPicker:nil];
+    [self setButtonErase:nil];
     [super viewDidUnload];
 }
 

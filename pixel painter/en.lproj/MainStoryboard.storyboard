@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
+        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -46,11 +47,11 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8UL-3f-Mor" customClass="DOColorPreviewView">
-                                        <rect key="frame" x="106" y="303" width="34" height="35"/>
+                                        <rect key="frame" x="79" y="303" width="34" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
-                                        <rect key="frame" x="236" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="256" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -66,8 +67,25 @@
                                             <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
                                         </connections>
                                     </button>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSi-UX-MlM">
+                                        <rect key="frame" x="192" y="288" width="64" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="erase" image="rIconZoomIn.png">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="rIconZoomInSelected.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonEraseTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="qxJ-8c-gIl"/>
+                                        </connections>
+                                    </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
-                                        <rect key="frame" x="164" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="128" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -84,7 +102,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
-                                        <rect key="frame" x="91" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="64" y="288" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -101,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
-                                        <rect key="frame" x="20" y="287" width="64" height="64"/>
+                                        <rect key="frame" x="0.0" y="287" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -231,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonColor" destination="4fx-qR-YzS" id="9Kp-GS-Luc"/>
+                        <outlet property="buttonErase" destination="cSi-UX-MlM" id="m8d-3s-LDC"/>
                         <outlet property="buttonFile" destination="iDj-Hq-ZhW" id="TLv-tF-oyS"/>
                         <outlet property="buttonMove" destination="3Z0-1E-3oV" id="RWJ-vb-Os9"/>
                         <outlet property="buttonPicker" destination="DtX-Od-4QE" id="jEO-iC-Dwp"/>
@@ -263,6 +282,8 @@
         <image name="rIconPickerSelected.png" width="128" height="128"/>
         <image name="rIconPull.png" width="128" height="128"/>
         <image name="rIconSave.png" width="128" height="128"/>
+        <image name="rIconZoomIn.png" width="128" height="128"/>
+        <image name="rIconZoomInSelected.png" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>

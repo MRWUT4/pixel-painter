@@ -27,7 +27,9 @@
 
 @property (strong, nonatomic) DOSubviewManager *subviewManager;
 
-@property (strong, nonatomic) NSArray *buttonList;
+@property (strong, nonatomic) NSArray *subsiteButtonList;
+
+@property (strong, nonatomic) NSArray *applicationButtonList;
 
 @property (strong, nonatomic) IBOutlet DONavigationView *navigationView;
 
@@ -53,6 +55,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonPicker;
 
+@property (strong, nonatomic) IBOutlet UIButton *buttonErase;
+
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender;
@@ -69,12 +73,16 @@
 
 - (IBAction)buttonPullTouchUpInsideHandler:(id)sender;
 
+- (IBAction)buttonEraseTouchUpInsideHandler:(id)sender;
+
+- (void)changeApplicationState:(unsigned int)state;
+
 - (void)changeNavigationStatus:(NSNumber *)status;
 
 - (void)openSubsite:(unsigned int)subsite;
 
 - (void)switchDrawingState:(unsigned int)state;
 
-- (void)unSelectSubsiteButtons;
+- (void)unSelectButtonList:(NSArray *)list;
 
 @end
