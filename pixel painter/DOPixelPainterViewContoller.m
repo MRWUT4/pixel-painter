@@ -30,13 +30,7 @@
 @synthesize applicationButtonList = _applicationButtonList;
 @synthesize buttonPen = _buttonPen;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if(self){}
-    
-    return self;
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {   
@@ -52,27 +46,26 @@
     [self.subviewManager addSubview:self.fileSettingsView];
     [self.subviewManager hideAlleSubviews];
 
-    [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
-        
+    
     self.gradientView.lock = YES;
 
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
     self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 50;
     self.scrollView.clipsToBounds = YES;
-    self.scrollView.delegate = self;
-    
+    self.scrollView.delegate = self;    
     [self.scrollView setZoomScale:10 animated:NO];
 }
 
 
 
-/* GETTER / SETTER */
+/* 
+ * GETTER / SETTER
+ */
 
 - (DOSubviewManager *) subviewManager
 {
@@ -94,7 +87,11 @@
     return _model;
 }
 
-/* OBSERVER IMPLEMENTATION */
+
+
+/* 
+ * OBSERVER IMPLEMENTATION
+ */
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -163,10 +160,12 @@
  * IBACTION IMPLEMENTATIONS 
  */
 
+/*
 - (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender 
 {
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
 }
+*/
 
 - (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
 {
@@ -190,9 +189,13 @@
         case NAVIGATION_STATUS_CLOSED:
             self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
             break;
+        
+        case NAVIGATION_STATUS_NAVIGATION:
+            self.model.navigationStatus = NAVIGATION_STATUS_CLOSED;
+            break;
             
         default:
-            self.model.navigationStatus = NAVIGATION_STATUS_CLOSED;
+            self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
             break;
     }
 }
@@ -279,18 +282,18 @@
     {
         case NAVIGATION_STATUS_CLOSED:
             [self unSelectButtonList: self.subsiteButtonList];
-            navigationFrame.origin.y = NAVIGATION_POSITION_CLOSED;
+            navigationFrame.origin.x = NAVIGATION_POSITION_CLOSED;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderOpen.png"]];
             break;
             
         case NAVIGATION_STATUS_NAVIGATION:
             [self unSelectButtonList: self.subsiteButtonList];
-            navigationFrame.origin.y = NAVIGATION_POSITION_NAVIGATION;
+            navigationFrame.origin.x = NAVIGATION_POSITION_NAVIGATION;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
             
         case NAVIGATION_STATUS_SUBVIEW:
-            navigationFrame.origin.y = NAVIGATION_POSITION_SUBVIEW;
+            navigationFrame.origin.x = NAVIGATION_POSITION_SUBVIEW;
             [self.folderView setImage: [UIImage imageNamed:@"rFolderClose.png"]];
             break;
     }
@@ -341,7 +344,10 @@
 }
 
 
-/* SCROLL VIEW IMPLEMENTATION */
+
+/* 
+ * SCROLL VIEW PROTOCOL IMPLEMENTATION
+ */
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
@@ -349,7 +355,10 @@
 }
 
 
-/* UIVIEW IMPLEMENTATION */
+
+/* 
+ * UIVIEW IMPLEMENTATION
+ */
 
 - (void)viewDidUnload 
 {

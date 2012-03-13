@@ -30,31 +30,23 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="f0P-aM-3ak" customClass="DONavigationView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
+                                <rect key="frame" x="0.0" y="0.0" width="256" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="TDM-5A-9xu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="srd-Qx-0Ji">
-                                        <rect key="frame" x="0.0" y="-96" width="320" height="384"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorBackgroundTransparent.png" id="uas-k0-k4q">
-                                        <rect key="frame" x="79" y="303" width="34" height="34"/>
+                                        <rect key="frame" x="175" y="79" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8UL-3f-Mor" customClass="DOColorPreviewView">
-                                        <rect key="frame" x="79" y="303" width="34" height="34"/>
+                                        <rect key="frame" x="175" y="79" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
-                                        <rect key="frame" x="256" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="160" y="256" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -71,7 +63,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSi-UX-MlM">
-                                        <rect key="frame" x="128" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="160" y="128" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -88,7 +80,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
-                                        <rect key="frame" x="192" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="160" y="192" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -105,7 +97,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
-                                        <rect key="frame" x="64" y="288" width="64" height="64"/>
+                                        <rect key="frame" x="160" y="64" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -122,7 +114,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
-                                        <rect key="frame" x="0.0" y="287" width="64" height="64"/>
+                                        <rect key="frame" x="160" y="0.0" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -138,11 +130,11 @@
                                             <action selector="buttonFileTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="0OP-j1-POO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mMt-Qi-Kmz">
-                                        <rect key="frame" x="192" y="255" width="96" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UP5-ub-Uc5">
+                                        <rect key="frame" x="175" y="336" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal">
+                                        <state key="normal" title="erase" image="rIconTransparent.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -150,11 +142,11 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="buttonSubviewTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="YbS-rQ-r5a"/>
+                                            <action selector="buttonEraseTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="L8F-pb-yCS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="odQ-ol-wHj">
-                                        <rect key="frame" x="192" y="351" width="96" height="33"/>
+                                        <rect key="frame" x="224" y="16" width="33" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -169,19 +161,19 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" autoresizesSubviews="NO" contentMode="scaleToFill" id="Mu0-8J-NR7" customClass="DOColorPickerView">
-                                        <rect key="frame" x="16" y="16" width="288" height="240"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" id="rnB-QS-9wj" customClass="GradientView">
-                                                <rect key="frame" x="0.0" y="184" width="250" height="32"/>
+                                                <rect key="frame" x="16" y="432" width="128" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="sI3-oz-yoE" customClass="DOColorMapView">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="176"/>
+                                                <rect key="frame" x="16" y="16" width="128" height="400"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorMap.png" id="66o-P0-h6z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="176"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="400"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <integer key="isElement" value="1"/>
@@ -198,36 +190,21 @@
                                                 </accessibility>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rIconColorPickerHorizontal.png" id="Yv6-ja-7PY">
-                                                <rect key="frame" x="242" y="214" width="16" height="10"/>
+                                                <rect key="frame" x="136" y="460" width="16" height="10"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                                 </accessibility>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UP5-ub-Uc5">
-                                                <rect key="frame" x="256" y="184" width="32" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" image="rIconTransparent.png">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonEraseTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="L8F-pb-yCS"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" id="J09-qT-LtS" customClass="DOFileSettingsView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gEK-Sa-bAN">
-                                                <rect key="frame" x="21" y="21" width="64" height="64"/>
+                                                <rect key="frame" x="16" y="16" width="64" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="pull" image="rIconPull.png">
@@ -242,7 +219,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Am-gm-E29">
-                                                <rect key="frame" x="92" y="21" width="64" height="64"/>
+                                                <rect key="frame" x="80" y="16" width="64" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="save" image="rIconSave.png">
@@ -275,7 +252,7 @@
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
                         <outlet property="drawingView" destination="RqU-9j-0H1" id="Fq8-Ji-OwC"/>
                         <outlet property="fileSettingsView" destination="J09-qT-LtS" id="hFH-cW-0ri"/>
-                        <outlet property="folderView" destination="TDM-5A-9xu" id="yBL-UA-ITr"/>
+                        <outlet property="folderView" destination="srd-Qx-0Ji" id="DZh-YZ-e1l"/>
                         <outlet property="gradientView" destination="rnB-QS-9wj" id="N9o-R1-ndU"/>
                         <outlet property="navigationView" destination="f0P-aM-3ak" id="MAw-Bj-YpY"/>
                         <outlet property="scrollView" destination="Hhk-gl-51F" id="rKU-wK-aeB"/>
@@ -287,8 +264,8 @@
     </scenes>
     <resources>
         <image name="rColorBackgroundTransparent.png" width="68" height="68"/>
-        <image name="rColorMap.png" width="576" height="352"/>
-        <image name="rFolderClose.png" width="640" height="768"/>
+        <image name="rColorMap.png" width="256" height="800"/>
+        <image name="rFolderClose.png" width="512" height="960"/>
         <image name="rIconColor.png" width="128" height="128"/>
         <image name="rIconColorPicker.png" width="48" height="48"/>
         <image name="rIconColorPickerHorizontal.png" width="32" height="20"/>
@@ -305,6 +282,56 @@
         <image name="rIconSave.png" width="128" height="128"/>
         <image name="rIconTransparent.png" width="64" height="64"/>
     </resources>
+    <classes>
+        <class className="DOColorMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorMapView.h"/>
+        </class>
+        <class className="DOColorPickerView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
+        </class>
+        <class className="DOColorPreviewView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
+        </class>
+        <class className="DODrawingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
+        </class>
+        <class className="DOFileSettingsView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
+        </class>
+        <class className="DONavigationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
+        </class>
+        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPullTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
+                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
+                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
+                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
+                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
+                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gradientView" candidateClass="GradientView"/>
+                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="GradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

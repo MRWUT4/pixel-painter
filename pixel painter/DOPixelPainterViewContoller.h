@@ -59,7 +59,7 @@
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
-- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender;
+//- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender;
 
