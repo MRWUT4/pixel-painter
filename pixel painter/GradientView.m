@@ -70,10 +70,8 @@ CGPoint demoLGEnd(CGRect bounds)
 
 - (void) setupGradient 
 {    
-    if(self.lock == NO)
-    {
-         NSLog(@"GradientView.setupGradient");
-        
+    if(self.lock == NO && self.theColor != (id)[NSNull null])
+    {        
         // Create a color equivalent to the current color with brightness maximized
         const CGFloat *c = CGColorGetComponents([[UIColor colorWithHue:[self.theColor hue] 
                                                             saturation:[self.theColor saturation]

@@ -13,9 +13,9 @@
 
 @synthesize navigationStatus = _navigationStatus;
 @synthesize color = _color;
-//@synthesize scrollEnabled = _scrollEnabled;
 @synthesize subsite = _subsite;
 @synthesize applicationState = _applicationState;
+@synthesize navigationAnimationTime = _navigationAnimationTime;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {

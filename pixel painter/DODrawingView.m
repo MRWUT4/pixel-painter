@@ -54,20 +54,12 @@
 {
     if(!self.scrollEnabled) 
     {
-        switch (self.mode) 
-        {
-            case STATE_DRAWING:
-                [self drawAtTouches:touches];
-                break;
-                
-            case STATE_PICKING:
-                [self pickColorAtTouches:touches];
-                break;
-                
-            case STATE_ERASING:
-                [self clearAtTouches:touches];
-                break;
-        }
+        if(self.mode == STATE_PICKING) 
+            [self pickColorAtTouches:touches];
+        else if(self.color != (id)[NSNull null])
+            [self drawAtTouches:touches];
+        else
+            [self clearAtTouches:touches];
     }
 }
 
@@ -118,8 +110,11 @@
     if(CGColorGetAlpha(pickedColor.CGColor) != 0)
     {    
         self.color = pickedColor;
-    
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:self];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_ERASE_PICKED object:self];
     }
 }
 

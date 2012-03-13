@@ -77,8 +77,6 @@
 
 - (IBAction)buttonPenTouchUpInsideHandler:(id)sender;
 
-- (void)changeApplicationState:(unsigned int)state;
-
 - (void)changeNavigationStatus:(NSNumber *)status;
 
 - (void)openSubsite:(unsigned int)subsite;

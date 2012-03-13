@@ -26,24 +26,29 @@
 
 
 - (void)setColor:(UIColor *)color
-{
+{   
     _color = color;
     
-    UIGraphicsBeginImageContext(self.frame.size);
-    [self.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    if(_color != (id)[NSNull null])
+    {
+        UIGraphicsBeginImageContext(self.frame.size);
+        [self.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    
-//    CGContextScaleCTM(cgContext, scale, scale);
-    CGContextScaleCTM(cgContext, 1, 1);
-    
-    CGContextSetFillColorWithColor(cgContext, color.CGColor); 
-    CGContextFillRect(cgContext, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
-    CGContextFlush(UIGraphicsGetCurrentContext());
-    
-    self.image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
+        CGContextRef cgContext = UIGraphicsGetCurrentContext();
+        
+    //    CGContextScaleCTM(cgContext, scale, scale);
+        CGContextScaleCTM(cgContext, 1, 1);
+        
+        CGContextSetFillColorWithColor(cgContext, color.CGColor); 
+        CGContextFillRect(cgContext, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
+        CGContextFlush(UIGraphicsGetCurrentContext());
+        
+        self.image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+    }
+    else
+        [self clear];
 }
 
 - (void)clear

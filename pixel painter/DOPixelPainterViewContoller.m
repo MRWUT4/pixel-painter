@@ -40,8 +40,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];
+    self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    self.model.applicationState = STATE_DRAWING;
+    self.model.navigationAnimationTime = NAVIGATION_ANIMATION_TIME;
     
+    self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
     self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, nil];
     
     [self.subviewManager addSubview:self.colorPickerView];
@@ -49,19 +53,14 @@
     [self.subviewManager hideAlleSubviews];
 
     [self.navigationView setFrame:CGRectMake(0, NAVIGATION_POSITION_NAVIGATION, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
-  
-    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-      
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
-    
-    self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
+        
     self.gradientView.lock = YES;
 
-    self.model.applicationState = STATE_DRAWING;
-//    self.model.scrollEnabled = NO;
-    
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
     self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 50;
@@ -88,7 +87,6 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
-//        [_model addObserver:self forKeyPath:@"scrollEnabled" options:NSKeyValueObservingOptionNew context:@selector(scrollEnabled)];
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
         [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];        
     }
@@ -113,6 +111,7 @@
         [self.gradientView setNeedsDisplay];
         
         self.colorPreviewView.color = color;
+        
         self.drawingView.color = color;
         self.colorPickerView.color = color;
     }
@@ -152,9 +151,37 @@
     [self.colorPickerView hideColorPickerAndResetColorPickerHorizontal];
 }
 
+- (void)colorDrawingViewEraseNotificationHandler:(NSNotification*)notification
+{
+    self.model.color = nil;
+    self.model.applicationState = STATE_DRAWING;
+}
 
 
-/* IBACTION IMPLEMENTATIONS */
+
+/* 
+ * IBACTION IMPLEMENTATIONS 
+ */
+
+- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender 
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+}
+
+- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
+{
+    self.model.applicationState = STATE_MOVING;
+}
+
+- (IBAction)buttonPickerTouchUpInsideHandler:(id)sender 
+{
+    self.model.applicationState = STATE_PICKING;
+}
+
+- (IBAction)buttonPenTouchUpInsideHandler:(id)sender 
+{
+    self.model.applicationState = STATE_DRAWING;
+}
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender 
 {
@@ -170,23 +197,35 @@
     }
 }
 
-- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender 
+/* IBACTIONS COLORPICKER SUBVIEW */
+
+- (IBAction)buttonColorTouchUpInsideHandler:(id)sender 
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+    self.model.subsite = SUBSITE_COLORPICKER;
+}
+
+- (IBAction)buttonEraseTouchUpInsideHandler:(id)sender 
+{    
+    self.model.color = nil;
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    
+    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    [self.drawingView.imageView setImage: originalImage];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
-{
-    /*
-    [self unSelectButtonList: self.applicationButtonList];
-    self.model.scrollEnabled = !self.model.scrollEnabled;
-     */
-    [self changeApplicationState:STATE_MOVING];
-}
+/* IBACTIONS FILE SUBVIEW */
 
-- (IBAction)buttonPickerTouchUpInsideHandler:(id)sender 
+- (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
 {
-    [self changeApplicationState:STATE_PICKING];
+    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
+    self.model.subsite = SUBSITE_FILE;
 }
 
 - (IBAction)buttonSaveTouchUpInsideHandler:(id)sender 
@@ -210,47 +249,11 @@
     [self presentModalViewController:imagePicker animated:YES];
 }
 
-- (IBAction)buttonEraseTouchUpInsideHandler:(id)sender 
-{    
-    [self changeApplicationState:STATE_ERASING];
-}
-
-- (IBAction)buttonPenTouchUpInsideHandler:(id)sender 
-{
-    self.model.applicationState = STATE_DRAWING;
-}
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    
-    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-
-    [self.drawingView.imageView setImage: originalImage];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
-{
-    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
-    self.model.subsite = SUBSITE_FILE;
-}
-
-- (IBAction)buttonColorTouchUpInsideHandler:(id)sender 
-{
-    self.model.navigationStatus = NAVIGATION_STATUS_SUBVIEW;
-    self.model.subsite = SUBSITE_COLORPICKER;
-}
 
 
-
-/* ASSIST FUNCTIONS */
-
-- (void)changeApplicationState:(unsigned int)state
-{
-//    self.model.applicationState = self.model.applicationState == state ? STATE_DRAWING : state;
-    self.model.applicationState = state;
-}
+/*
+ * ASSIST FUNCTIONS
+ */
 
 - (void)openSubsite:(unsigned int)subsite
 {   
@@ -293,7 +296,7 @@
     }
     
     [UIView beginAnimations:@"animationID" context:NULL];
-    [UIView setAnimationDuration:NAVIGATION_ANIMATION_TIME];
+    [UIView setAnimationDuration:self.model.navigationAnimationTime];
     [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     
     [self.navigationView setFrame:navigationFrame];
@@ -328,13 +331,7 @@
             self.buttonPicker.selected = YES;
             self.drawingView.mode = STATE_PICKING;
             break;
-            
-        case STATE_ERASING:
-            self.buttonPen.selected = YES;
-            [self.colorPreviewView clear];
-            self.drawingView.mode = STATE_ERASING;
-            break;
-            
+      
         case STATE_MOVING:
             self.buttonMove.selected = YES;
             self.scrollView.scrollEnabled = YES;
@@ -350,11 +347,6 @@
 {
     return self.drawingView;
 }
-
-/* PCIK PHOTO FROM LIBRARY */
-
-
-
 
 
 /* UIVIEW IMPLEMENTATION */

@@ -34,14 +34,8 @@
     
     if(self)
     {
-        NSLog(@"initWithCoder");
-        
         self.colorPicker.userInteractionEnabled = NO;
         self.colorPickerHorizontal.userInteractionEnabled = NO;
-        
-//        [ btn addTarget: self action: @selector( myMethod ) forControlEvents: UIControlEventTouchDown ];
-        
-//        self.gradientView addGestureRecognizer:
     }
     
     return self;
@@ -134,6 +128,12 @@
         self.colorPicker.hidden = YES;
         self.colorPickerHorizontal.hidden = NO;
     }
+}
+
+- (void)hideBothColorPickers
+{
+    self.colorPickerHorizontal.hidden = YES;
+    self.colorPicker.hidden = YES;
 }
 
 - (void)hideColorPickerAndResetColorPickerHorizontal

@@ -23,6 +23,7 @@
 @property (assign, nonatomic) CGPoint touchPosition;
 
 - (void)pickColorAtTouches:(NSSet *)touches;
+- (void)hideBothColorPickers;
 - (void)hideColorPickerAndResetColorPickerHorizontal;
 
 @end
