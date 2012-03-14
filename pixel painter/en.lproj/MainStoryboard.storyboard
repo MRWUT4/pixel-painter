@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
+        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,25 +238,25 @@
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <connections>
-                                                    <action selector="sliderHueValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="z2c-uW-WXN"/>
+                                                    <action selector="sliderHueTouchDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="YVA-Mn-1zR"/>
                                                 </connections>
                                             </slider>
-                                            <slider opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="fs3-vE-SUy">
+                                            <slider opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="fs3-vE-SUy">
                                                 <rect key="frame" x="18" y="414" width="132" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <connections>
-                                                    <action selector="sliderBrightnessValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="gOi-c8-Ppb"/>
+                                                    <action selector="sliderBrightnessDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="ibz-yL-k2l"/>
                                                 </connections>
                                             </slider>
-                                            <slider opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="OW5-6P-a92">
+                                            <slider opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="OW5-6P-a92">
                                                 <rect key="frame" x="18" y="444" width="132" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <connections>
-                                                    <action selector="sliderSaturationValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="lZ0-iJ-bAt"/>
+                                                    <action selector="sliderSaturationTouchDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="jr2-aH-G3A"/>
                                                 </connections>
                                             </slider>
                                             <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="180° H" textAlignment="right" minimumFontSize="17" id="WUe-va-oJb">
@@ -331,57 +333,6 @@
         <image name="rIconPull.png" width="128" height="128"/>
         <image name="rIconSave.png" width="128" height="128"/>
     </resources>
-    <classes>
-        <class className="DOColorPickerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
-        </class>
-        <class className="DOColorPreviewView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
-        </class>
-        <class className="DODrawingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
-        </class>
-        <class className="DOFileSettingsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
-        </class>
-        <class className="DONavigationView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
-        </class>
-        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonPullTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="sliderBrightnessValueChangedHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderHueValueChangedHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderSaturationValueChangedHandler:" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
-                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
-                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
-                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
-                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="gradientView" candidateClass="GradientView"/>
-                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="GradientView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

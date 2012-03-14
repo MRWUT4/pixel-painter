@@ -87,10 +87,10 @@
 
 - (void)unSelectButtonList:(NSArray *)list;
 
-- (IBAction)sliderHueValueChangedHandler:(UISlider *)sender;
+- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender;
 
-- (IBAction)sliderBrightnessValueChangedHandler:(UISlider *)sender;
+- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
 
-- (IBAction)sliderSaturationValueChangedHandler:(UISlider *)sender;
+- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender;
 
 @end

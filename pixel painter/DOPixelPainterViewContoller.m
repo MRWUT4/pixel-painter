@@ -36,7 +36,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    self.model.color = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+    [self.navigationView setFrame:CGRectMake(NAVIGATION_POSITION_NAVIGATION, 0, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
+    
+    self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
+    
+    self.model.hue = INIT_HUE;
+    self.model.saturation = INIT_SATURATION;
+    self.model.brightness = INIT_BRIGHTNESS;
+    
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
     self.model.applicationState = STATE_DRAWING;
     self.model.navigationAnimationTime = NAVIGATION_ANIMATION_TIME;
@@ -82,6 +89,11 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
+        
+        [_model addObserver:self forKeyPath:@"hue" options:NSKeyValueObservingOptionNew context:@selector(hue)];
+        [_model addObserver:self forKeyPath:@"brightness" options:NSKeyValueObservingOptionNew context:@selector(brightness)];
+        [_model addObserver:self forKeyPath:@"saturation" options:NSKeyValueObservingOptionNew context:@selector(saturation)];
+        
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
         [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];        
     }
@@ -114,6 +126,21 @@
         self.drawingView.color = color;
         self.colorPickerView.color = color;
     }
+    else if(keyPath == @"hue")
+    {
+        self.colorPickerView.sliderHue.value = self.model.hue;
+        self.colorPickerView.textHue.text = [NSString stringWithFormat:@"%i° H", (unsigned int)ceil(self.model.hue * 360)];
+    }
+    else if(keyPath == @"brightness")
+    {
+        self.colorPickerView.sliderBrightness.value = self.model.brightness;
+        self.colorPickerView.textBrightness.text = [NSString stringWithFormat:@"%i%% B", (unsigned int)ceil(self.model.brightness * 100)];
+    }
+    else if(keyPath == @"saturation")
+    {
+        self.colorPickerView.sliderSaturation.value = self.model.saturation;
+        self.colorPickerView.textSaturation.text = [NSString stringWithFormat:@"%i%% S", (unsigned int)ceil(self.model.saturation * 100)];
+    }
     else if(keyPath == @"subsite")
     {
         self.model.applicationState = STATE_DRAWING;
@@ -131,13 +158,19 @@
 {
     self.gradientView.lock = NO;
     self.model.color = self.colorPickerView.color;
+    self.model.hue = self.colorPickerView.color.hue;
+    self.model.brightness = self.colorPickerView.color.brightness;
+    self.model.saturation = self.colorPickerView.color.saturation;
     self.model.applicationState = STATE_DRAWING;
 }
 
 - (void)colorGradientPickedNotificationHandler:(NSNotification*)notification
 {
     self.gradientView.lock = YES;
-    self.model.color = self.colorPickerView.color;    
+    self.model.color = self.colorPickerView.color;
+    self.model.hue = self.colorPickerView.color.hue;
+    self.model.brightness = self.colorPickerView.color.brightness;
+    self.model.saturation = self.colorPickerView.color.saturation;
     self.model.applicationState = STATE_DRAWING;
 }
 
@@ -145,6 +178,9 @@
 {
     self.gradientView.lock = NO;
     self.model.color = self.drawingView.color;
+    self.model.hue = self.colorPickerView.color.hue;
+    self.model.brightness = self.colorPickerView.color.brightness;
+    self.model.saturation = self.colorPickerView.color.saturation;
     self.model.applicationState = STATE_DRAWING;
     
     [self.colorPickerView hideColorPickerAndResetColorPickerHorizontal];
@@ -255,28 +291,33 @@
 
 /* IACTIONS SLIDER */
 
-- (IBAction)sliderHueValueChangedHandler:(UISlider *)sender 
-{    
-    UIColor *color = self.model.color;
-    
+- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender 
+{   
+    self.model.hue = sender.value;
     self.model.color = [[UIColor alloc] initWithHue:sender.value 
-                                saturation:color.saturation 
-                                brightness:color.brightness 
-                                alpha:1];
-    
-    NSLog(@"color %@", color);
+                                        saturation:self.model.saturation 
+                                        brightness:self.model.brightness 
+                                        alpha:1];
 }
 
-- (IBAction)sliderBrightnessValueChangedHandler:(UISlider *)sender 
-{
-    NSLog(@"brightness %f", sender.value);
+- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender 
+{   
+    self.model.brightness = sender.value;
+    self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
+                                        saturation:self.model.saturation
+                                        brightness:sender.value 
+                                        alpha:1];
+
 }
 
-- (IBAction)sliderSaturationValueChangedHandler:(UISlider *)sender 
-{
-    NSLog(@"saturation %f", sender.value);
+- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender 
+{    
+    self.model.saturation = sender.value;
+    self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
+                                        saturation:sender.value
+                                        brightness:self.model.brightness 
+                                        alpha:1];
 }
-
 
 
 /*

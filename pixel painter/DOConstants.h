@@ -40,6 +40,13 @@ typedef enum drawingState
     STATE_ERASING = 3,
 } DrawingState;
 
+typedef enum color
+{
+    INIT_HUE = 0,
+    INIT_BRIGHTNESS = 0,
+    INIT_SATURATION = 0,
+    INIT_ALPHA = 1,
+} Color;
 
 @interface DOConstants : NSObject
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GradientView.h"
+#import "UIColor-HSVAdditions.h"
 #import "UIImageView-ColorUtils.h"
 #import "DOConstants.h"
 
@@ -18,6 +19,14 @@
 @property (strong, nonatomic) UIImageView *colorMapViewImage; 
 @property (strong, nonatomic) UIImageView *colorPicker;
 @property (strong, nonatomic) UIImageView *colorPickerHorizontal;
+@property (strong, nonatomic) UISlider *sliderHue;
+@property (strong, nonatomic) UISlider *sliderBrightness;
+@property (strong, nonatomic) UISlider *sliderSaturation;
+
+@property (strong, nonatomic) UITextView *textHue;
+@property (strong, nonatomic) UITextView *textBrightness;
+@property (strong, nonatomic) UITextView *textSaturation;
+
 @property (strong, nonatomic) UIColor *color;
 @property (assign, nonatomic) CGPoint touchPosition;
 

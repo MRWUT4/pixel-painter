@@ -36,6 +36,8 @@
     return self;
 }
 
+
+
 /*
  * TOUCHES MOVED HANDLER
  */
@@ -66,15 +68,6 @@
                 [self clearAtTouches:touches];
                 break;
         }
-        
-        /*
-        if(self.mode == STATE_PICKING) 
-            [self pickColorAtTouches:touches];
-        else if(self.color != (id)[NSNull null])
-            [self drawAtTouches:touches];
-        else
-            [self clearAtTouches:touches];
-         */
     }
 }
 

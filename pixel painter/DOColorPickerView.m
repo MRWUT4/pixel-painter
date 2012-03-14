@@ -19,6 +19,12 @@
 @synthesize color = _color;
 @synthesize colorPicker = _colorPicker;
 @synthesize colorPickerHorizontal = _colorPickerHorizontal;
+@synthesize sliderHue = _sliderHue;
+@synthesize sliderBrightness = _sliderBrightness;
+@synthesize sliderSaturation = _sliderSaturation;
+@synthesize textHue = _textHue;
+@synthesize textBrightness = _textBrightness;
+@synthesize textSaturation = _textSaturation;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -42,7 +48,45 @@
 }
 
 
-/* GETTER / SETTER */
+
+/*
+ * GETTER / SETTER
+ */
+
+- (void)setColor:(UIColor *)color
+{
+    _color = color;
+}
+
+- (UISlider *)sliderHue
+{
+    return (UISlider *)[self viewWithTag:4];
+}
+
+- (UISlider *)sliderBrightness
+{
+    return (UISlider *)[self viewWithTag:5];
+}
+
+- (UISlider *)sliderSaturation
+{
+    return (UISlider *)[self viewWithTag:6];
+}
+
+-(UITextView *)textHue
+{
+    return (UITextView *)[self viewWithTag:7];
+}
+
+-(UITextView *)textBrightness
+{
+    return (UITextView *)[self viewWithTag:8];
+}
+
+-(UITextView *)textSaturation
+{
+    return (UITextView *)[self viewWithTag:9];
+}
 
 - (UIView *)gradientView
 {
