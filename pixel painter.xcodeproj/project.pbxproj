@@ -13,7 +13,6 @@
 		A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74414F534F700D71C06 /* DOColorPickerView.m */; };
 		A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74714F538E400D71C06 /* DOFileSettingsView.m */; };
 		A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74D14F53F7300D71C06 /* DOSubviewManager.m */; };
-		A24FB40414F65A3700CB1143 /* DOColorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FB40314F65A3700CB1143 /* DOColorMapView.m */; };
 		A24FB40714F67C6400CB1143 /* colorspectrum.fla in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40514F67C6400CB1143 /* colorspectrum.fla */; };
 		A24FB40814F67C6400CB1143 /* colorspectrum.swf in Resources */ = {isa = PBXBuildFile; fileRef = A24FB40614F67C6400CB1143 /* colorspectrum.swf */; };
 		A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FB40A14F6851400CB1143 /* DODrawingView.m */; };
@@ -63,7 +62,6 @@
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
 		CE70CE1C14FD76520024B002 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE70CE1B14FD76520024B002 /* QuartzCore.framework */; };
-		CE7160BD14FA45D100A577B7 /* DOScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7160BC14FA45D100A577B7 /* DOScrollView.m */; };
 		CE73F70314F59A0D003B9C12 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70214F59A0D003B9C12 /* GradientView.m */; };
 		CE73F70714F59C37003B9C12 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */; };
 		CE73F70A14F59C4F003B9C12 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70914F59C4F003B9C12 /* UIColor-Expanded.m */; };
@@ -84,8 +82,6 @@
 		A214F74C14F53F7300D71C06 /* DOSubviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOSubviewManager.h; sourceTree = "<group>"; };
 		A214F74D14F53F7300D71C06 /* DOSubviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOSubviewManager.m; sourceTree = "<group>"; };
 		A24FB3FF14F64CAD00CB1143 /* DOConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOConstants.h; sourceTree = "<group>"; };
-		A24FB40214F65A3600CB1143 /* DOColorMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOColorMapView.h; sourceTree = "<group>"; };
-		A24FB40314F65A3700CB1143 /* DOColorMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorMapView.m; sourceTree = "<group>"; };
 		A24FB40514F67C6400CB1143 /* colorspectrum.fla */ = {isa = PBXFileReference; lastKnownFileType = file; path = colorspectrum.fla; sourceTree = "<group>"; };
 		A24FB40614F67C6400CB1143 /* colorspectrum.swf */ = {isa = PBXFileReference; lastKnownFileType = file; path = colorspectrum.swf; sourceTree = "<group>"; };
 		A24FB40914F6851300CB1143 /* DODrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DODrawingView.h; sourceTree = "<group>"; };
@@ -143,8 +139,6 @@
 		CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONavigationView.h; sourceTree = "<group>"; };
 		CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONavigationView.m; sourceTree = "<group>"; };
 		CE70CE1B14FD76520024B002 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CE7160BB14FA45D000A577B7 /* DOScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOScrollView.h; sourceTree = "<group>"; };
-		CE7160BC14FA45D100A577B7 /* DOScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOScrollView.m; sourceTree = "<group>"; };
 		CE73F70114F59A0D003B9C12 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		CE73F70214F59A0D003B9C12 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-HSVAdditions.m"; sourceTree = "<group>"; };
@@ -225,10 +219,6 @@
 				CE73F70C14F59FBE003B9C12 /* DOColorPreviewView.m */,
 				A24FB40914F6851300CB1143 /* DODrawingView.h */,
 				A24FB40A14F6851400CB1143 /* DODrawingView.m */,
-				A24FB40214F65A3600CB1143 /* DOColorMapView.h */,
-				A24FB40314F65A3700CB1143 /* DOColorMapView.m */,
-				CE7160BB14FA45D000A577B7 /* DOScrollView.h */,
-				CE7160BC14FA45D100A577B7 /* DOScrollView.m */,
 				CE73F70114F59A0D003B9C12 /* GradientView.h */,
 				CE73F70214F59A0D003B9C12 /* GradientView.m */,
 				CE73F70514F59C37003B9C12 /* UIColor-HSVAdditions.m */,
@@ -410,9 +400,7 @@
 				CE73F70714F59C37003B9C12 /* UIColor-HSVAdditions.m in Sources */,
 				CE73F70A14F59C4F003B9C12 /* UIColor-Expanded.m in Sources */,
 				CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */,
-				A24FB40414F65A3700CB1143 /* DOColorMapView.m in Sources */,
 				A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */,
-				CE7160BD14FA45D100A577B7 /* DOScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

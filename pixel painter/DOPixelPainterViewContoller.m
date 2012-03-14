@@ -8,6 +8,7 @@
 
 #import "DOPixelPainterViewContoller.h"
 #import "DOConstants.h"
+#import "UIColor-HSVAdditions.h"
 
 @implementation DOPixelPainterViewContoller
 
@@ -243,14 +244,37 @@
 
 - (IBAction)buttonPullTouchUpInsideHandler:(id)sender 
 {
-    UIImagePickerController *imagePicker =
-    [[UIImagePickerController alloc] init];
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     imagePicker.delegate = self;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     imagePicker.allowsEditing = NO;
     [self presentModalViewController:imagePicker animated:YES];
+}
+
+/* IACTIONS SLIDER */
+
+- (IBAction)sliderHueValueChangedHandler:(UISlider *)sender 
+{    
+    UIColor *color = self.model.color;
+    
+    self.model.color = [[UIColor alloc] initWithHue:sender.value 
+                                saturation:color.saturation 
+                                brightness:color.brightness 
+                                alpha:1];
+    
+    NSLog(@"color %@", color);
+}
+
+- (IBAction)sliderBrightnessValueChangedHandler:(UISlider *)sender 
+{
+    NSLog(@"brightness %f", sender.value);
+}
+
+- (IBAction)sliderSaturationValueChangedHandler:(UISlider *)sender 
+{
+    NSLog(@"saturation %f", sender.value);
 }
 
 

@@ -10,12 +10,11 @@
 #import "GradientView.h"
 #import "UIImageView-ColorUtils.h"
 #import "DOConstants.h"
-#import "DOColorMapView.h"
 
 @interface DOColorPickerView : UIView
 
 @property (strong, nonatomic) GradientView *gradientView;
-@property (strong, nonatomic) DOColorMapView *colorMapView;
+@property (strong, nonatomic) UIView *colorMapView;
 @property (strong, nonatomic) UIImageView *colorMapViewImage; 
 @property (strong, nonatomic) UIImageView *colorPicker;
 @property (strong, nonatomic) UIImageView *colorPickerHorizontal;

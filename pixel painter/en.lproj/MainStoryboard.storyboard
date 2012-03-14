@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,23 +29,19 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="f0P-aM-3ak" customClass="DONavigationView">
-                                <rect key="frame" x="0.0" y="0.0" width="256" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="srd-Qx-0Ji">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorBackgroundTransparent.png" id="uas-k0-k4q">
-                                        <rect key="frame" x="175" y="79" width="34" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8UL-3f-Mor" customClass="DOColorPreviewView">
-                                        <rect key="frame" x="175" y="79" width="34" height="34"/>
+                                        <rect key="frame" x="239" y="79" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
-                                        <rect key="frame" x="160" y="320" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="320" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -64,7 +58,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSi-UX-MlM">
-                                        <rect key="frame" x="160" y="128" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="128" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -81,7 +75,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
-                                        <rect key="frame" x="160" y="192" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="192" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -98,7 +92,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
-                                        <rect key="frame" x="160" y="64" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="64" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -115,7 +109,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
-                                        <rect key="frame" x="160" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="0.0" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -132,7 +126,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UP5-ub-Uc5">
-                                        <rect key="frame" x="160" y="256" width="64" height="64"/>
+                                        <rect key="frame" x="224" y="256" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="erase" image="rIconErase.png">
@@ -148,7 +142,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="odQ-ol-wHj">
-                                        <rect key="frame" x="224" y="16" width="33" height="96"/>
+                                        <rect key="frame" x="288" y="16" width="33" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -162,47 +156,8 @@
                                             <action selector="buttonFolderTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="bbV-wa-Fc4"/>
                                         </connections>
                                     </button>
-                                    <view hidden="YES" autoresizesSubviews="NO" contentMode="scaleToFill" id="Mu0-8J-NR7" customClass="DOColorPickerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="480"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" id="rnB-QS-9wj" customClass="GradientView">
-                                                <rect key="frame" x="16" y="432" width="128" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" id="sI3-oz-yoE" customClass="DOColorMapView">
-                                                <rect key="frame" x="16" y="16" width="128" height="400"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorMap.png" id="66o-P0-h6z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="400"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <accessibility key="accessibilityConfiguration">
-                                                            <integer key="isElement" value="1"/>
-                                                        </accessibility>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            </view>
-                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
-                                                <rect key="frame" x="60" y="60" width="24" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <accessibility key="accessibilityConfiguration">
-                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
-                                                </accessibility>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rIconColorPickerHorizontal.png" id="Yv6-ja-7PY">
-                                                <rect key="frame" x="136" y="460" width="16" height="10"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <accessibility key="accessibilityConfiguration">
-                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
-                                                </accessibility>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <view hidden="YES" contentMode="scaleToFill" id="J09-qT-LtS" customClass="DOFileSettingsView">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gEK-Sa-bAN">
@@ -238,6 +193,97 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <view hidden="YES" autoresizesSubviews="NO" contentMode="scaleToFill" id="Mu0-8J-NR7" customClass="DOColorPickerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <view tag="10" contentMode="scaleToFill" id="rnB-QS-9wj" customClass="GradientView">
+                                                <rect key="frame" x="16" y="344" width="192" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </view>
+                                            <view tag="1" contentMode="scaleToFill" id="sI3-oz-yoE">
+                                                <rect key="frame" x="16" y="16" width="192" height="320"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorMap.png" id="66o-P0-h6z">
+                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="320"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <accessibility key="accessibilityConfiguration">
+                                                            <integer key="isElement" value="1"/>
+                                                        </accessibility>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
+                                                <rect key="frame" x="60" y="60" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" image="rIconColorPickerHorizontal.png" id="Yv6-ja-7PY">
+                                                <rect key="frame" x="200" y="370" width="16" height="10"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                            </imageView>
+                                            <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="YDX-xb-XFF">
+                                                <rect key="frame" x="18" y="384" width="132" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="sliderHueValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="z2c-uW-WXN"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="fs3-vE-SUy">
+                                                <rect key="frame" x="18" y="414" width="132" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="sliderBrightnessValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="gOi-c8-Ppb"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="OW5-6P-a92">
+                                                <rect key="frame" x="18" y="444" width="132" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="sliderSaturationValueChangedHandler:" destination="ikY-xe-xmH" eventType="valueChanged" id="lZ0-iJ-bAt"/>
+                                                </connections>
+                                            </slider>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="180° H" textAlignment="right" minimumFontSize="17" id="WUe-va-oJb">
+                                                <rect key="frame" x="148" y="379" width="56" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="50% B" textAlignment="right" minimumFontSize="17" id="vaB-bC-ETx">
+                                                <rect key="frame" x="148" y="409" width="56" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="50% S" textAlignment="right" minimumFontSize="17" id="V67-dV-eeg">
+                                                <rect key="frame" x="148" y="439" width="56" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -266,9 +312,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rColorBackgroundTransparent.png" width="68" height="68"/>
-        <image name="rColorMap.png" width="256" height="800"/>
-        <image name="rFolderClose.png" width="512" height="960"/>
+        <image name="rColorMap.png" width="384" height="800"/>
+        <image name="rFolderClose.png" width="640" height="960"/>
         <image name="rIconColor.png" width="128" height="128"/>
         <image name="rIconColorPicker.png" width="48" height="48"/>
         <image name="rIconColorPickerHorizontal.png" width="32" height="20"/>
@@ -286,6 +331,57 @@
         <image name="rIconPull.png" width="128" height="128"/>
         <image name="rIconSave.png" width="128" height="128"/>
     </resources>
+    <classes>
+        <class className="DOColorPickerView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
+        </class>
+        <class className="DOColorPreviewView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
+        </class>
+        <class className="DODrawingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
+        </class>
+        <class className="DOFileSettingsView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
+        </class>
+        <class className="DONavigationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
+        </class>
+        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPullTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="sliderBrightnessValueChangedHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderHueValueChangedHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderSaturationValueChangedHandler:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
+                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
+                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
+                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
+                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gradientView" candidateClass="GradientView"/>
+                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="GradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

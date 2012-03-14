@@ -46,42 +46,27 @@
 
 - (UIView *)gradientView
 {
-    id subview = [[self subviews] objectAtIndex:0];
-    UIView *gradientView = [subview isKindOfClass:[GradientView class]] ? subview : nil;
-                            
-    return gradientView;
+    return [self viewWithTag:10];
 }
 
-- (UIImageView *)colorMapView
-{
-    id subview = [[self subviews] objectAtIndex:1];
-    UIImageView *colorMapView = [subview isKindOfClass:[DOColorMapView class]] ? subview : nil;
-    
-    return colorMapView;    
+- (UIView *)colorMapView
+{   
+    return [self viewWithTag:1];
 }
 
 - (UIImageView *)colorMapViewImage
-{
-    id subview = [[self.colorMapView subviews] objectAtIndex:0];
-    UIImageView *colorMapSubview = [subview isKindOfClass:[UIImageView class]] ? subview : nil;
-    
-    return colorMapSubview;    
+{    
+    return (UIImageView *)[self.colorMapView viewWithTag:0];    
 }
 
 - (UIImageView *)colorPicker
 {
-    id subview = [[self subviews] objectAtIndex:2];
-    UIImageView *colorPicker = [subview isKindOfClass:[UIImageView class]] ? subview : nil;
-    
-    return colorPicker;    
+    return (UIImageView *)[self viewWithTag:2];  
 }
 
 - (UIImageView *)colorPickerHorizontal
 {
-    id subview = [[self subviews] objectAtIndex:3];
-    UIImageView *colorPickerHorizontal = [subview isKindOfClass:[UIImageView class]] ? subview : nil;
-    
-    return colorPickerHorizontal;    
+    return (UIImageView *)[self viewWithTag:3];
 }
 
 /* TOUCHES HANDLER */

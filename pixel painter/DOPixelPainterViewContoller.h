@@ -87,4 +87,10 @@
 
 - (void)unSelectButtonList:(NSArray *)list;
 
+- (IBAction)sliderHueValueChangedHandler:(UISlider *)sender;
+
+- (IBAction)sliderBrightnessValueChangedHandler:(UISlider *)sender;
+
+- (IBAction)sliderSaturationValueChangedHandler:(UISlider *)sender;
+
 @end
