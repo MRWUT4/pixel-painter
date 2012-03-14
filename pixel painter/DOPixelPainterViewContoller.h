@@ -39,8 +39,6 @@
 
 @property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
 
-@property (strong, nonatomic) IBOutlet GradientView *gradientView;
-
 @property (strong, nonatomic) IBOutlet DOColorPreviewView *colorPreviewView;
 
 @property (weak, nonatomic) IBOutlet DODrawingView *drawingView;

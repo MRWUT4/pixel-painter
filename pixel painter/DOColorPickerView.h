@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GradientView.h"
 #import "UIColor-HSVAdditions.h"
 #import "UIImageView-ColorUtils.h"
 #import "DOConstants.h"
 
 @interface DOColorPickerView : UIView
 
-@property (strong, nonatomic) GradientView *gradientView;
 @property (strong, nonatomic) UIView *colorMapView;
 @property (strong, nonatomic) UIImageView *colorMapViewImage; 
 @property (strong, nonatomic) UIImageView *colorPicker;
-@property (strong, nonatomic) UIImageView *colorPickerHorizontal;
 @property (strong, nonatomic) UISlider *sliderHue;
 @property (strong, nonatomic) UISlider *sliderBrightness;
 @property (strong, nonatomic) UISlider *sliderSaturation;
@@ -31,7 +28,6 @@
 @property (assign, nonatomic) CGPoint touchPosition;
 
 - (void)pickColorAtTouches:(NSSet *)touches;
-- (void)hideBothColorPickers;
-- (void)hideColorPickerAndResetColorPickerHorizontal;
+- (void)hideColorPicker;
 
 @end

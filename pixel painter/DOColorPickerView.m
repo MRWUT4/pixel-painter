@@ -12,13 +12,11 @@
 @implementation DOColorPickerView
 
 
-@synthesize gradientView = _gradientView;
 @synthesize colorMapView = _colorMapView;
 @synthesize colorMapViewImage = _colorMapViewImage;
 @synthesize touchPosition = _touchPosition;
 @synthesize color = _color;
 @synthesize colorPicker = _colorPicker;
-@synthesize colorPickerHorizontal = _colorPickerHorizontal;
 @synthesize sliderHue = _sliderHue;
 @synthesize sliderBrightness = _sliderBrightness;
 @synthesize sliderSaturation = _sliderSaturation;
@@ -88,11 +86,6 @@
     return (UITextView *)[self viewWithTag:9];
 }
 
-- (UIView *)gradientView
-{
-    return [self viewWithTag:10];
-}
-
 - (UIView *)colorMapView
 {   
     return [self viewWithTag:1];
@@ -143,36 +136,11 @@
         self.colorPicker.hidden = NO;
         self.colorPickerHorizontal.hidden = YES;
     }
-    if(subview == self.gradientView)
-    {                   
-        self.colorPickerHorizontal.hidden = YES;
-        
-        CGRect colorPickerHorizontalFrame = self.colorPickerHorizontal.frame;
-        colorPickerHorizontalFrame.origin.x = self.touchPosition.x - colorPickerHorizontalFrame.size.width * .5;
-        self.colorPickerHorizontal.frame = colorPickerHorizontalFrame; 
-        
-        self.color = [self getPixelColorAtLocation: self.touchPosition];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_GRADIENT_PICKED object:self];
-        
-        self.colorPicker.hidden = YES;
-        self.colorPickerHorizontal.hidden = NO;
-    }
 }
 
-- (void)hideBothColorPickers
+- (void)hideColorPicker
 {
-    self.colorPickerHorizontal.hidden = YES;
     self.colorPicker.hidden = YES;
-}
-
-- (void)hideColorPickerAndResetColorPickerHorizontal
-{
-    CGRect colorPickerHorizontalFrame = self.colorPickerHorizontal.frame;
-    colorPickerHorizontalFrame.origin.x = self.gradientView.frame.origin.x - colorPickerHorizontalFrame.size.width * .5;
-    self.colorPickerHorizontal.frame = colorPickerHorizontalFrame;
-    
-    self.colorPicker.hidden = YES;
-    self.colorPickerHorizontal.hidden = NO;
 }
 
 @end

@@ -15,7 +15,6 @@
 
 @synthesize colorPickerView = _colorPickerView;
 @synthesize fileSettingsView = _fileSettingsView;
-@synthesize gradientView = _gradientView;
 @synthesize colorPreviewView = _colorPreviewView;
 @synthesize drawingView = _drawingView;
 @synthesize scrollView = _scrollView;
@@ -56,12 +55,9 @@
     [self.subviewManager hideAlleSubviews];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorGradientPickedNotificationHandler:) name:NOTIFICATION_COLOR_GRADIENT_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
     
-    self.gradientView.lock = YES;
-
     self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
     self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 50;
@@ -89,11 +85,9 @@
         _model = [[DOPixelPainterModel alloc] init];
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
-        
         [_model addObserver:self forKeyPath:@"hue" options:NSKeyValueObservingOptionNew context:@selector(hue)];
         [_model addObserver:self forKeyPath:@"brightness" options:NSKeyValueObservingOptionNew context:@selector(brightness)];
         [_model addObserver:self forKeyPath:@"saturation" options:NSKeyValueObservingOptionNew context:@selector(saturation)];
-        
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
         [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];        
     }
@@ -116,10 +110,6 @@
     else if(keyPath == @"color")
     {
         UIColor *color = (UIColor *)[change valueForKey:@"new"];
-        
-        self.gradientView.theColor = color;
-        [self.gradientView setupGradient];
-        [self.gradientView setNeedsDisplay];
         
         self.colorPreviewView.color = color;
         
@@ -156,17 +146,6 @@
 
 - (void)colorPickedNotificationHandler:(NSNotification*)notification
 {
-    self.gradientView.lock = NO;
-    self.model.color = self.colorPickerView.color;
-    self.model.hue = self.colorPickerView.color.hue;
-    self.model.brightness = self.colorPickerView.color.brightness;
-    self.model.saturation = self.colorPickerView.color.saturation;
-    self.model.applicationState = STATE_DRAWING;
-}
-
-- (void)colorGradientPickedNotificationHandler:(NSNotification*)notification
-{
-    self.gradientView.lock = YES;
     self.model.color = self.colorPickerView.color;
     self.model.hue = self.colorPickerView.color.hue;
     self.model.brightness = self.colorPickerView.color.brightness;
@@ -176,14 +155,11 @@
 
 - (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
 {
-    self.gradientView.lock = NO;
     self.model.color = self.drawingView.color;
     self.model.hue = self.colorPickerView.color.hue;
     self.model.brightness = self.colorPickerView.color.brightness;
     self.model.saturation = self.colorPickerView.color.saturation;
     self.model.applicationState = STATE_DRAWING;
-    
-    [self.colorPickerView hideColorPickerAndResetColorPickerHorizontal];
 }
 
 - (void)colorDrawingViewEraseNotificationHandler:(NSNotification*)notification
@@ -293,6 +269,8 @@
 
 - (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender 
 {   
+    [self.colorPickerView hideColorPicker];
+    
     self.model.hue = sender.value;
     self.model.color = [[UIColor alloc] initWithHue:sender.value 
                                         saturation:self.model.saturation 
@@ -301,7 +279,9 @@
 }
 
 - (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender 
-{   
+{
+    [self.colorPickerView hideColorPicker];
+    
     self.model.brightness = sender.value;
     self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
                                         saturation:self.model.saturation
@@ -312,6 +292,8 @@
 
 - (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender 
 {    
+    [self.colorPickerView hideColorPicker];
+    
     self.model.saturation = sender.value;
     self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
                                         saturation:sender.value
@@ -438,7 +420,6 @@
     [self setFolderView:nil];
     [self setColorPickerView:nil];
     [self setFileSettingsView:nil];
-    [self setGradientView:nil];
     [self setColorPreviewView:nil];
     [self setDrawingView:nil];
     [self setScrollView:nil];

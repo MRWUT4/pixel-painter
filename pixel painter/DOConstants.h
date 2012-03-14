@@ -44,7 +44,7 @@ typedef enum color
 {
     INIT_HUE = 0,
     INIT_BRIGHTNESS = 0,
-    INIT_SATURATION = 0,
+    INIT_SATURATION = 1,
     INIT_ALPHA = 1,
 } Color;
 
