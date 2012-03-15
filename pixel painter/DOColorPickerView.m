@@ -39,7 +39,6 @@
     if(self)
     {
         self.colorPicker.userInteractionEnabled = NO;
-        self.colorPickerHorizontal.userInteractionEnabled = NO;
     }
     
     return self;
