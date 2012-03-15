@@ -21,12 +21,6 @@
                                     <view opaque="NO" contentMode="scaleToFill" id="RqU-9j-0H1" customClass="DODrawingView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ndo-pY-SV8">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
@@ -167,8 +161,30 @@
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="OPEN" clearsOnBeginEditing="YES" minimumFontSize="17" id="jY5-Ow-3oP">
+                                                <rect key="frame" x="75" y="30.5" width="172" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="SAVE" clearsOnBeginEditing="YES" minimumFontSize="17" id="zRk-rF-Jt0">
+                                                <rect key="frame" x="75" y="94.5" width="172" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gEK-Sa-bAN">
-                                                <rect key="frame" x="12" y="12" width="64" height="64"/>
+                                                <rect key="frame" x="12" y="12" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="pull" image="rIconPull.png">
@@ -183,7 +199,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Am-gm-E29">
-                                                <rect key="frame" x="12" y="76" width="64" height="64"/>
+                                                <rect key="frame" x="12" y="76" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="save" image="rIconSave.png">
@@ -332,8 +348,8 @@
         <image name="rIconPenSelected.png" width="128" height="128"/>
         <image name="rIconPicker.png" width="128" height="128"/>
         <image name="rIconPickerSelected.png" width="128" height="128"/>
-        <image name="rIconPull.png" width="128" height="128"/>
-        <image name="rIconSave.png" width="128" height="128"/>
+        <image name="rIconPull.png" width="366" height="128"/>
+        <image name="rIconSave.png" width="366" height="128"/>
     </resources>
     <classes>
         <class className="DOColorPickerView" superclassName="UIView">

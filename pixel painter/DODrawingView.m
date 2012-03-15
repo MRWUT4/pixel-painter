@@ -26,6 +26,10 @@
     
     if(self)
     {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rBackgroundTile.png"]];
+//        [view setOpaque:NO];
+//        [[view layer] setOpaque:NO];
+        
         self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
         [self addSubview:self.imageView];
     
