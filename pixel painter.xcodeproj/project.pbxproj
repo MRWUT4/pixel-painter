@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A20B7341150A5464003BA628 /* rIconPicker.png in Resources */ = {isa = PBXBuildFile; fileRef = A20B733F150A5463003BA628 /* rIconPicker.png */; };
 		A20B7342150A5464003BA628 /* rIconPickerSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A20B7340150A5463003BA628 /* rIconPickerSelected.png */; };
-		A214F74214F534BA00D71C06 /* DOSubviewContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */; };
 		A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74414F534F700D71C06 /* DOColorPickerView.m */; };
 		A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74714F538E400D71C06 /* DOFileSettingsView.m */; };
 		A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A214F74D14F53F7300D71C06 /* DOSubviewManager.m */; };
@@ -73,8 +72,6 @@
 /* Begin PBXFileReference section */
 		A20B733F150A5463003BA628 /* rIconPicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPicker.png; sourceTree = "<group>"; };
 		A20B7340150A5463003BA628 /* rIconPickerSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPickerSelected.png; sourceTree = "<group>"; };
-		A214F74014F534BA00D71C06 /* DOSubviewContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOSubviewContainerView.h; sourceTree = "<group>"; };
-		A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOSubviewContainerView.m; sourceTree = "<group>"; };
 		A214F74314F534F700D71C06 /* DOColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOColorPickerView.h; sourceTree = "<group>"; };
 		A214F74414F534F700D71C06 /* DOColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerView.m; sourceTree = "<group>"; };
 		A214F74614F538E400D71C06 /* DOFileSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOFileSettingsView.h; sourceTree = "<group>"; };
@@ -207,8 +204,6 @@
 				CE161C1F14D5AAF800B8C7DE /* DOAppDelegate.m */,
 				CE6D7A2C14EF00DC00D707E4 /* DONavigationView.h */,
 				CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */,
-				A214F74014F534BA00D71C06 /* DOSubviewContainerView.h */,
-				A214F74114F534BA00D71C06 /* DOSubviewContainerView.m */,
 				A214F74314F534F700D71C06 /* DOColorPickerView.h */,
 				A214F74414F534F700D71C06 /* DOColorPickerView.m */,
 				A214F74614F538E400D71C06 /* DOFileSettingsView.h */,
@@ -392,7 +387,6 @@
 				CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */,
 				CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */,
 				CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */,
-				A214F74214F534BA00D71C06 /* DOSubviewContainerView.m in Sources */,
 				A214F74514F534F700D71C06 /* DOColorPickerView.m in Sources */,
 				A214F74814F538E400D71C06 /* DOFileSettingsView.m in Sources */,
 				A214F74E14F53F7300D71C06 /* DOSubviewManager.m in Sources */,

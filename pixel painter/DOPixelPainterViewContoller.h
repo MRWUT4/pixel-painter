@@ -11,7 +11,6 @@
 #import "DOConstants.h"
 #import "DONavigationView.h"
 #import "DOPixelPainterModel.h"
-#import "DOSubviewContainerView.h"
 #import "DOColorPickerView.h"
 #import "DOFileSettingsView.h"
 #import "DOSubviewManager.h"
@@ -59,8 +58,6 @@
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
-//- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender;
-
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonColorTouchUpInsideHandler:(id)sender;
@@ -77,6 +74,12 @@
 
 - (IBAction)buttonPenTouchUpInsideHandler:(id)sender;
 
+- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender;
+
+- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender;
+
+- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
+
 - (void)changeNavigationStatus:(NSNumber *)status;
 
 - (void)openSubsite:(unsigned int)subsite;
@@ -84,11 +87,5 @@
 - (void)switchDrawingState:(unsigned int)state;
 
 - (void)unSelectButtonList:(NSArray *)list;
-
-- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender;
-
-- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
-
-- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender;
 
 @end

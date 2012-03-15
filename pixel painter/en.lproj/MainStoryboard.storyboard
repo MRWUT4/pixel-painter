@@ -34,32 +34,64 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rFolderClose.png" id="srd-Qx-0Ji">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8UL-3f-Mor" customClass="DOColorPreviewView">
-                                        <rect key="frame" x="239" y="79" width="34" height="34"/>
+                                        <rect key="frame" x="223" y="91" width="34" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
-                                        <rect key="frame" x="224" y="320" width="64" height="64"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="odQ-ol-wHj">
+                                        <rect key="frame" x="272" y="16" width="33" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="move" image="rIconMoveSelected.png">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="rIconMoveActive.png"/>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
+                                            <action selector="buttonFolderTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="bbV-wa-Fc4"/>
+                                        </connections>
+                                    </button>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
+                                        <rect key="frame" x="208" y="12" width="64" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="file" image="rIconFile.png">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="rIconFileSelected.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonFileTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="0OP-j1-POO"/>
+                                        </connections>
+                                    </button>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
+                                        <rect key="frame" x="208" y="76" width="64" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="color" image="rIconColor.png">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="rIconColorSelected.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonColorTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="I0X-rN-cav"/>
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cSi-UX-MlM">
-                                        <rect key="frame" x="224" y="128" width="64" height="64"/>
+                                        <rect key="frame" x="208" y="140" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -76,7 +108,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DtX-Od-4QE">
-                                        <rect key="frame" x="224" y="192" width="64" height="64"/>
+                                        <rect key="frame" x="208" y="204" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -92,42 +124,8 @@
                                             <action selector="buttonPickerTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="LcU-Bk-27s"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fx-qR-YzS">
-                                        <rect key="frame" x="224" y="64" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="color" image="rIconColor.png">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected" image="rIconColorSelected.png"/>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonColorTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="I0X-rN-cav"/>
-                                        </connections>
-                                    </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDj-Hq-ZhW">
-                                        <rect key="frame" x="224" y="0.0" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="file" image="rIconFile.png">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected" image="rIconFileSelected.png"/>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonFileTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="0OP-j1-POO"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UP5-ub-Uc5">
-                                        <rect key="frame" x="224" y="256" width="64" height="64"/>
+                                        <rect key="frame" x="208" y="268" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="erase" image="rIconErase.png">
@@ -142,19 +140,21 @@
                                             <action selector="buttonEraseTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="L8F-pb-yCS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="odQ-ol-wHj">
-                                        <rect key="frame" x="288" y="16" width="33" height="96"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Z0-1E-3oV">
+                                        <rect key="frame" x="208" y="332" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="move" image="rIconMoveSelected.png">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="rIconMoveActive.png"/>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="buttonFolderTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="bbV-wa-Fc4"/>
+                                            <action selector="buttonMoveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="QsL-TB-VDj"/>
                                         </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" id="J09-qT-LtS" customClass="DOFileSettingsView">
@@ -162,7 +162,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gEK-Sa-bAN">
-                                                <rect key="frame" x="16" y="16" width="64" height="64"/>
+                                                <rect key="frame" x="12" y="12" width="64" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="pull" image="rIconPull.png">
@@ -177,7 +177,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Am-gm-E29">
-                                                <rect key="frame" x="80" y="16" width="64" height="64"/>
+                                                <rect key="frame" x="12" y="76" width="64" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="save" image="rIconSave.png">
@@ -199,11 +199,11 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleToFill" id="sI3-oz-yoE">
-                                                <rect key="frame" x="16" y="16" width="192" height="356"/>
+                                                <rect key="frame" x="16" y="16" width="176" height="240"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rColorMap.png" id="66o-P0-h6z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="356"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="240"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <integer key="isElement" value="1"/>
@@ -213,32 +213,24 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
                                             <imageView hidden="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" image="rIconColorPicker.png" id="Wgq-po-t23">
-                                                <rect key="frame" x="60" y="60" width="24" height="24"/>
+                                                <rect key="frame" x="32" y="32" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                                 </accessibility>
                                             </imageView>
                                             <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="YDX-xb-XFF">
-                                                <rect key="frame" x="18" y="384" width="132" height="23"/>
+                                                <rect key="frame" x="14" y="305" width="176" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration" label="hue"/>
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <connections>
                                                     <action selector="sliderHueTouchDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="YVA-Mn-1zR"/>
                                                 </connections>
                                             </slider>
-                                            <slider opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="fs3-vE-SUy">
-                                                <rect key="frame" x="18" y="414" width="132" height="23"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <connections>
-                                                    <action selector="sliderBrightnessDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="ibz-yL-k2l"/>
-                                                </connections>
-                                            </slider>
                                             <slider opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="OW5-6P-a92">
-                                                <rect key="frame" x="18" y="444" width="132" height="23"/>
+                                                <rect key="frame" x="14" y="369" width="176" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -246,8 +238,18 @@
                                                     <action selector="sliderSaturationTouchDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="jr2-aH-G3A"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="0° H" textAlignment="right" minimumFontSize="17" id="WUe-va-oJb">
-                                                <rect key="frame" x="148" y="379" width="56" height="31"/>
+                                            <slider opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="fs3-vE-SUy">
+                                                <rect key="frame" x="14" y="433" width="176" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration" label="brightness"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="maximumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="sliderBrightnessDragInsideHandler:" destination="ikY-xe-xmH" eventType="touchDragInside" id="ibz-yL-k2l"/>
+                                                </connections>
+                                            </slider>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="HUE 0°" minimumFontSize="17" id="WUe-va-oJb">
+                                                <rect key="frame" x="16" y="274" width="172" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -257,8 +259,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="0% B" textAlignment="right" minimumFontSize="17" id="vaB-bC-ETx">
-                                                <rect key="frame" x="148" y="409" width="56" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="SATURATION 100%" minimumFontSize="17" id="V67-dV-eeg">
+                                                <rect key="frame" x="16" y="338.5" width="172" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -268,8 +270,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="100% S" textAlignment="right" minimumFontSize="17" id="V67-dV-eeg">
-                                                <rect key="frame" x="148" y="439" width="56" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BRIGHTNESS 0%" minimumFontSize="17" id="vaB-bC-ETx">
+                                                <rect key="frame" x="16" y="402.5" width="172" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -310,7 +312,7 @@
     </scenes>
     <resources>
         <image name="rColorMap.png" width="352" height="480"/>
-        <image name="rFolderClose.png" width="640" height="960"/>
+        <image name="rFolderClose.png" width="608" height="960"/>
         <image name="rIconColor.png" width="128" height="128"/>
         <image name="rIconColorPicker.png" width="48" height="48"/>
         <image name="rIconColorSelected.png" width="128" height="128"/>
