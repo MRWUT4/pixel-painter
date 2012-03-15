@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-static float const NAVIGATION_ANIMATION_TIME = .4;
+static float const ANIMATION_NAVIGATION = .4;
+static float const ANIMATION_REPOSITION = .3;
+
 static NSString * const NOTIFICATION_COLOR_PICKED = @"NOTIFICATION_COLOR_PICKED";
 static NSString * const NOTIFICATION_COLOR_GRADIENT_PICKED = @"NOTIFICATION_COLOR_GRADIENT_PICKED";
 static NSString * const NOTIFICATION_COLOR_DRAWINGVIEW_PICKED = @"NOTIFICATION_COLOR_DRAWINGVIEW_PICKED";
@@ -47,6 +49,11 @@ typedef enum color
     INIT_SATURATION = 1,
     INIT_ALPHA = 1,
 } Color;
+
+typedef enum alerts
+{
+    ALERTVIEW_CLEARDRAWINGVIEW = 0,
+} Alerts;
 
 @interface DOConstants : NSObject
 @end

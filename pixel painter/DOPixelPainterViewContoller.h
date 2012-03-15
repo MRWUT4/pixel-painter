@@ -78,6 +78,8 @@
 
 - (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender;
 
+- (IBAction)buttonNewTouchUpInsideHandler:(id)sender;
+
 - (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
 
 - (void)changeNavigationStatus:(NSNumber *)status;
@@ -87,5 +89,7 @@
 - (void)switchDrawingState:(unsigned int)state;
 
 - (void)unSelectButtonList:(NSArray *)list;
+
+- (void)changeDrawingFrame:(NSValue *)rectangle;
 
 @end

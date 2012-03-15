@@ -46,8 +46,7 @@
     
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
     self.model.applicationState = STATE_DRAWING;
-    self.model.navigationAnimationTime = NAVIGATION_ANIMATION_TIME;
-    
+        
     self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
     self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
     
@@ -59,15 +58,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
     
-    self.scrollView.contentSize = CGSizeMake(self.drawingView.frame.size.width, self.drawingView.frame.size.height);
+    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)]];
+    
     self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 50;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;    
     [self.scrollView setZoomScale:10 animated:NO];
 }
-
-
 
 /* 
  * GETTER / SETTER
@@ -174,13 +172,6 @@
  * IBACTION IMPLEMENTATIONS 
  */
 
-/*
-- (IBAction)buttonSubviewTouchUpInsideHandler:(id)sender 
-{
-    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-}
-*/
-
 - (IBAction)buttonMoveTouchUpInsideHandler:(id)sender 
 {
     self.model.applicationState = STATE_MOVING;
@@ -265,6 +256,20 @@
     [self presentModalViewController:imagePicker animated:YES];
 }
 
+- (IBAction)buttonNewTouchUpInsideHandler:(id)sender 
+{   
+    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 400, 200)]];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clear image" 
+                                                  message:@"Are you sure you want to clear your image?" 
+                                                  delegate:self 
+                                                  cancelButtonTitle:@"YES"
+                                                  otherButtonTitles:@"NO",
+                                                  nil];
+    alertView.tag = ALERTVIEW_CLEARDRAWINGVIEW;
+    [alertView show];
+}
+
 /* IACTIONS SLIDER */
 
 - (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender 
@@ -300,6 +305,23 @@
                                         alpha:1];
 
 }
+
+
+
+/*
+ * ALERTVIEW CLICK HANDLER
+ */
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) 
+    {
+        case ALERTVIEW_CLEARDRAWINGVIEW:
+            if(!buttonIndex) [self.drawingView clearCompleteView];            
+            break;
+    }
+}
+
 
 
 /*
@@ -346,8 +368,8 @@
             break;
     }
     
-    [UIView beginAnimations:@"animationID" context:NULL];
-    [UIView setAnimationDuration:self.model.navigationAnimationTime];
+    [UIView beginAnimations:@"animation0" context:NULL];
+    [UIView setAnimationDuration:ANIMATION_NAVIGATION];
     [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     
     [self.navigationView setFrame:navigationFrame];
@@ -407,7 +429,58 @@
     return self.drawingView;
 }
 
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect frameToCenter = self.drawingView.frame;
+    
+    // center horizontally
+    if (frameToCenter.size.width < boundsSize.width)
+        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
+    else
+        frameToCenter.origin.x = 0;
+    
+    // center vertically
+    if (frameToCenter.size.height < boundsSize.height)
+        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
+    else
+        frameToCenter.origin.y = 0;
+    
+    [UIView beginAnimations:@"animation0" context:NULL];
+    [UIView setAnimationDuration:ANIMATION_REPOSITION];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    
+    self.drawingView.frame = frameToCenter;
+    
+    [UIView commitAnimations];
+}
 
+- (void)changeDrawingFrame:(NSValue *)rectangle
+{    
+    CGRect drawingViewFrame = rectangle.CGRectValue;
+ 
+    [self.drawingView setCenter:CGPointMake(drawingViewFrame.size.width * .5, drawingViewFrame.size.height * .5)];
+    
+    [self.drawingView setFrame:drawingViewFrame];
+    self.scrollView.contentSize = drawingViewFrame.size;
+    
+    [self scrollViewDidEndZooming:nil withView:nil atScale:1];
+}
+
+/* REVIEW
+ 
+- (void)positionTransform
+{
+    CGRect oldFrame = self.frame;
+    self.layer.anchorPoint = CGPointMake(1, 1);
+    self.frame = oldFrame;
+
+    oldFrame = self.frame;
+    self.layer.anchorPoint = CGPointMake(0.5,0.5);
+    self.frame = oldFrame;
+}
+
+ */
 
 /* 
  * UIVIEW IMPLEMENTATION

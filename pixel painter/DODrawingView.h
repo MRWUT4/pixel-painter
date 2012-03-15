@@ -21,5 +21,7 @@
 - (void)clearAtTouches:(NSSet*)touches;
 - (void)pickColorAtTouches:(NSSet*)touches;
 - (void)modeAction:(NSSet *)touches;
+- (void)clearCompleteView;
+- (void)clearViewFrame:(NSValue *)rectangle;
 
 @end

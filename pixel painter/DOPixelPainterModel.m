@@ -15,7 +15,6 @@
 @synthesize color = _color;
 @synthesize subsite = _subsite;
 @synthesize applicationState = _applicationState;
-@synthesize navigationAnimationTime = _navigationAnimationTime;
 @synthesize hue;
 @synthesize brightness;
 @synthesize saturation;

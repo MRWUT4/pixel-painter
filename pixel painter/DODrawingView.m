@@ -27,9 +27,7 @@
     if(self)
     {
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"rBackgroundTile.png"]];
-//        [view setOpaque:NO];
-//        [[view layer] setOpaque:NO];
-        
+
         self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
         [self addSubview:self.imageView];
     
@@ -99,17 +97,7 @@
     self.touchPosition = [[touches anyObject] locationInView:self];
     self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
     
-    UIGraphicsBeginImageContext(self.imageView.frame.size);
-    
-    [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
-    
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    CGContextClearRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
-    CGContextFlush(UIGraphicsGetCurrentContext());
-    
-    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
+    [self clearViewFrame:[NSValue valueWithCGRect:CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1)]];
 }
 
 - (void)pickColorAtTouches:(NSSet*)touches
@@ -128,6 +116,28 @@
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_ERASE_PICKED object:self];
     }
+}
+
+- (void)clearCompleteView
+{
+    [self clearViewFrame:[NSValue valueWithCGRect:self.imageView.frame]];
+}
+
+- (void)clearViewFrame:(NSValue *)rectangle
+{
+    CGRect imageViewFrame = self.imageView.frame;
+    
+    UIGraphicsBeginImageContext(imageViewFrame.size);
+    
+    [self.imageView.image drawInRect:imageViewFrame];
+    
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    CGContextClearRect(cgContext, rectangle.CGRectValue);
+    CGContextFlush(UIGraphicsGetCurrentContext());
+    
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
 }
 
 
