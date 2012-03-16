@@ -19,7 +19,6 @@
 @synthesize imageView = _imageView;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize mode = _mode;
-@synthesize contentSize = _contentSize;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -34,8 +33,6 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
-        
-        self.contentSize = self.frame.size;
     }
     
     return self;
@@ -65,10 +62,8 @@
     {
         self.touchPosition = [[touches anyObject] locationInView:self];
         self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
-        
-        NSLog(@"width %f", self.frame.size.width);
-        
-        if(self.touchPosition.x < self.contentSize.width && self.touchPosition.y < self.contentSize.height)
+                
+        if(self.touchPosition.x < self.bounds.size.width && self.touchPosition.y < self.bounds.size.height)
         {
             switch(self.mode) 
             {

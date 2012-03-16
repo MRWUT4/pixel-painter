@@ -16,7 +16,6 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) unsigned int mode;
-@property (nonatomic, assign) CGSize contentSize;
 
 - (void)drawAtPosition;
 - (void)clearAtPosition;

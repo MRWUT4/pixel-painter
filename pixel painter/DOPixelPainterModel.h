@@ -17,5 +17,6 @@
 @property(assign, nonatomic) float brightness;
 @property(assign, nonatomic) float saturation;
 @property(strong, nonatomic) UIColor *color;
+@property(assign, nonatomic) BOOL initialized;
 
 @end

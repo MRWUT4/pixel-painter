@@ -24,7 +24,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" white="0.13" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="RqU-9j-0H1" id="efv-CC-sEn"/>
                                 </connections>
@@ -378,6 +378,54 @@
         <image name="rIconPull.png" width="366" height="128"/>
         <image name="rIconSave.png" width="365" height="128"/>
     </resources>
+    <classes>
+        <class className="DOColorPickerView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
+        </class>
+        <class className="DOColorPreviewView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
+        </class>
+        <class className="DODrawingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
+        </class>
+        <class className="DOFileSettingsView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
+        </class>
+        <class className="DONavigationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
+        </class>
+        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonNewTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonOpenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="sliderBrightnessDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderHueTouchDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderSaturationTouchDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
+                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
+                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
+                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
+                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

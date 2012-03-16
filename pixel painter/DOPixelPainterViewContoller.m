@@ -35,36 +35,39 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    [self.navigationView setFrame:CGRectMake(NAVIGATION_POSITION_NAVIGATION, 0, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
-    [self.navigationView setNeedsDisplay];
-    
-    self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
-    
-    self.model.hue = INIT_HUE;
-    self.model.saturation = INIT_SATURATION;
-    self.model.brightness = INIT_BRIGHTNESS;
-    
-    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    self.model.applicationState = STATE_DRAWING;
+    if(!self.model.initialized)
+    {
+        [self.navigationView setFrame:CGRectMake(NAVIGATION_POSITION_NAVIGATION, 0, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
+        [self.navigationView setNeedsDisplay];
         
-    self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
-    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
-    
-    [self.subviewManager addSubview:self.colorPickerView];
-    [self.subviewManager addSubview:self.fileSettingsView];
-    [self.subviewManager hideAlleSubviews];
+        self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
+        self.model.hue = INIT_HUE;
+        self.model.saturation = INIT_SATURATION;
+        self.model.brightness = INIT_BRIGHTNESS;
+        self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+        self.model.applicationState = STATE_DRAWING;
+        self.model.initialized = YES;
+        
+        
+        self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
+        self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
+        
+        [self.subviewManager addSubview:self.colorPickerView];
+        [self.subviewManager addSubview:self.fileSettingsView];
+        [self.subviewManager hideAlleSubviews];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
-    
-    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)] withAnimation:NO];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
+                
+        self.scrollView.minimumZoomScale = 1;
+        self.scrollView.maximumZoomScale = 50;
+        self.scrollView.clipsToBounds = YES;
+        self.scrollView.delegate = self;    
         
-    self.scrollView.minimumZoomScale = 1;
-    self.scrollView.maximumZoomScale = 50;
-    self.scrollView.clipsToBounds = YES;
-    self.scrollView.delegate = self;    
-    [self.scrollView setZoomScale:1 animated:NO];
+        [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 160, 240)] withAnimation:NO];
+        [self.scrollView setZoomScale:10 animated:NO];
+    }
 }
 
 /* 
@@ -228,13 +231,18 @@
 
 - (IBAction)buttonSaveTouchUpInsideHandler:(id)sender 
 {
-    UIImage *image = [UIImage imageWithCGImage:self.drawingView.imageView.image.CGImage];
+    UIImageView *drawingViewImage = self.drawingView.imageView;
+    
+    UIImage *image = [UIImage imageWithCGImage:CGImageCreateWithImageInRect(drawingViewImage.image.CGImage, drawingViewImage.bounds)];
+    
     NSData *imageData = UIImagePNGRepresentation(image); 
     UIImage *imagePNG = [UIImage imageWithData:imageData];
+        
+    CGImageRef croppedImage = CGImageCreateWithImageInRect([imagePNG CGImage], drawingViewImage.bounds);    
+    UIImage *finalImage = [UIImage imageWithCGImage:croppedImage];
     
-    UIImageWriteToSavedPhotosAlbum(imagePNG, nil, nil, nil);
+    UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
 }
-
 
 - (IBAction)buttonOpenTouchUpInsideHandler:(id)sender 
 {
@@ -253,11 +261,7 @@
     
     UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-//    originalImage.accessibilityFrame
-  
-    NSLog(@"frame %f %f", originalImage.size.width, originalImage.size.height);
-    
-//    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, originalImage.size.width, originalImage.size.height)] withAnimation:NO];
+    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, originalImage.size.width, originalImage.size.height)] withAnimation:NO];
     
     [self.drawingView.imageView setImage: originalImage];
     [self dismissModalViewControllerAnimated:YES];
@@ -325,7 +329,7 @@
     switch (alertView.tag) 
     {
         case ALERTVIEW_CLEARDRAWINGVIEW:
-            if(!buttonIndex) [self.drawingView clearCompleteView];            
+            //if(!buttonIndex) [self.drawingView clearCompleteView];            
             break;
     }
 }
@@ -443,27 +447,28 @@
 }
 
 - (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
-{    
+{   
+    [self.scrollView setZoomScale:1 animated:NO];
+    
     CGRect drawingViewFrame = rectangle.CGRectValue;
  
+    self.drawingView.imageView.center = CGPointMake(drawingViewFrame.size.width * .5, drawingViewFrame.size.height * .5);
+    self.drawingView.imageView.bounds = drawingViewFrame;
+    
+//    self.drawingView.bounds = drawingViewFrame;
+    
     self.drawingView.frame = drawingViewFrame;
-    self.drawingView.contentSize = drawingViewFrame.size;
-    self.scrollView.contentSize = drawingViewFrame.size;
     
-    NSLog(@"frame.width %f", self.drawingView.frame.size.width);
+//    self.scrollView.contentSize = drawingViewFrame.size;
     
-//    [self centerImageWithAnimation:NO];
+    [self centerImageWithAnimation:NO];
 }
 
 - (void)centerImageWithAnimation:(BOOL)animation
 {
-    NSLog(@"centerImageWithAnimation %i", animation);
-    
     CGSize boundsSize = self.scrollView.bounds.size;
     CGRect frameToCenter = self.drawingView.frame;
  
-    NSLog(@"frameToCenter %f %f", frameToCenter.origin.x, frameToCenter.origin.y);
-    
     // center horizontally
     if (frameToCenter.size.width < boundsSize.width)
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;

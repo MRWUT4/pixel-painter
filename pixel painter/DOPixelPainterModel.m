@@ -15,9 +15,10 @@
 @synthesize color = _color;
 @synthesize subsite = _subsite;
 @synthesize applicationState = _applicationState;
-@synthesize hue;
-@synthesize brightness;
-@synthesize saturation;
+@synthesize hue = _hue;
+@synthesize brightness = _brightness;
+@synthesize saturation = _saturation;
+@synthesize initialized = _initialized;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {
