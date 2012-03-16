@@ -16,10 +16,12 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) unsigned int mode;
+@property (nonatomic, assign) CGSize contentSize;
 
-- (void)drawAtTouches:(NSSet*)touches;
-- (void)clearAtTouches:(NSSet*)touches;
-- (void)pickColorAtTouches:(NSSet*)touches;
+- (void)drawAtPosition;
+- (void)clearAtPosition;
+- (void)pickColorAtPosition;
+
 - (void)modeAction:(NSSet *)touches;
 - (void)clearCompleteView;
 - (void)clearViewFrame:(NSValue *)rectangle;

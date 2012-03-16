@@ -68,7 +68,7 @@
 
 - (IBAction)buttonSaveTouchUpInsideHandler:(id)sender;
 
-- (IBAction)buttonPullTouchUpInsideHandler:(id)sender;
+- (IBAction)buttonOpenTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonEraseTouchUpInsideHandler:(id)sender;
 
@@ -90,6 +90,8 @@
 
 - (void)unSelectButtonList:(NSArray *)list;
 
-- (void)changeDrawingFrame:(NSValue *)rectangle;
+- (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation;
+
+- (void)centerImageWithAnimation:(BOOL)animation;
 
 @end

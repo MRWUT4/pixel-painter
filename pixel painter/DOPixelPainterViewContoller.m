@@ -58,13 +58,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
     
-    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)]];
-    
+    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)] withAnimation:NO];
+        
     self.scrollView.minimumZoomScale = 1;
     self.scrollView.maximumZoomScale = 50;
     self.scrollView.clipsToBounds = YES;
     self.scrollView.delegate = self;    
-    [self.scrollView setZoomScale:10 animated:NO];
+    [self.scrollView setZoomScale:1 animated:NO];
 }
 
 /* 
@@ -218,16 +218,6 @@
     self.model.applicationState = STATE_ERASING;
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    
-    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-
-    [self.drawingView.imageView setImage: originalImage];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 /* IBACTIONS FILE SUBVIEW */
 
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender 
@@ -239,13 +229,14 @@
 - (IBAction)buttonSaveTouchUpInsideHandler:(id)sender 
 {
     UIImage *image = [UIImage imageWithCGImage:self.drawingView.imageView.image.CGImage];
-    NSData *imageData = UIImagePNGRepresentation ( image ); 
+    NSData *imageData = UIImagePNGRepresentation(image); 
     UIImage *imagePNG = [UIImage imageWithData:imageData];
     
     UIImageWriteToSavedPhotosAlbum(imagePNG, nil, nil, nil);
 }
 
-- (IBAction)buttonPullTouchUpInsideHandler:(id)sender 
+
+- (IBAction)buttonOpenTouchUpInsideHandler:(id)sender 
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -256,9 +247,26 @@
     [self presentModalViewController:imagePicker animated:YES];
 }
 
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+    
+    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+//    originalImage.accessibilityFrame
+  
+    NSLog(@"frame %f %f", originalImage.size.width, originalImage.size.height);
+    
+//    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, originalImage.size.width, originalImage.size.height)] withAnimation:NO];
+    
+    [self.drawingView.imageView setImage: originalImage];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
 - (IBAction)buttonNewTouchUpInsideHandler:(id)sender 
 {   
-    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 400, 200)]];
+//    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 400, 200)]];
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clear image" 
                                                   message:@"Are you sure you want to clear your image?" 
@@ -431,8 +439,30 @@
 
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
+    [self centerImageWithAnimation:YES];
+}
+
+- (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
+{    
+    CGRect drawingViewFrame = rectangle.CGRectValue;
+ 
+    self.drawingView.frame = drawingViewFrame;
+    self.drawingView.contentSize = drawingViewFrame.size;
+    self.scrollView.contentSize = drawingViewFrame.size;
+    
+    NSLog(@"frame.width %f", self.drawingView.frame.size.width);
+    
+//    [self centerImageWithAnimation:NO];
+}
+
+- (void)centerImageWithAnimation:(BOOL)animation
+{
+    NSLog(@"centerImageWithAnimation %i", animation);
+    
     CGSize boundsSize = self.scrollView.bounds.size;
     CGRect frameToCenter = self.drawingView.frame;
+ 
+    NSLog(@"frameToCenter %f %f", frameToCenter.origin.x, frameToCenter.origin.y);
     
     // center horizontally
     if (frameToCenter.size.width < boundsSize.width)
@@ -445,26 +475,18 @@
         frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
     else
         frameToCenter.origin.y = 0;
-    
-    [UIView beginAnimations:@"animation0" context:NULL];
-    [UIView setAnimationDuration:ANIMATION_REPOSITION];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    
+
+    if(animation)
+    {
+        [UIView beginAnimations:@"animation0" context:NULL];
+        [UIView setAnimationDuration:ANIMATION_REPOSITION];
+        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    }
+        
     self.drawingView.frame = frameToCenter;
     
-    [UIView commitAnimations];
-}
-
-- (void)changeDrawingFrame:(NSValue *)rectangle
-{    
-    CGRect drawingViewFrame = rectangle.CGRectValue;
- 
-    [self.drawingView setCenter:CGPointMake(drawingViewFrame.size.width * .5, drawingViewFrame.size.height * .5)];
-    
-    [self.drawingView setFrame:drawingViewFrame];
-    self.scrollView.contentSize = drawingViewFrame.size;
-    
-    [self scrollViewDidEndZooming:nil withView:nil atScale:1];
+    if(animation) 
+        [UIView commitAnimations];
 }
 
 /* REVIEW

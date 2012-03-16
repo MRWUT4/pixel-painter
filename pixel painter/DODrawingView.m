@@ -19,6 +19,7 @@
 @synthesize imageView = _imageView;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize mode = _mode;
+@synthesize contentSize = _contentSize;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -33,6 +34,8 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
+        
+        self.contentSize = self.frame.size;
     }
     
     return self;
@@ -54,30 +57,37 @@
     [self modeAction:touches];    
 }
 
+/* MODEACTION */
+
 - (void)modeAction:(NSSet *)touches
 {
     if(!self.scrollEnabled) 
     {
-        switch (self.mode) 
+        self.touchPosition = [[touches anyObject] locationInView:self];
+        self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
+        
+        NSLog(@"width %f", self.frame.size.width);
+        
+        if(self.touchPosition.x < self.contentSize.width && self.touchPosition.y < self.contentSize.height)
         {
-            case STATE_DRAWING:
-                [self drawAtTouches:touches];
-                break;
-            case STATE_PICKING:
-                [self pickColorAtTouches:touches];
-                break;
-            case STATE_ERASING:
-                [self clearAtTouches:touches];
-                break;
+            switch(self.mode) 
+            {
+                case STATE_DRAWING:
+                    [self drawAtPosition];
+                    break;
+                case STATE_PICKING:
+                    [self pickColorAtPosition];
+                    break;
+                case STATE_ERASING:
+                    [self clearAtPosition];
+                    break;
+            }
         }
     }
 }
 
-- (void)drawAtTouches:(NSSet*)touches
-{
-    self.touchPosition = [[touches anyObject] locationInView:self];
-    self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
-    
+- (void)drawAtPosition
+{    
     UIGraphicsBeginImageContext(self.imageView.frame.size);
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
@@ -92,19 +102,13 @@
     UIGraphicsEndImageContext();
 }
 
-- (void)clearAtTouches:(NSSet*)touches
+- (void)clearAtPosition
 {
-    self.touchPosition = [[touches anyObject] locationInView:self];
-    self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
-    
     [self clearViewFrame:[NSValue valueWithCGRect:CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1)]];
 }
 
-- (void)pickColorAtTouches:(NSSet*)touches
+- (void)pickColorAtPosition
 {    
-    self.touchPosition = [[touches anyObject] locationInView:self];
-    self.touchPosition = CGPointMake((int) (self.touchPosition.x / 1), (int) (self.touchPosition.y / 1));
-    
     UIColor *pickedColor = [self.imageView getPixelColorAtLocation:self.touchPosition];
     
     if(CGColorGetAlpha(pickedColor.CGColor) != 0)
@@ -117,6 +121,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_ERASE_PICKED object:self];
     }
 }
+
+/* CLEARVIEW */
 
 - (void)clearCompleteView
 {
