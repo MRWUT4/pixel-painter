@@ -15,11 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Hhk-gl-51F">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="Hhk-gl-51F">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="scaleToFill" id="RqU-9j-0H1" customClass="DODrawingView">
+                                    <view opaque="NO" contentMode="redraw" id="RqU-9j-0H1" customClass="DODrawingView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -162,7 +162,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <view tag="1" contentMode="scaleToFill" id="sI3-oz-yoE">
+                                            <view tag="1" contentMode="scaleAspectFit" id="sI3-oz-yoE">
                                                 <rect key="frame" x="16" y="16" width="176" height="240"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -316,19 +316,21 @@
                                                 <rect key="frame" x="13" y="340" width="116" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="textSizeEditingDidBegin:" destination="ikY-xe-xmH" eventType="editingDidBegin" id="b8b-SN-sCP"/>
                                                     <action selector="textSizeWidthDidEndOnExitHandler:" destination="ikY-xe-xmH" eventType="editingDidEndOnExit" id="N6d-b1-ylI"/>
+                                                    <action selector="textSizeWidthDidEndOnExitHandler:" destination="uQC-UH-wGO" eventType="editingDidEnd" id="hFX-4c-c91"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="240 px" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="bV7-lw-O3g">
                                                 <rect key="frame" x="13" y="379" width="116" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="textSizeEditingDidBegin:" destination="ikY-xe-xmH" eventType="editingDidBegin" id="ieT-SK-Dha"/>
+                                                    <action selector="textSizeHeightDidEndOnExitHandler:" destination="uQC-UH-wGO" eventType="editingDidEnd" id="16Y-NM-Ys0"/>
                                                     <action selector="textSizeHeightDidEndOnExitHandler:" destination="ikY-xe-xmH" eventType="editingDidEndOnExit" id="NzO-Yh-PMp"/>
                                                 </connections>
                                             </textField>
@@ -450,6 +452,61 @@
         <image name="rIconPull.png" width="366" height="128"/>
         <image name="rIconSave.png" width="365" height="128"/>
     </resources>
+    <classes>
+        <class className="DOColorPickerView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
+        </class>
+        <class className="DOColorPreviewView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
+        </class>
+        <class className="DODrawingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
+        </class>
+        <class className="DOFileSettingsView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
+        </class>
+        <class className="DONavigationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
+        </class>
+        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonNewTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonOpenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonResizeTouchUpInsideHandler:"/>
+                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
+                <relationship kind="action" name="sliderBrightnessDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderHueTouchDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderSaturationTouchDragInsideHandler:" candidateClass="UISlider"/>
+                <relationship kind="action" name="textSizeEditingDidBegin:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textSizeHeightDidEndOnExitHandler:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textSizeWidthDidEndOnExitHandler:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
+                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
+                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
+                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textHeight" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textWidth" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

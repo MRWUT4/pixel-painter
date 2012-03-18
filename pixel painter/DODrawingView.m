@@ -33,6 +33,10 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
+        
+        NSLog(@"x %f %f", self.imageView.bounds.origin.x, self.imageView.bounds.size.width);
+        
+//        self.imageView.contentMode = UIViewContentModeCenter;
     }
     
     return self;

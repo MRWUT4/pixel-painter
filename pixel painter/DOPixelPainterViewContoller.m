@@ -404,10 +404,13 @@
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
 {
-    //DEBUG
-//    [self.textWidth resignFirstResponder];
+    [self.containerView endEditing:YES];
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.containerView endEditing:YES];    
+}
 
 
 
@@ -544,11 +547,37 @@
     
     CGRect drawingViewFrame = rectangle.CGRectValue;
  
-    self.drawingView.imageView.center = CGPointMake(drawingViewFrame.size.width * .5, drawingViewFrame.size.height * .5);
-    self.drawingView.imageView.bounds = drawingViewFrame;
+//    self.drawingView.imageView.center = CGPointMake(floorf(drawingViewFrame.size.width * .5), floorf(drawingViewFrame.size.height * .5));
+
+    self.drawingView.bounds = drawingViewFrame;
+    
+    CGImageRef croppedImage = CGImageCreateWithImageInRect([self.drawingView.imageView.image CGImage], drawingViewFrame);
+    
+//    UIImageView *myImageView = [[UIImageView alloc] initWithFrame:cropRect];
+//    [myImageView setImage:[UIImage imageWithCGImage:croppedImage]]; 
+  
+//    UIImageView *myImageView = [[UIImageView alloc] initWithFrame:drawingViewFrame];
+//    [myImageView setImage:[UIImage imageWithCGImage:croppedImage]];     
+
+    [self.drawingView.imageView setImage:[UIImage imageWithCGImage:croppedImage]];
+    
+//    self.drawingView.imageView.bounds = drawingViewFrame;
+
     self.drawingView.frame = drawingViewFrame;
     
     [self centerImageWithAnimation:NO];
+    
+    /*
+     UIImage *myImage = [UIImage imageNamed:@"photo.png"];
+     
+     CGRect cropRect = CGRectMake(0.0, 0.0, 320.0, 44.0));
+     CGImageRef croppedImage = CGImageCreateWithImageInRect([myImage CGImage], cropRect);
+     
+     UIImageView *myImageView = [[UIImageView alloc] initWithFrame:cropRect];
+     [myImageView setImage:[UIImage imageWithCGImage:croppedImage]]; 
+     
+     CGImageRelease(croppedImage);
+     */
 }
 
 - (void)centerImageWithAnimation:(BOOL)animation
