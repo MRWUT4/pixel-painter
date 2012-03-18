@@ -28,8 +28,11 @@
 @synthesize buttonPicker = _buttonPicker;
 @synthesize subsiteButtonList = _subsiteButtonList;
 @synthesize applicationButtonList = _applicationButtonList;
+@synthesize containerView = _containerView;
 @synthesize buttonPen = _buttonPen;
 @synthesize buttonErase = _buttonErase;
+@synthesize textWidth = _textWidth;
+@synthesize textHeight = _textHeight;
 
 
 
@@ -47,7 +50,8 @@
         self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
         self.model.applicationState = STATE_DRAWING;
         self.model.initialized = YES;
-        
+        self.model.width = 160;
+        self.model.height = 240;
         
         self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
         self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
@@ -56,16 +60,21 @@
         [self.subviewManager addSubview:self.fileSettingsView];
         [self.subviewManager hideAlleSubviews];
 
+        
+        //rewrite notification handling
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
-                
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+        
         self.scrollView.minimumZoomScale = 1;
         self.scrollView.maximumZoomScale = 50;
         self.scrollView.clipsToBounds = YES;
         self.scrollView.delegate = self;    
         
-        [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 160, 240)] withAnimation:NO];
         [self.scrollView setZoomScale:10 animated:NO];
     }
 }
@@ -91,7 +100,9 @@
         [_model addObserver:self forKeyPath:@"brightness" options:NSKeyValueObservingOptionNew context:@selector(brightness)];
         [_model addObserver:self forKeyPath:@"saturation" options:NSKeyValueObservingOptionNew context:@selector(saturation)];
         [_model addObserver:self forKeyPath:@"subsite" options:NSKeyValueObservingOptionNew context:@selector(subsite)];
-        [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];        
+        [_model addObserver:self forKeyPath:@"applicationState" options:NSKeyValueObservingOptionNew context:@selector(applicationState)];
+        [_model addObserver:self forKeyPath:@"width" options:NSKeyValueObservingOptionNew context:@selector(width)];
+        [_model addObserver:self forKeyPath:@"height" options:NSKeyValueObservingOptionNew context:@selector(height)];
     }
     
     return _model;
@@ -142,6 +153,58 @@
     {
         [self switchDrawingState:self.model.applicationState];
     }
+    else if(keyPath == @"width" || keyPath == @"height")
+    {
+        unsigned int width = self.model.width;
+        unsigned int height = self.model.height;
+        
+        if(width != 0 && height != 0)
+        {
+            self.textWidth = [NSString stringWithFormat:@"%i px", width];
+            self.textHeight = [NSString stringWithFormat:@"%i px", height];
+            
+            [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, width, height)] withAnimation:NO];
+        }
+        else if(width == 0)
+            self.model.width = 64;
+        else if(height == 0)
+            self.model.height = 64;
+    }
+}
+
+/* KEYBOARD ANIMATION */
+
+- (void)keyboardWillShow:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+        
+    CGRect containerFrame = self.containerView.frame;
+    containerFrame.origin.y = -kbSize.height;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.25];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    
+    self.containerView.frame = containerFrame;
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    CGRect containerFrame = self.containerView.frame;
+    containerFrame.origin.y = 0;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.25];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    
+    self.containerView.frame = containerFrame;
+    
+    [UIView commitAnimations];
 }
 
 /* NOTIFICATIONS */
@@ -275,8 +338,8 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clear image" 
                                                   message:@"Are you sure you want to clear your image?" 
                                                   delegate:self 
-                                                  cancelButtonTitle:@"YES"
-                                                  otherButtonTitles:@"NO",
+                                                  cancelButtonTitle:@"NO"
+                                                  otherButtonTitles:@"YES",
                                                   nil];
     alertView.tag = ALERTVIEW_CLEARDRAWINGVIEW;
     [alertView show];
@@ -318,6 +381,35 @@
 
 }
 
+/* IBACTIONS TEXTFIELD SIZE */
+
+- (IBAction)textSizeEditingDidBegin:(UITextField *)sender 
+{
+    sender.text = @"";
+}
+
+- (IBAction)textSizeWidthDidEndOnExitHandler:(UITextField *)sender 
+{
+    self.model.width = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+
+    sender.text = [NSString stringWithFormat:@"%i px", self.model.width];
+}
+
+- (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender 
+{
+    self.model.height = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+
+    sender.text = [NSString stringWithFormat:@"%i px", self.model.height];
+}
+
+- (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
+{
+    //DEBUG
+//    [self.textWidth resignFirstResponder];
+}
+
+
+
 
 
 /*
@@ -329,7 +421,7 @@
     switch (alertView.tag) 
     {
         case ALERTVIEW_CLEARDRAWINGVIEW:
-            //if(!buttonIndex) [self.drawingView clearCompleteView];            
+            if(YES) [self.drawingView clearCompleteView];            
             break;
     }
 }
@@ -454,12 +546,7 @@
  
     self.drawingView.imageView.center = CGPointMake(drawingViewFrame.size.width * .5, drawingViewFrame.size.height * .5);
     self.drawingView.imageView.bounds = drawingViewFrame;
-    
-//    self.drawingView.bounds = drawingViewFrame;
-    
     self.drawingView.frame = drawingViewFrame;
-    
-//    self.scrollView.contentSize = drawingViewFrame.size;
     
     [self centerImageWithAnimation:NO];
 }
@@ -528,6 +615,9 @@
     [self setButtonColor:nil];
     [self setButtonPicker:nil];
     [self setButtonErase:nil];
+    [self setTextWidth:nil];
+    [self setTextHeight:nil];
+    [self setContainerView:nil];
     [super viewDidUnload];
 }
 

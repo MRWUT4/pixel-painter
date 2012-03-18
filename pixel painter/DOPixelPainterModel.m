@@ -19,6 +19,8 @@
 @synthesize brightness = _brightness;
 @synthesize saturation = _saturation;
 @synthesize initialized = _initialized;
+@synthesize width = _width;
+@synthesize height = _height;
 
 - (void)setNavigationStatus:(unsigned int)navigationStatus
 {

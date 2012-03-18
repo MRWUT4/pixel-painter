@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
+        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,7 +267,7 @@
                                                     <action selector="buttonOpenTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="FnQ-TJ-jKK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Am-gm-E29">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Am-gm-E29">
                                                 <rect key="frame" x="12" y="76" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -281,7 +282,7 @@
                                                     <action selector="buttonSaveTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="Ysn-SG-fm5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W61-zU-lYo">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W61-zU-lYo">
                                                 <rect key="frame" x="12" y="140" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -296,7 +297,42 @@
                                                     <action selector="buttonNewTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="3nj-tV-PaX"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="OPEN" clearsOnBeginEditing="YES" minimumFontSize="17" id="jY5-Ow-3oP">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3LG-6m-DDT">
+                                                <rect key="frame" x="12" y="268" width="183" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="resize" image="rIconNewFile.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonResizeTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="7Ia-Rj-knG"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="160 px" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="xDm-B8-qtN">
+                                                <rect key="frame" x="13" y="340" width="116" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="textSizeEditingDidBegin:" destination="ikY-xe-xmH" eventType="editingDidBegin" id="b8b-SN-sCP"/>
+                                                    <action selector="textSizeWidthDidEndOnExitHandler:" destination="ikY-xe-xmH" eventType="editingDidEndOnExit" id="N6d-b1-ylI"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="240 px" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="bV7-lw-O3g">
+                                                <rect key="frame" x="13" y="379" width="116" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="textSizeEditingDidBegin:" destination="ikY-xe-xmH" eventType="editingDidBegin" id="ieT-SK-Dha"/>
+                                                    <action selector="textSizeHeightDidEndOnExitHandler:" destination="ikY-xe-xmH" eventType="editingDidEndOnExit" id="NzO-Yh-PMp"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="OPEN" clearsOnBeginEditing="YES" minimumFontSize="17" id="jY5-Ow-3oP">
                                                 <rect key="frame" x="75" y="31" width="172" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -318,8 +354,41 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="NEW FILE" clearsOnBeginEditing="YES" minimumFontSize="17" id="5bY-cW-jhe">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="NEW FILE" clearsOnBeginEditing="YES" minimumFontSize="17" id="5bY-cW-jhe">
                                                 <rect key="frame" x="75" y="158.5" width="172" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="RESIZE" clearsOnBeginEditing="YES" minimumFontSize="17" id="UNr-lI-POu">
+                                                <rect key="frame" x="75" y="286" width="172" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="WIDTH" clearsOnBeginEditing="YES" minimumFontSize="17" id="E2L-Ok-6KJ">
+                                                <rect key="frame" x="136" y="340" width="67" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="HEIGHT" clearsOnBeginEditing="YES" minimumFontSize="17" id="e8W-r8-sNX">
+                                                <rect key="frame" x="137" y="379" width="67" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -347,11 +416,14 @@
                         <outlet property="buttonPicker" destination="DtX-Od-4QE" id="jEO-iC-Dwp"/>
                         <outlet property="colorPickerView" destination="Mu0-8J-NR7" id="VO2-DW-7rk"/>
                         <outlet property="colorPreviewView" destination="8UL-3f-Mor" id="T90-kT-lhr"/>
+                        <outlet property="containerView" destination="1OL-yz-koi" id="5Hl-fw-RPE"/>
                         <outlet property="drawingView" destination="RqU-9j-0H1" id="Fq8-Ji-OwC"/>
                         <outlet property="fileSettingsView" destination="J09-qT-LtS" id="hFH-cW-0ri"/>
                         <outlet property="folderView" destination="srd-Qx-0Ji" id="DZh-YZ-e1l"/>
                         <outlet property="navigationView" destination="f0P-aM-3ak" id="MAw-Bj-YpY"/>
                         <outlet property="scrollView" destination="Hhk-gl-51F" id="rKU-wK-aeB"/>
+                        <outlet property="textHeight" destination="bV7-lw-O3g" id="0qx-E9-sdc"/>
+                        <outlet property="textWidth" destination="xDm-B8-qtN" id="N5e-7L-GmQ"/>
                     </connections>
                 </viewController>
             </objects>
@@ -378,54 +450,6 @@
         <image name="rIconPull.png" width="366" height="128"/>
         <image name="rIconSave.png" width="365" height="128"/>
     </resources>
-    <classes>
-        <class className="DOColorPickerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
-        </class>
-        <class className="DOColorPreviewView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
-        </class>
-        <class className="DODrawingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
-        </class>
-        <class className="DOFileSettingsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
-        </class>
-        <class className="DONavigationView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
-        </class>
-        <class className="DOPixelPainterViewContoller" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOPixelPainterViewContoller.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonColorTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonEraseTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonNewTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonOpenTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="sliderBrightnessDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderHueTouchDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderSaturationTouchDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonMove" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
-                <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
-                <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
-                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
-                <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

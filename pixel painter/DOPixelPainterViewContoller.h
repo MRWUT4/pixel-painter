@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) NSArray *applicationButtonList;
 
+@property (strong, nonatomic) IBOutlet UIView *containerView;
+
 @property (strong, nonatomic) IBOutlet DONavigationView *navigationView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *folderView;
@@ -56,6 +58,10 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonErase;
 
+@property (strong, nonatomic) IBOutlet UITextField *textWidth;
+
+@property (strong, nonatomic) IBOutlet UITextField *textHeight;
+
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender;
@@ -81,6 +87,14 @@
 - (IBAction)buttonNewTouchUpInsideHandler:(id)sender;
 
 - (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
+
+- (IBAction)textSizeEditingDidBegin:(UITextField *)sender;
+
+- (IBAction)textSizeWidthDidEndOnExitHandler:(UITextField *)sender;
+
+- (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender;
+
+- (IBAction)buttonResizeTouchUpInsideHandler:(id)sender;
 
 - (void)changeNavigationStatus:(NSNumber *)status;
 

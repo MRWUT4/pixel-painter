@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+static float const ANIMATION_KEYBOARD = .25;
 static float const ANIMATION_NAVIGATION = .4;
 static float const ANIMATION_REPOSITION = .3;
 
