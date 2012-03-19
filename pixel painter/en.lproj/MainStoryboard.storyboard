@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,7 +128,7 @@
                                         <rect key="frame" x="208" y="268" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="erase" image="rIconErase.png">
+                                        <state key="normal" title="erase" image="rIconEraseSelected.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -146,7 +145,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="move" image="rIconMoveSelected.png">
+                                        <state key="normal" title="move" image="rIconMoveActive.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -248,7 +247,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" id="J09-qT-LtS" customClass="DOFileSettingsView">
+                                    <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="J09-qT-LtS" customClass="DOFileSettingsView">
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -298,7 +297,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3LG-6m-DDT">
-                                                <rect key="frame" x="12" y="268" width="183" height="64"/>
+                                                <rect key="frame" x="12" y="396" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="resize" image="rIconNewFile.png">
@@ -312,8 +311,8 @@
                                                     <action selector="buttonResizeTouchUpInsideHandler:" destination="ikY-xe-xmH" eventType="touchUpInside" id="7Ia-Rj-knG"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="160 px" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="xDm-B8-qtN">
-                                                <rect key="frame" x="13" y="340" width="116" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="160 px" borderStyle="roundedRect" minimumFontSize="17" id="xDm-B8-qtN">
+                                                <rect key="frame" x="15" y="284" width="177" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -323,8 +322,8 @@
                                                     <action selector="textSizeWidthDidEndOnExitHandler:" destination="uQC-UH-wGO" eventType="editingDidEnd" id="hFX-4c-c91"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="240 px" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="bV7-lw-O3g">
-                                                <rect key="frame" x="13" y="379" width="116" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="240 px" borderStyle="roundedRect" minimumFontSize="17" id="bV7-lw-O3g">
+                                                <rect key="frame" x="15" y="349" width="177" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -368,7 +367,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="RESIZE" clearsOnBeginEditing="YES" minimumFontSize="17" id="UNr-lI-POu">
-                                                <rect key="frame" x="75" y="286" width="172" height="31"/>
+                                                <rect key="frame" x="75" y="414" width="172" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -379,7 +378,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="WIDTH" clearsOnBeginEditing="YES" minimumFontSize="17" id="E2L-Ok-6KJ">
-                                                <rect key="frame" x="136" y="340" width="67" height="31"/>
+                                                <rect key="frame" x="15" y="254" width="67" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -390,7 +389,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="HEIGHT" clearsOnBeginEditing="YES" minimumFontSize="17" id="e8W-r8-sNX">
-                                                <rect key="frame" x="137" y="379" width="67" height="31"/>
+                                                <rect key="frame" x="15" y="319" width="67" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -438,12 +437,10 @@
         <image name="rIconColor.png" width="128" height="128"/>
         <image name="rIconColorPicker.png" width="48" height="48"/>
         <image name="rIconColorSelected.png" width="128" height="128"/>
-        <image name="rIconErase.png" width="128" height="128"/>
         <image name="rIconEraseSelected.png" width="128" height="128"/>
         <image name="rIconFile.png" width="128" height="128"/>
         <image name="rIconFileSelected.png" width="128" height="128"/>
         <image name="rIconMoveActive.png" width="128" height="128"/>
-        <image name="rIconMoveSelected.png" width="128" height="128"/>
         <image name="rIconNewFile.png" width="366" height="128"/>
         <image name="rIconPen.png" width="128" height="128"/>
         <image name="rIconPenSelected.png" width="128" height="128"/>

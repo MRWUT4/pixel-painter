@@ -34,8 +34,6 @@
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
         
-        NSLog(@"x %f %f", self.imageView.bounds.origin.x, self.imageView.bounds.size.width);
-        
 //        self.imageView.contentMode = UIViewContentModeCenter;
     }
     
@@ -120,6 +118,36 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_ERASE_PICKED object:self];
     }
 }
+
+- (void)changeDrawingViewSize:(NSValue *)rectangle
+{
+    CGRect previousViewFrame = self.imageView.frame;
+    CGRect rectangleViewFrame = rectangle.CGRectValue;
+    CGRect viewFrame = rectangleViewFrame;
+    
+    
+    self.imageView.center = CGPointMake(floorf(rectangleViewFrame.size.width * .5), floorf(rectangleViewFrame.size.height * .5));
+    
+    CGImageRef croppedImage = CGImageCreateWithImageInRect([self.imageView.image CGImage], rectangleViewFrame);
+    
+    self.imageView.bounds = rectangleViewFrame;
+    self.bounds = rectangleViewFrame;
+    
+    if(previousViewFrame.size.width < rectangleViewFrame.size.width || previousViewFrame.size.height < rectangleViewFrame.size.height)
+        viewFrame = previousViewFrame;
+    
+    
+    UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    
+    CGContextDrawImage(cgContext, viewFrame, croppedImage);
+    CGContextFlush(UIGraphicsGetCurrentContext());
+    
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+
 
 /* CLEARVIEW */
 

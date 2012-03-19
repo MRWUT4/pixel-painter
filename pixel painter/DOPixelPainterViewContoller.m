@@ -390,15 +390,17 @@
 
 - (IBAction)textSizeWidthDidEndOnExitHandler:(UITextField *)sender 
 {
-    self.model.width = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
-
+    int input = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+    if(input != 0) self.model.width = input;
+    
     sender.text = [NSString stringWithFormat:@"%i px", self.model.width];
 }
 
 - (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender 
 {
-    self.model.height = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
-
+    int input = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];    
+    if(input != 0) self.model.height = input;
+    
     sender.text = [NSString stringWithFormat:@"%i px", self.model.height];
 }
 
@@ -544,40 +546,8 @@
 - (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
 {   
     [self.scrollView setZoomScale:1 animated:NO];
-    
-    CGRect drawingViewFrame = rectangle.CGRectValue;
- 
-//    self.drawingView.imageView.center = CGPointMake(floorf(drawingViewFrame.size.width * .5), floorf(drawingViewFrame.size.height * .5));
-
-    self.drawingView.bounds = drawingViewFrame;
-    
-    CGImageRef croppedImage = CGImageCreateWithImageInRect([self.drawingView.imageView.image CGImage], drawingViewFrame);
-    
-//    UIImageView *myImageView = [[UIImageView alloc] initWithFrame:cropRect];
-//    [myImageView setImage:[UIImage imageWithCGImage:croppedImage]]; 
-  
-//    UIImageView *myImageView = [[UIImageView alloc] initWithFrame:drawingViewFrame];
-//    [myImageView setImage:[UIImage imageWithCGImage:croppedImage]];     
-
-    [self.drawingView.imageView setImage:[UIImage imageWithCGImage:croppedImage]];
-    
-//    self.drawingView.imageView.bounds = drawingViewFrame;
-
-    self.drawingView.frame = drawingViewFrame;
-    
+    [self.drawingView changeDrawingViewSize:rectangle];
     [self centerImageWithAnimation:NO];
-    
-    /*
-     UIImage *myImage = [UIImage imageNamed:@"photo.png"];
-     
-     CGRect cropRect = CGRectMake(0.0, 0.0, 320.0, 44.0));
-     CGImageRef croppedImage = CGImageCreateWithImageInRect([myImage CGImage], cropRect);
-     
-     UIImageView *myImageView = [[UIImageView alloc] initWithFrame:cropRect];
-     [myImageView setImage:[UIImage imageWithCGImage:croppedImage]]; 
-     
-     CGImageRelease(croppedImage);
-     */
 }
 
 - (void)centerImageWithAnimation:(BOOL)animation
@@ -610,20 +580,7 @@
         [UIView commitAnimations];
 }
 
-/* REVIEW
- 
-- (void)positionTransform
-{
-    CGRect oldFrame = self.frame;
-    self.layer.anchorPoint = CGPointMake(1, 1);
-    self.frame = oldFrame;
 
-    oldFrame = self.frame;
-    self.layer.anchorPoint = CGPointMake(0.5,0.5);
-    self.frame = oldFrame;
-}
-
- */
 
 /* 
  * UIVIEW IMPLEMENTATION

@@ -25,4 +25,6 @@
 - (void)clearCompleteView;
 - (void)clearViewFrame:(NSValue *)rectangle;
 
+- (void)changeDrawingViewSize:(NSValue *)rectangle;
+
 @end
