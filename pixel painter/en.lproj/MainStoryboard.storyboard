@@ -128,7 +128,7 @@
                                         <rect key="frame" x="208" y="268" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="erase" image="rIconEraseSelected.png">
+                                        <state key="normal" title="erase" image="rIconErase.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -145,7 +145,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="move" image="rIconMoveActive.png">
+                                        <state key="normal" title="move" image="rIconMoveInactive.png">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -300,7 +300,7 @@
                                                 <rect key="frame" x="12" y="396" width="183" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="resize" image="rIconNewFile.png">
+                                                <state key="normal" title="resize" image="rIconResize.png">
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -437,16 +437,19 @@
         <image name="rIconColor.png" width="128" height="128"/>
         <image name="rIconColorPicker.png" width="48" height="48"/>
         <image name="rIconColorSelected.png" width="128" height="128"/>
+        <image name="rIconErase.png" width="128" height="128"/>
         <image name="rIconEraseSelected.png" width="128" height="128"/>
         <image name="rIconFile.png" width="128" height="128"/>
         <image name="rIconFileSelected.png" width="128" height="128"/>
         <image name="rIconMoveActive.png" width="128" height="128"/>
+        <image name="rIconMoveInactive.png" width="128" height="128"/>
         <image name="rIconNewFile.png" width="366" height="128"/>
         <image name="rIconPen.png" width="128" height="128"/>
         <image name="rIconPenSelected.png" width="128" height="128"/>
         <image name="rIconPicker.png" width="128" height="128"/>
         <image name="rIconPickerSelected.png" width="128" height="128"/>
         <image name="rIconPull.png" width="366" height="128"/>
+        <image name="rIconResize.png" width="366" height="128"/>
         <image name="rIconSave.png" width="365" height="128"/>
     </resources>
     <classes>
