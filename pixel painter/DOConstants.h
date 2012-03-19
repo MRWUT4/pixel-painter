@@ -11,6 +11,9 @@
 static float const ANIMATION_KEYBOARD = .25;
 static float const ANIMATION_NAVIGATION = .4;
 static float const ANIMATION_REPOSITION = .3;
+static float const ZOOM_STEP = 2;
+static float const ZOOM_SCALE_MINIMUM = 1;
+static float const ZOOM_SCALE_MAXIMUM = 50;
 
 static NSString * const NOTIFICATION_COLOR_PICKED = @"NOTIFICATION_COLOR_PICKED";
 static NSString * const NOTIFICATION_COLOR_GRADIENT_PICKED = @"NOTIFICATION_COLOR_GRADIENT_PICKED";

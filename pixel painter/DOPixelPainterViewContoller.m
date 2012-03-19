@@ -69,9 +69,16 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+
         
-        self.scrollView.minimumZoomScale = 1;
-        self.scrollView.maximumZoomScale = 50;
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+        
+        [doubleTap setNumberOfTapsRequired:2];
+        [self.drawingView addGestureRecognizer:doubleTap];
+        
+        
+        self.scrollView.minimumZoomScale = ZOOM_SCALE_MINIMUM;
+        self.scrollView.maximumZoomScale = ZOOM_SCALE_MAXIMUM;
         self.scrollView.clipsToBounds = YES;
         self.scrollView.delegate = self;    
         
@@ -538,10 +545,17 @@
     return self.drawingView;
 }
 
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    [self centerImageWithAnimation:NO];
+}
+
+/*
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
     [self centerImageWithAnimation:YES];
 }
+*/
 
 - (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
 {   
@@ -578,6 +592,34 @@
     
     if(animation) 
         [UIView commitAnimations];
+}
+
+- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer 
+{
+    // double tap zooms in
+    float newScale = [self.scrollView zoomScale] * ZOOM_STEP;
+    
+    newScale = newScale >= ZOOM_SCALE_MAXIMUM ? 1 : newScale;
+    
+    CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+    [self.scrollView zoomToRect:zoomRect animated:YES];
+}
+
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center 
+{
+    CGRect zoomRect;
+    
+    // the zoom rect is in the content view's coordinates. 
+    //    At a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
+    //    As the zoom scale decreases, so more content is visible, the size of the rect grows.
+    zoomRect.size.height = [self.scrollView frame].size.height / scale;
+    zoomRect.size.width  = [self.scrollView frame].size.width  / scale;
+    
+    // choose an origin so as to get the right center.
+    zoomRect.origin.x    = center.x - (zoomRect.size.width  / 2.0);
+    zoomRect.origin.y    = center.y - (zoomRect.size.height / 2.0);
+    
+    return zoomRect;
 }
 
 

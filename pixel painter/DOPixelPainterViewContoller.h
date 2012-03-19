@@ -108,4 +108,6 @@
 
 - (void)centerImageWithAnimation:(BOOL)animation;
 
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
+
 @end
