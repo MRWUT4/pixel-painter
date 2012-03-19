@@ -58,6 +58,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonErase;
 
+@property (strong, nonatomic) IBOutlet UIButton *buttonPosition;
+
 @property (strong, nonatomic) IBOutlet UITextField *textWidth;
 
 @property (strong, nonatomic) IBOutlet UITextField *textHeight;
@@ -79,6 +81,8 @@
 - (IBAction)buttonEraseTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonPenTouchUpInsideHandler:(id)sender;
+
+- (IBAction)buttonPositionTouchUpInsideHandler:(id)sender;
 
 - (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender;
 

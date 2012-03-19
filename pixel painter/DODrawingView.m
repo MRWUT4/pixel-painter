@@ -15,6 +15,7 @@
 
 
 @synthesize color = _color;
+@synthesize touchDown = _touchDown;
 @synthesize touchPosition = _touchPosition;
 @synthesize imageView = _imageView;
 @synthesize scrollEnabled = _scrollEnabled;
@@ -48,6 +49,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    self.touchDown = [[touches anyObject] locationInView:self];
+    self.touchDown = CGPointMake((int) (self.touchDown.x / 1), (int) (self.touchDown.y / 1));
+    
     [self modeAction:touches];
 }
 
@@ -77,6 +81,9 @@
                     break;
                 case STATE_ERASING:
                     [self clearAtPosition];
+                    break;
+                case STATE_POSITION:
+                    [self moveImageToPosition];
                     break;
             }
         }
@@ -150,6 +157,31 @@
     UIGraphicsEndImageContext();
 }
 
+- (void)moveImageToPosition
+{
+    CGRect viewFrame = self.imageView.bounds;    
+    CGRect positionFrame = viewFrame;
+        
+    positionFrame.origin.x = self.touchPosition.x - self.touchDown.x;
+    positionFrame.origin.y = (self.touchPosition.y - self.touchDown.y) * -1;
+    
+    CGImageRef croppedImage = self.imageView.image.CGImage;  
+    
+    UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(cgContext, 0, self.imageView.frame.size.height);
+    CGContextScaleCTM(cgContext, 1.0, -1.0);
+    
+    CGContextDrawImage(cgContext, positionFrame, croppedImage);
+    CGContextFlush(UIGraphicsGetCurrentContext());
+    
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.touchDown =  self.touchPosition;
+}
 
 /* CLEARVIEW */
 

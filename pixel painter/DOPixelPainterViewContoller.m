@@ -31,6 +31,7 @@
 @synthesize containerView = _containerView;
 @synthesize buttonPen = _buttonPen;
 @synthesize buttonErase = _buttonErase;
+@synthesize buttonPosition = _buttonPosition;
 @synthesize textWidth = _textWidth;
 @synthesize textHeight = _textHeight;
 
@@ -53,7 +54,7 @@
         self.model.height = 240;
         
         self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
-        self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, nil];
+        self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
         
         [self.subviewManager addSubview:self.colorPickerView];
         [self.subviewManager addSubview:self.fileSettingsView];
@@ -272,6 +273,11 @@
 - (IBAction)buttonPenTouchUpInsideHandler:(id)sender 
 {
     self.model.applicationState = STATE_DRAWING;
+}
+
+- (IBAction)buttonPositionTouchUpInsideHandler:(id)sender 
+{
+    self.model.applicationState = STATE_POSITION;
 }
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender 
@@ -561,6 +567,11 @@
             self.buttonErase.selected = YES;
             self.drawingView.mode = STATE_ERASING;
             break;
+            
+        case STATE_POSITION:
+            self.buttonPosition.selected = YES;
+            self.drawingView.mode = STATE_POSITION;            
+            break;
     }
 }
 
@@ -682,6 +693,7 @@
     [self setTextWidth:nil];
     [self setTextHeight:nil];
     [self setContainerView:nil];
+    [self setButtonPosition:nil];
     [super viewDidUnload];
 }
 

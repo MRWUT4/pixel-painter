@@ -12,6 +12,7 @@
 
 @property(strong, nonatomic) UIColor *color;
 
+@property (nonatomic, assign) CGPoint touchDown;
 @property (nonatomic, assign) CGPoint touchPosition;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) BOOL scrollEnabled;
@@ -20,6 +21,7 @@
 - (void)drawAtPosition;
 - (void)clearAtPosition;
 - (void)pickColorAtPosition;
+- (void)moveImageToPosition;
 
 - (void)modeAction:(NSSet *)touches;
 - (void)clearCompleteView;
