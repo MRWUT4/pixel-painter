@@ -50,8 +50,8 @@
         self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
         self.model.applicationState = STATE_DRAWING;
         self.model.initialized = YES;
-        self.model.width = 160;
-        self.model.height = 240;
+        self.model.width = 320;
+        self.model.height = 480;
         
         self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
         self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
@@ -86,7 +86,7 @@
         self.scrollView.clipsToBounds = YES;
         self.scrollView.delegate = self;    
         
-        [self.scrollView setZoomScale:10 animated:NO];
+        [self.scrollView setZoomScale:20 animated:NO];
     }
 }
 
@@ -169,23 +169,12 @@
     }
     else if(keyPath == @"width" || keyPath == @"height")
     {
-        unsigned int width = self.model.width;
-        unsigned int height = self.model.height;
-        
-        if(width == 0)
-            self.model.width = 550;
-        else if(height == 0)
-            self.model.height = 400;
-        else if(width > MAX_DRAWING_SIZE)
-            self.model.width = MAX_DRAWING_SIZE;
-        else if(height > MAX_DRAWING_SIZE)
-            self.model.height = MAX_DRAWING_SIZE;
-        else if(width != 0 && height != 0 )
+        if(self.model.width != 0 && self.model.height != 0)
         {
-            self.textWidth = [NSString stringWithFormat:@"%i px", width];
-            self.textHeight = [NSString stringWithFormat:@"%i px", height];
+            self.textWidth.text = [NSString stringWithFormat:@"%i px", self.model.width];
+            self.textHeight.text = [NSString stringWithFormat:@"%i px", self.model.height];
             
-            [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, width, height)] withAnimation:NO];
+            [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, self.model.width, self.model.height)] withAnimation:NO];
         }
     }
 }
@@ -348,8 +337,11 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
-    
+
     UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    self.model.width = originalImage.size.width;
+    self.model.height = originalImage.size.height;
     
     [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, originalImage.size.width, originalImage.size.height)] withAnimation:NO];
     
@@ -418,7 +410,7 @@
     int input = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
     if(input != 0) self.model.width = input;
     
-    sender.text = [NSString stringWithFormat:@"%i px", self.model.width];
+    sender.text = [NSString stringWithFormat:@"%i px", self.model.width];    
 }
 
 - (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender 

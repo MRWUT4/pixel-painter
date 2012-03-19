@@ -34,8 +34,6 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
-        
-//        self.imageView.contentMode = UIViewContentModeCenter;
     }
     
     return self;
