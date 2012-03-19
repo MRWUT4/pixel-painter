@@ -64,7 +64,6 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 
@@ -74,11 +73,11 @@
         [doubleTap setNumberOfTapsRequired:2];
         [self.drawingView addGestureRecognizer:doubleTap];
 
-        UITapGestureRecognizer *doubleTapMove = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapMove:)];
+        UITapGestureRecognizer *doubleTapZoomOut = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapZoomOut:)];
         
-        doubleTapMove.cancelsTouchesInView = NO;
-        [doubleTapMove setNumberOfTapsRequired:2];
-        [self.buttonMove addGestureRecognizer:doubleTapMove];
+        [doubleTapZoomOut setNumberOfTapsRequired:2];
+        [doubleTapZoomOut setNumberOfTouchesRequired:2];
+        [self.drawingView addGestureRecognizer:doubleTapZoomOut];
         
         
         self.scrollView.minimumZoomScale = ZOOM_SCALE_MINIMUM;
@@ -107,6 +106,7 @@
     if(!_model) 
     {
         _model = [[DOPixelPainterModel alloc] init];
+        
         [_model addObserver:self forKeyPath:@"navigationStatus" options:NSKeyValueObservingOptionNew context:@selector(navigationStatus)];
         [_model addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:@selector(color)];
         [_model addObserver:self forKeyPath:@"hue" options:NSKeyValueObservingOptionNew context:@selector(hue)];
@@ -124,7 +124,7 @@
 
 
 /* 
- * OBSERVER IMPLEMENTATION
+ * MODEL OBSERVER IMPLEMENTATION
  */
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -171,18 +171,51 @@
         unsigned int width = self.model.width;
         unsigned int height = self.model.height;
         
-        if(width != 0 && height != 0)
+        if(width == 0)
+            self.model.width = 550;
+        else if(height == 0)
+            self.model.height = 400;
+        else if(width > MAX_DRAWING_SIZE)
+            self.model.width = MAX_DRAWING_SIZE;
+        else if(height > MAX_DRAWING_SIZE)
+            self.model.height = MAX_DRAWING_SIZE;
+        else if(width != 0 && height != 0 )
         {
             self.textWidth = [NSString stringWithFormat:@"%i px", width];
             self.textHeight = [NSString stringWithFormat:@"%i px", height];
             
             [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, width, height)] withAnimation:NO];
         }
-        else if(width == 0)
-            self.model.width = 64;
-        else if(height == 0)
-            self.model.height = 64;
     }
+}
+
+
+
+/*
+ * NOTIFICATION CENTER
+ */
+
+- (void)colorPickedNotificationHandler:(NSNotification*)notification
+{
+    self.model.color = self.colorPickerView.color;
+    self.model.hue = self.colorPickerView.color.hue;
+    self.model.brightness = self.colorPickerView.color.brightness;
+    self.model.saturation = self.colorPickerView.color.saturation;
+    self.model.applicationState = STATE_DRAWING;
+}
+
+- (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
+{
+    self.model.color = self.drawingView.color;
+    self.model.hue = self.colorPickerView.color.hue;
+    self.model.brightness = self.colorPickerView.color.brightness;
+    self.model.saturation = self.colorPickerView.color.saturation;
+    self.model.applicationState = STATE_DRAWING;
+}
+
+- (void)colorDrawingViewEraseNotificationHandler:(NSNotification*)notification
+{
+    self.model.applicationState = STATE_ERASING;
 }
 
 /* KEYBOARD ANIMATION */
@@ -218,31 +251,6 @@
     self.containerView.frame = containerFrame;
     
     [UIView commitAnimations];
-}
-
-/* NOTIFICATIONS */
-
-- (void)colorPickedNotificationHandler:(NSNotification*)notification
-{
-    self.model.color = self.colorPickerView.color;
-    self.model.hue = self.colorPickerView.color.hue;
-    self.model.brightness = self.colorPickerView.color.brightness;
-    self.model.saturation = self.colorPickerView.color.saturation;
-    self.model.applicationState = STATE_DRAWING;
-}
-
-- (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
-{
-    self.model.color = self.drawingView.color;
-    self.model.hue = self.colorPickerView.color.hue;
-    self.model.brightness = self.colorPickerView.color.brightness;
-    self.model.saturation = self.colorPickerView.color.saturation;
-    self.model.applicationState = STATE_DRAWING;
-}
-
-- (void)colorDrawingViewEraseNotificationHandler:(NSNotification*)notification
-{
-    self.model.applicationState = STATE_ERASING;
 }
 
 
@@ -346,8 +354,6 @@
 
 - (IBAction)buttonNewTouchUpInsideHandler:(id)sender 
 {   
-//    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, 400, 200)]];
-    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clear image" 
                                                   message:@"Are you sure you want to clear your image?" 
                                                   delegate:self 
@@ -419,12 +425,18 @@
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
 {
-    [self.containerView endEditing:YES];
+    [self buttonSizeTouchEndedHandler];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.containerView endEditing:YES];    
+    [self buttonSizeTouchEndedHandler];
+}
+
+- (void)buttonSizeTouchEndedHandler
+{
+    [self.containerView endEditing:YES];
+    [self.scrollView setZoomScale:1 animated:NO];    
 }
 
 
@@ -555,7 +567,7 @@
 
 
 /* 
- * SCROLL VIEW PROTOCOL IMPLEMENTATION
+ * SCROLL VIEW IMPLEMENTATION
  */
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -567,13 +579,6 @@
 {
     [self centerImageWithAnimation:NO];
 }
-
-/*
--(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    [self centerImageWithAnimation:YES];
-}
-*/
 
 - (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
 {   
@@ -615,19 +620,25 @@
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer 
 {
-    // double tap zooms in
-    float newScale = [self.scrollView zoomScale] * ZOOM_STEP;
-    
-    newScale = newScale >= ZOOM_SCALE_MAXIMUM ? 1 : newScale;
-    
-    CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-    [self.scrollView zoomToRect:zoomRect animated:YES];
+    if(self.model.applicationState == STATE_MOVING)
+    { 
+        // double tap zooms in
+        float newScale = [self.scrollView zoomScale] * ZOOM_STEP;
+        
+        newScale = newScale >= ZOOM_SCALE_MAXIMUM ? 1 : newScale;
+        
+        CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+        [self.scrollView zoomToRect:zoomRect animated:YES];
+    }
 }
 
-- (void)handleDoubleTapMove:(UIGestureRecognizer *)gestureRecognizer 
+- (void)handleDoubleTapZoomOut:(UIGestureRecognizer *)gestureRecognizer 
 {
-    CGRect zoomRect = [self zoomRectForScale:1 withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
-    [self.scrollView zoomToRect:zoomRect animated:YES];
+    if(self.model.applicationState == STATE_MOVING && self.scrollView.zoomScale != 1)
+    {
+        CGRect zoomRect = [self zoomRectForScale:1 withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+        [self.scrollView zoomToRect:zoomRect animated:YES];
+    }
 }
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center 

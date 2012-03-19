@@ -125,8 +125,7 @@
     CGRect rectangleViewFrame = rectangle.CGRectValue;
     CGRect viewFrame = rectangleViewFrame;
     
-    
-    self.imageView.center = CGPointMake(floorf(rectangleViewFrame.size.width * .5), floorf(rectangleViewFrame.size.height * .5));
+    self.imageView.center = CGPointMake(rectangleViewFrame.size.width * .5, rectangleViewFrame.size.height * .5);
     
     CGImageRef croppedImage = CGImageCreateWithImageInRect([self.imageView.image CGImage], rectangleViewFrame);
     
@@ -141,6 +140,9 @@
     
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
     
+    CGContextTranslateCTM(cgContext, 0, self.imageView.frame.size.height);
+    CGContextScaleCTM(cgContext, 1.0, -1.0);
+    
     CGContextDrawImage(cgContext, viewFrame, croppedImage);
     CGContextFlush(UIGraphicsGetCurrentContext());
     
@@ -153,7 +155,7 @@
 
 - (void)clearCompleteView
 {
-    [self clearViewFrame:[NSValue valueWithCGRect:self.imageView.frame]];
+    [self clearViewFrame:[NSValue valueWithCGRect:self.imageView.bounds]];
 }
 
 - (void)clearViewFrame:(NSValue *)rectangle

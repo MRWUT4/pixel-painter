@@ -108,6 +108,8 @@
 
 - (void)centerImageWithAnimation:(BOOL)animation;
 
+- (void)buttonSizeTouchEndedHandler;
+
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
 
 @end
