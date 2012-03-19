@@ -40,9 +40,8 @@
 {   
     if(!self.model.initialized)
     {
-        [self.navigationView setFrame:CGRectMake(NAVIGATION_POSITION_NAVIGATION, 0, self.navigationView.frame.size.width, self.navigationView.frame.size.height)];
-        [self.navigationView setNeedsDisplay];
-        
+        [self changeNavigationStatus:[NSNumber numberWithInt:NAVIGATION_STATUS_NAVIGATION] withAnimation:NO];
+           
         self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
         self.model.hue = INIT_HUE;
         self.model.saturation = INIT_SATURATION;
@@ -62,7 +61,6 @@
 
         
         //rewrite notification handling
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
@@ -75,6 +73,12 @@
         
         [doubleTap setNumberOfTapsRequired:2];
         [self.drawingView addGestureRecognizer:doubleTap];
+
+        UITapGestureRecognizer *doubleTapMove = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapMove:)];
+        
+        doubleTapMove.cancelsTouchesInView = NO;
+        [doubleTapMove setNumberOfTapsRequired:2];
+        [self.buttonMove addGestureRecognizer:doubleTapMove];
         
         
         self.scrollView.minimumZoomScale = ZOOM_SCALE_MINIMUM;
@@ -85,6 +89,8 @@
         [self.scrollView setZoomScale:10 animated:NO];
     }
 }
+
+
 
 /* 
  * GETTER / SETTER
@@ -125,7 +131,7 @@
 {
     if(keyPath == @"navigationStatus") 
     {
-        [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"]];
+        [self changeNavigationStatus: (NSNumber *)[change valueForKey:@"new"] withAnimation:YES];
     }
     else if(keyPath == @"color")
     {
@@ -460,10 +466,11 @@
     }
 }
 
-- (void)changeNavigationStatus:(NSNumber *)status
+- (void)changeNavigationStatus:(NSNumber *)status withAnimation:(BOOL)animation
 {    
     CGRect navigationFrame = self.navigationView.frame;
-    
+    CGRect scrollViewFrame = self.scrollView.frame;
+
     switch([status intValue]) 
     {
         case NAVIGATION_STATUS_CLOSED:
@@ -484,13 +491,24 @@
             break;
     }
     
-    [UIView beginAnimations:@"animation0" context:NULL];
-    [UIView setAnimationDuration:ANIMATION_NAVIGATION];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    int flapWidth = self.containerView.frame.size.width + navigationFrame.origin.x - 48;
+        
+    scrollViewFrame.origin.x = flapWidth;
+    scrollViewFrame.size.width = self.containerView.frame.size.width - flapWidth;
+    
+    if(animation)
+    {
+        [UIView beginAnimations:@"animation0" context:NULL];
+        [UIView setAnimationDuration:ANIMATION_NAVIGATION];
+        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    }    
     
     [self.navigationView setFrame:navigationFrame];
+    [self.scrollView setFrame:scrollViewFrame];
+    [self centerImageWithAnimation:NO];
     
-    [UIView commitAnimations];
+    if(animation)
+        [UIView commitAnimations];
 }
 
 - (void)unSelectButtonList:(NSArray *)list;
@@ -567,6 +585,7 @@
 - (void)centerImageWithAnimation:(BOOL)animation
 {
     CGSize boundsSize = self.scrollView.bounds.size;
+    
     CGRect frameToCenter = self.drawingView.frame;
  
     // center horizontally
@@ -602,6 +621,12 @@
     newScale = newScale >= ZOOM_SCALE_MAXIMUM ? 1 : newScale;
     
     CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
+    [self.scrollView zoomToRect:zoomRect animated:YES];
+}
+
+- (void)handleDoubleTapMove:(UIGestureRecognizer *)gestureRecognizer 
+{
+    CGRect zoomRect = [self zoomRectForScale:1 withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
     [self.scrollView zoomToRect:zoomRect animated:YES];
 }
 

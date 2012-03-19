@@ -96,7 +96,7 @@
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender;
 
-- (void)changeNavigationStatus:(NSNumber *)status;
+- (void)changeNavigationStatus:(NSNumber *)status withAnimation:(BOOL)animation;
 
 - (void)openSubsite:(unsigned int)subsite;
 
