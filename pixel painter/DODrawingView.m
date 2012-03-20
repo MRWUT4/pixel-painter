@@ -34,6 +34,8 @@
     
         self.imageView.layer.magnificationFilter = kCAFilterNearest;
         self.layer.magnificationFilter = kCAFilterNearest;
+        
+        self.clipsToBounds = YES;
     }
     
     return self;
@@ -88,6 +90,39 @@
     }
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{    
+    switch(self.mode) 
+    {
+        case STATE_POSITION:
+            [self cropCurrentDisposition];
+            break;
+    }
+}
+
+- (void)cropCurrentDisposition
+{
+    CGRect movedFrame = self.imageView.frame;
+    self.imageView.frame = CGRectMake(0, 0, movedFrame.size.width, movedFrame.size.height);
+    
+    movedFrame.origin = CGPointMake(movedFrame.origin.x, movedFrame.origin.y * -1);
+    
+    CGImageRef croppedImage = self.imageView.image.CGImage;  
+    
+    UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(cgContext, 0, self.imageView.frame.size.height);
+    CGContextScaleCTM(cgContext, 1.0, -1.0);
+    
+    CGContextDrawImage(cgContext, movedFrame, croppedImage);
+    CGContextFlush(UIGraphicsGetCurrentContext());
+    
+    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+
 - (void)drawAtPosition
 {    
     UIGraphicsBeginImageContext(self.imageView.frame.size);
@@ -138,8 +173,10 @@
     self.bounds = rectangleViewFrame;
     
     if(previousViewFrame.size.width < rectangleViewFrame.size.width || previousViewFrame.size.height < rectangleViewFrame.size.height)
+    {
         viewFrame = previousViewFrame;
-    
+        viewFrame.origin.y = rectangleViewFrame.size.height - previousViewFrame.size.height;
+    }
     
     UIGraphicsBeginImageContext(self.imageView.frame.size);
     
@@ -159,26 +196,11 @@
 {
     CGRect viewFrame = self.imageView.bounds;    
     CGRect positionFrame = viewFrame;
-        
+    
     positionFrame.origin.x = self.touchPosition.x - self.touchDown.x;
-    positionFrame.origin.y = (self.touchPosition.y - self.touchDown.y) * -1;
-    
-    CGImageRef croppedImage = self.imageView.image.CGImage;  
-    
-    UIGraphicsBeginImageContext(self.imageView.frame.size);
-    
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    
-    CGContextTranslateCTM(cgContext, 0, self.imageView.frame.size.height);
-    CGContextScaleCTM(cgContext, 1.0, -1.0);
-    
-    CGContextDrawImage(cgContext, positionFrame, croppedImage);
-    CGContextFlush(UIGraphicsGetCurrentContext());
-    
-    self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    self.touchDown =  self.touchPosition;
+    positionFrame.origin.y = self.touchPosition.y - self.touchDown.y;
+
+    self.imageView.frame = positionFrame;
 }
 
 /* CLEARVIEW */

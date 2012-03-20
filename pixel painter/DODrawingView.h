@@ -28,5 +28,6 @@
 - (void)clearViewFrame:(NSValue *)rectangle;
 
 - (void)changeDrawingViewSize:(NSValue *)rectangle;
+- (void)cropCurrentDisposition;
 
 @end

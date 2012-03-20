@@ -50,8 +50,8 @@
         self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
         self.model.applicationState = STATE_DRAWING;
         self.model.initialized = YES;
-        self.model.width = 320;
-        self.model.height = 480;
+        self.model.width = BEGIN_WIDTH;
+        self.model.height = BEGIN_HEIGHT;
         
         self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
         self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
