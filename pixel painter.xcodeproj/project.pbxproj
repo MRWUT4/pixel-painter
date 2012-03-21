@@ -127,6 +127,10 @@
 		A2CBA86D1519E18400F88A79 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A2CBA86F1519E18700F88A79 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A2CBA871151A0E2500F88A79 /* lIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lIconPixelPainter.png; sourceTree = "<group>"; };
+		A2CBA873151A1ADA00F88A79 /* rIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPixelPainter.png; sourceTree = "<group>"; };
+		A2CBA874151A1ADA00F88A79 /* sIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sIconPixelPainter.png; sourceTree = "<group>"; };
+		A2CBA877151A1B1F00F88A79 /* sIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sIconPixelPainter.png; sourceTree = "<group>"; };
+		A2CBA879151A1B2900F88A79 /* rIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPixelPainter.png; sourceTree = "<group>"; };
 		A2F6BEFD150F5F630077CE5B /* rIconPen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPen.png; sourceTree = "<group>"; };
 		A2F6BEFE150F5F630077CE5B /* rIconPenSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPenSelected.png; sourceTree = "<group>"; };
 		A2F6BEFF150F5F640077CE5B /* rColorBackgroundTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rColorBackgroundTransparent.png; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		CE161C0014D5AAF800B8C7DE = {
 			isa = PBXGroup;
 			children = (
+				A2CBA879151A1B2900F88A79 /* rIconPixelPainter.png */,
+				A2CBA877151A1B1F00F88A79 /* sIconPixelPainter.png */,
 				A2CBA86F1519E18700F88A79 /* Default.png */,
 				A2CBA86D1519E18400F88A79 /* Default@2x.png */,
 				CE161C1514D5AAF800B8C7DE /* pixel painter */,
@@ -249,6 +255,8 @@
 		CE161C1614D5AAF800B8C7DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A2CBA873151A1ADA00F88A79 /* rIconPixelPainter.png */,
+				A2CBA874151A1ADA00F88A79 /* sIconPixelPainter.png */,
 				A2CBA871151A0E2500F88A79 /* lIconPixelPainter.png */,
 				A2CBA8661519E11D00F88A79 /* rLaunchImage.png */,
 				A2CBA8671519E11D00F88A79 /* sLaunchImage.png */,
