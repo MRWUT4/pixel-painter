@@ -33,7 +33,6 @@
 		A2AEDCE414F3FB31000BD340 /* rIconMoveActive.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCCD14F3FB31000BD340 /* rIconMoveActive.png */; };
 		A2AEDCE514F3FB31000BD340 /* rIconMoveInactive.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCCE14F3FB31000BD340 /* rIconMoveInactive.png */; };
 		A2AEDCE614F3FB31000BD340 /* rIconMoveSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCCF14F3FB31000BD340 /* rIconMoveSelected.png */; };
-		A2AEDCE714F3FB31000BD340 /* rIconPixelPainter.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD014F3FB31000BD340 /* rIconPixelPainter.png */; };
 		A2AEDCE814F3FB31000BD340 /* rIconZoomIn.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD114F3FB31000BD340 /* rIconZoomIn.png */; };
 		A2AEDCE914F3FB31000BD340 /* rIconZoomInSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD214F3FB31000BD340 /* rIconZoomInSelected.png */; };
 		A2AEDCEA14F3FB31000BD340 /* rIconZoomOut.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD314F3FB31000BD340 /* rIconZoomOut.png */; };
@@ -41,7 +40,6 @@
 		A2AEDCEC14F3FB31000BD340 /* rSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD514F3FB31000BD340 /* rSeparator.png */; };
 		A2AEDCED14F3FB31000BD340 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD614F3FB31000BD340 /* second.png */; };
 		A2AEDCEE14F3FB31000BD340 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD714F3FB31000BD340 /* second@2x.png */; };
-		A2AEDCEF14F3FB31000BD340 /* sIconPixelPainter.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AEDCD814F3FB31000BD340 /* sIconPixelPainter.png */; };
 		A2B2C6F915134C680037A0B3 /* rIconNewFile.png in Resources */ = {isa = PBXBuildFile; fileRef = A2B2C6F815134C680037A0B3 /* rIconNewFile.png */; };
 		A2BF88551508E548007AA803 /* rFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = A2BF88521508E548007AA803 /* rFolder.png */; };
 		A2BF88561508E548007AA803 /* rFolderButtonClose.png in Resources */ = {isa = PBXBuildFile; fileRef = A2BF88531508E548007AA803 /* rFolderButtonClose.png */; };
@@ -111,7 +109,6 @@
 		A2AEDCCD14F3FB31000BD340 /* rIconMoveActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconMoveActive.png; sourceTree = "<group>"; };
 		A2AEDCCE14F3FB31000BD340 /* rIconMoveInactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconMoveInactive.png; sourceTree = "<group>"; };
 		A2AEDCCF14F3FB31000BD340 /* rIconMoveSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconMoveSelected.png; sourceTree = "<group>"; };
-		A2AEDCD014F3FB31000BD340 /* rIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconPixelPainter.png; sourceTree = "<group>"; };
 		A2AEDCD114F3FB31000BD340 /* rIconZoomIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconZoomIn.png; sourceTree = "<group>"; };
 		A2AEDCD214F3FB31000BD340 /* rIconZoomInSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconZoomInSelected.png; sourceTree = "<group>"; };
 		A2AEDCD314F3FB31000BD340 /* rIconZoomOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconZoomOut.png; sourceTree = "<group>"; };
@@ -119,7 +116,6 @@
 		A2AEDCD514F3FB31000BD340 /* rSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rSeparator.png; sourceTree = "<group>"; };
 		A2AEDCD614F3FB31000BD340 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		A2AEDCD714F3FB31000BD340 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		A2AEDCD814F3FB31000BD340 /* sIconPixelPainter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sIconPixelPainter.png; sourceTree = "<group>"; };
 		A2B2C6F815134C680037A0B3 /* rIconNewFile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rIconNewFile.png; sourceTree = "<group>"; };
 		A2BF88521508E548007AA803 /* rFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolder.png; sourceTree = "<group>"; };
 		A2BF88531508E548007AA803 /* rFolderButtonClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rFolderButtonClose.png; sourceTree = "<group>"; };
@@ -291,7 +287,6 @@
 				A2AEDCCD14F3FB31000BD340 /* rIconMoveActive.png */,
 				A2AEDCCE14F3FB31000BD340 /* rIconMoveInactive.png */,
 				A2AEDCCF14F3FB31000BD340 /* rIconMoveSelected.png */,
-				A2AEDCD014F3FB31000BD340 /* rIconPixelPainter.png */,
 				A2AEDCD114F3FB31000BD340 /* rIconZoomIn.png */,
 				A2AEDCD214F3FB31000BD340 /* rIconZoomInSelected.png */,
 				A2AEDCD314F3FB31000BD340 /* rIconZoomOut.png */,
@@ -299,7 +294,6 @@
 				A2AEDCD514F3FB31000BD340 /* rSeparator.png */,
 				A2AEDCD614F3FB31000BD340 /* second.png */,
 				A2AEDCD714F3FB31000BD340 /* second@2x.png */,
-				A2AEDCD814F3FB31000BD340 /* sIconPixelPainter.png */,
 				CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */,
 				CE161C1714D5AAF800B8C7DE /* pixel painter-Info.plist */,
 				CE161C1814D5AAF800B8C7DE /* InfoPlist.strings */,
@@ -376,7 +370,6 @@
 				A2AEDCE414F3FB31000BD340 /* rIconMoveActive.png in Resources */,
 				A2AEDCE514F3FB31000BD340 /* rIconMoveInactive.png in Resources */,
 				A2AEDCE614F3FB31000BD340 /* rIconMoveSelected.png in Resources */,
-				A2AEDCE714F3FB31000BD340 /* rIconPixelPainter.png in Resources */,
 				A2AEDCE814F3FB31000BD340 /* rIconZoomIn.png in Resources */,
 				A2AEDCE914F3FB31000BD340 /* rIconZoomInSelected.png in Resources */,
 				A2AEDCEA14F3FB31000BD340 /* rIconZoomOut.png in Resources */,
@@ -384,7 +377,6 @@
 				A2AEDCEC14F3FB31000BD340 /* rSeparator.png in Resources */,
 				A2AEDCED14F3FB31000BD340 /* second.png in Resources */,
 				A2AEDCEE14F3FB31000BD340 /* second@2x.png in Resources */,
-				A2AEDCEF14F3FB31000BD340 /* sIconPixelPainter.png in Resources */,
 				A24FB40714F67C6400CB1143 /* colorspectrum.fla in Resources */,
 				A24FB40814F67C6400CB1143 /* colorspectrum.swf in Resources */,
 				A2BF88551508E548007AA803 /* rFolder.png in Resources */,
