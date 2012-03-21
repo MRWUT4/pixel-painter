@@ -17,8 +17,8 @@ static float const ZOOM_SCALE_MAXIMUM = 50;
 
 
 static int const MAX_DRAWING_SIZE = 10000;
-static int const BEGIN_WIDTH = 160;
-static int const BEGIN_HEIGHT = 240;
+static int const BEGIN_WIDTH = 320;
+static int const BEGIN_HEIGHT = 480;
 
 static NSString * const NOTIFICATION_COLOR_PICKED = @"NOTIFICATION_COLOR_PICKED";
 static NSString * const NOTIFICATION_COLOR_GRADIENT_PICKED = @"NOTIFICATION_COLOR_GRADIENT_PICKED";
