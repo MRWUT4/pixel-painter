@@ -79,6 +79,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "pixel painter"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
