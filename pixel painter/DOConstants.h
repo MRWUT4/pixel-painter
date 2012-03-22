@@ -63,6 +63,7 @@ typedef enum color
 typedef enum alerts
 {
     ALERTVIEW_CLEARDRAWINGVIEW = 0,
+    ALERTVIEW_RESIZE = 1,
 } Alerts;
 
 @interface DOConstants : NSObject

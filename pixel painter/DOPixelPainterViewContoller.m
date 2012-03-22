@@ -358,6 +358,7 @@
                                                   cancelButtonTitle:@"NO"
                                                   otherButtonTitles:@"YES",
                                                   nil];
+    
     alertView.tag = ALERTVIEW_CLEARDRAWINGVIEW;
     [alertView show];
 }
@@ -421,9 +422,32 @@
     sender.text = [NSString stringWithFormat:@"%i px", self.model.height];
 }
 
+- (void)willPresentAlertView:(UIAlertView *)alertView 
+{
+    if(alertView.tag == ALERTVIEW_RESIZE)
+        [alertView setFrame:CGRectMake(5, 20, 300, 420)];
+}
+
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
 {
-    [self buttonSizeTouchEndedHandler];
+//    [self buttonSizeTouchEndedHandler];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resize image" 
+                                                        message:@"\n\n" 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"NO"
+                                              otherButtonTitles:@"YES",
+                              nil];    
+    
+    alertView.tag = ALERTVIEW_RESIZE;
+    
+    UITextField *nameField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 100, 245.0, 25.0)];
+        
+    [nameField setBorderStyle:UITextBorderStyleRoundedRect];
+    [nameField setBackgroundColor:[UIColor whiteColor]];
+    
+    [alertView addSubview:nameField];
+    [alertView show];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -433,8 +457,10 @@
 
 - (void)buttonSizeTouchEndedHandler
 {
+    /*
     [self.containerView endEditing:YES];
-    [self.scrollView setZoomScale:1 animated:NO];    
+    [self.scrollView setZoomScale:1 animated:NO];
+     */
 }
 
 
