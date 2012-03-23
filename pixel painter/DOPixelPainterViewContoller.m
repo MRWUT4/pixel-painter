@@ -166,7 +166,7 @@
     }
     else if(keyPath == @"width" || keyPath == @"height")
     {
-        if(self.model.width != self.drawingView.imageView.bounds.size.width || self.model.height != self.drawingView.imageView.bounds.size.height)
+        if((self.model.width != 0 && self.model.height != 0) && (self.model.width != self.drawingView.imageView.bounds.size.width || self.model.height != self.drawingView.imageView.bounds.size.height))
         {      
             [self.scrollView setZoomScale:1 animated:NO];
             [self.drawingView changeDrawingViewSize:[NSValue valueWithCGRect:CGRectMake(0, 0, self.model.width, self.model.height)]];       
