@@ -60,9 +60,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonPosition;
 
-@property (strong, nonatomic) IBOutlet UITextField *textWidth;
 
-@property (strong, nonatomic) IBOutlet UITextField *textHeight;
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
@@ -92,13 +90,11 @@
 
 - (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
 
-- (IBAction)textSizeEditingDidBegin:(UITextField *)sender;
-
-- (IBAction)textSizeWidthDidEndOnExitHandler:(UITextField *)sender;
-
-- (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender;
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender;
+
+- (IBAction)textSizeEditingDidBegin:(UITextField *)sender;
+
 
 - (void)changeNavigationStatus:(NSNumber *)status withAnimation:(BOOL)animation;
 
@@ -108,11 +104,7 @@
 
 - (void)unSelectButtonList:(NSArray *)list;
 
-- (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation;
-
 - (void)centerImageWithAnimation:(BOOL)animation;
-
-- (void)buttonSizeTouchEndedHandler;
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
 

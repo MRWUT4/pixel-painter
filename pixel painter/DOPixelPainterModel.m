@@ -29,16 +29,20 @@
 
 - (void)setWidth:(unsigned int)width
 {
-    if(width <= 0) _width = 550;
-    else if(width > MAX_DRAWING_SIZE) _width = MAX_DRAWING_SIZE;
-    else _width = width;
+    if(width > 0)
+    {
+        if(width > MAX_DRAWING_SIZE) _width = MAX_DRAWING_SIZE;
+        else _width = width;
+    }
 }
 
 - (void)setHeight:(unsigned int)height
 {
-    if(height <= 0) _height = 400;
-    else if(height > MAX_DRAWING_SIZE) _height = MAX_DRAWING_SIZE;    
-    else _height = height;
+    if(height > 0)
+    {
+        if(height > MAX_DRAWING_SIZE) _height = MAX_DRAWING_SIZE;    
+        else _height = height;
+    }
 }
 
 @end

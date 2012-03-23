@@ -32,8 +32,6 @@
 @synthesize buttonPen = _buttonPen;
 @synthesize buttonErase = _buttonErase;
 @synthesize buttonPosition = _buttonPosition;
-@synthesize textWidth = _textWidth;
-@synthesize textHeight = _textHeight;
 
 
 
@@ -41,13 +39,13 @@
 {   
     if(!self.model.initialized)
     {
-        [self changeNavigationStatus:[NSNumber numberWithInt:NAVIGATION_STATUS_NAVIGATION] withAnimation:NO];
+        [self changeNavigationStatus:[NSNumber numberWithInt:NAVIGATION_STATUS_INITIAL] withAnimation:NO];
            
         self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
         self.model.hue = INIT_HUE;
         self.model.saturation = INIT_SATURATION;
         self.model.brightness = INIT_BRIGHTNESS;
-        self.model.navigationStatus = NAVIGATION_STATUS_NAVIGATION;
+        self.model.navigationStatus = NAVIGATION_STATUS_INITIAL;
         self.model.applicationState = STATE_DRAWING;
         self.model.initialized = YES;
         self.model.width = BEGIN_WIDTH;
@@ -61,7 +59,6 @@
         [self.subviewManager hideAlleSubviews];
 
         
-        //rewrite notification handling
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
@@ -169,12 +166,11 @@
     }
     else if(keyPath == @"width" || keyPath == @"height")
     {
-        if(self.model.width != 0 && self.model.height != 0)
-        {
-            self.textWidth.text = [NSString stringWithFormat:@"%i px", self.model.width];
-            self.textHeight.text = [NSString stringWithFormat:@"%i px", self.model.height];
-            
-            [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, self.model.width, self.model.height)] withAnimation:NO];
+        if(self.model.width != self.drawingView.imageView.bounds.size.width || self.model.height != self.drawingView.imageView.bounds.size.height)
+        {      
+            [self.scrollView setZoomScale:1 animated:NO];
+            [self.drawingView changeDrawingViewSize:[NSValue valueWithCGRect:CGRectMake(0, 0, self.model.width, self.model.height)]];       
+            [self centerImageWithAnimation:NO];
         }
     }
 }
@@ -343,8 +339,6 @@
     self.model.width = originalImage.size.width;
     self.model.height = originalImage.size.height;
     
-    [self changeDrawingFrame:[NSValue valueWithCGRect:CGRectMake(0, 0, originalImage.size.width, originalImage.size.height)] withAnimation:NO];
-    
     [self.drawingView.imageView setImage: originalImage];
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -401,68 +395,59 @@
 
 /* IBACTIONS TEXTFIELD SIZE */
 
-- (IBAction)textSizeEditingDidBegin:(UITextField *)sender 
-{
-    sender.text = @"";
-}
-
-- (IBAction)textSizeWidthDidEndOnExitHandler:(UITextField *)sender 
-{
-    int input = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
-    if(input != 0) self.model.width = input;
+- (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
+{    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resize image" 
+                                                  message:@"\n\n\n" 
+                                                  delegate:self 
+                                                  cancelButtonTitle:@"NO"
+                                                  otherButtonTitles:@"YES",
+                                                  nil];    
     
-    sender.text = [NSString stringWithFormat:@"%i px", self.model.width];    
-}
-
-- (IBAction)textSizeHeightDidEndOnExitHandler:(UITextField *)sender 
-{
-    int input = [(NSString *)[[sender.text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];    
-    if(input != 0) self.model.height = input;
+    alertView.tag = ALERTVIEW_RESIZE;
     
-    sender.text = [NSString stringWithFormat:@"%i px", self.model.height];
+        
+    UITextField *fieldWidth = [[UITextField alloc] initWithFrame:CGRectMake(20, 49, 245, 25)];
+    UITextField *fieldHeight = [[UITextField alloc] initWithFrame:CGRectMake(20, 81, 245, 25)];
+    
+    NSArray *fieldList = [[NSArray alloc] initWithObjects:fieldWidth, fieldHeight, nil];
+    UITextField *field;
+    
+    for(uint i = 0; i < fieldList.count; i++)
+    {
+        field = [fieldList objectAtIndex:i];
+        
+        field.keyboardType = UIKeyboardTypeNumberPad;
+        field.borderStyle = UITextBorderStyleRoundedRect;
+        field.backgroundColor = [UIColor whiteColor];
+        
+        [field addTarget:self action:@selector(textSizeEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+        
+        [alertView addSubview:field];
+    }
+
+    fieldWidth.text = [NSString stringWithFormat:FIELD_RESIZE_WIDTH_TEXT, self.model.width];
+    fieldWidth.tag = ALERTVIEW_RESIZE_FIELD_WIDTH_TAG;
+    
+    fieldHeight.text = [NSString stringWithFormat:FIELD_RESIZE_HEIGHT_TEXT, self.model.height];
+    fieldHeight.tag = ALERTVIEW_RESIZE_FIELD_HEIGHT_TAG;
+
+    [alertView show];
 }
 
 - (void)willPresentAlertView:(UIAlertView *)alertView 
 {
+    CGRect alertViewFrame = alertView.frame;
+    alertViewFrame.size.height = 190;
+    
     if(alertView.tag == ALERTVIEW_RESIZE)
-        [alertView setFrame:CGRectMake(5, 20, 300, 420)];
+        alertView.frame = alertViewFrame;
 }
 
-- (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
+- (IBAction)textSizeEditingDidBegin:(UITextField *)sender 
 {
-//    [self buttonSizeTouchEndedHandler];
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resize image" 
-                                                        message:@"\n\n" 
-                                                       delegate:self 
-                                              cancelButtonTitle:@"NO"
-                                              otherButtonTitles:@"YES",
-                              nil];    
-    
-    alertView.tag = ALERTVIEW_RESIZE;
-    
-    UITextField *nameField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 100, 245.0, 25.0)];
-        
-    [nameField setBorderStyle:UITextBorderStyleRoundedRect];
-    [nameField setBackgroundColor:[UIColor whiteColor]];
-    
-    [alertView addSubview:nameField];
-    [alertView show];
+    sender.text = @"";
 }
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self buttonSizeTouchEndedHandler];
-}
-
-- (void)buttonSizeTouchEndedHandler
-{
-    /*
-    [self.containerView endEditing:YES];
-    [self.scrollView setZoomScale:1 animated:NO];
-     */
-}
-
 
 
 
@@ -476,6 +461,12 @@
     {
         case ALERTVIEW_CLEARDRAWINGVIEW:
             if(YES) [self.drawingView clearCompleteView];            
+            break;
+            
+        case ALERTVIEW_RESIZE:
+            self.model.width = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_WIDTH_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+
+            self.model.height = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_HEIGHT_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
             break;
     }
 }
@@ -527,10 +518,6 @@
             break;
     }
     
-    int flapWidth = self.containerView.frame.size.width + navigationFrame.origin.x - 48;
-        
-    scrollViewFrame.origin.x = flapWidth;
-    scrollViewFrame.size.width = self.containerView.frame.size.width - flapWidth;
     
     if(animation)
     {
@@ -539,8 +526,14 @@
         [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     }    
     
-    [self.navigationView setFrame:navigationFrame];
-    [self.scrollView setFrame:scrollViewFrame];
+    int flapWidth = self.containerView.frame.size.width + navigationFrame.origin.x - NVAIGATION_FLAP_WIDTH;
+    
+    scrollViewFrame.origin.x = flapWidth;
+    scrollViewFrame.size.width = self.containerView.frame.size.width - flapWidth;
+     
+    self.scrollView.frame = scrollViewFrame;
+    self.navigationView.frame = navigationFrame;
+    
     [self centerImageWithAnimation:NO];
     
     if(animation)
@@ -609,34 +602,26 @@
     [self centerImageWithAnimation:NO];
 }
 
-- (void)changeDrawingFrame:(NSValue *)rectangle withAnimation:(BOOL)animation
-{   
-    [self.scrollView setZoomScale:1 animated:NO];
-    [self.drawingView changeDrawingViewSize:rectangle];
-    [self centerImageWithAnimation:NO];
-}
-
 - (void)centerImageWithAnimation:(BOOL)animation
 {
     CGSize boundsSize = self.scrollView.bounds.size;
-    
     CGRect frameToCenter = self.drawingView.frame;
- 
+     
     // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
+    if(frameToCenter.size.width < boundsSize.width)
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
     else
         frameToCenter.origin.x = 0;
     
     // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
+    if(frameToCenter.size.height < boundsSize.height)
         frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
     else
         frameToCenter.origin.y = 0;
-
+    
     if(animation)
     {
-        [UIView beginAnimations:@"animation0" context:NULL];
+        [UIView beginAnimations:@"animation1" context:NULL];
         [UIView setAnimationDuration:ANIMATION_REPOSITION];
         [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     }
@@ -651,9 +636,7 @@
 {
     if(self.model.applicationState == STATE_MOVING)
     { 
-        // double tap zooms in
         float newScale = [self.scrollView zoomScale] * ZOOM_STEP;
-        
         newScale = newScale >= ZOOM_SCALE_MAXIMUM ? 1 : newScale;
         
         CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecognizer locationInView:gestureRecognizer.view]];
@@ -708,8 +691,6 @@
     [self setButtonColor:nil];
     [self setButtonPicker:nil];
     [self setButtonErase:nil];
-    [self setTextWidth:nil];
-    [self setTextHeight:nil];
     [self setContainerView:nil];
     [self setButtonPosition:nil];
     [super viewDidUnload];
