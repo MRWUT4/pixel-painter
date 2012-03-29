@@ -24,8 +24,8 @@ static NSString * const NOTIFICATION_COLOR_PICKED = @"NOTIFICATION_COLOR_PICKED"
 static NSString * const NOTIFICATION_COLOR_GRADIENT_PICKED = @"NOTIFICATION_COLOR_GRADIENT_PICKED";
 static NSString * const NOTIFICATION_COLOR_DRAWINGVIEW_PICKED = @"NOTIFICATION_COLOR_DRAWINGVIEW_PICKED";
 static NSString * const NOTIFICATION_COLOR_ERASE_PICKED = @"NOTIFICATION_COLOR_ERASE_PICKED";
-static NSString * const FIELD_RESIZE_WIDTH_TEXT = @"width: %ipx";
-static NSString * const FIELD_RESIZE_HEIGHT_TEXT = @"height: %ipx";
+static NSString * const FIELD_RESIZE_WIDTH_TEXT = @"width %i px";
+static NSString * const FIELD_RESIZE_HEIGHT_TEXT = @"height %i px";
 
 typedef enum navigation 
 {    

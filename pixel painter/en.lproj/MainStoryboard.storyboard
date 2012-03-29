@@ -176,7 +176,7 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" autoresizesSubviews="NO" contentMode="scaleToFill" id="Mu0-8J-NR7" customClass="DOColorPickerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
+                                        <rect key="frame" x="-224" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleAspectFit" id="sI3-oz-yoE">
@@ -315,7 +315,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3LG-6m-DDT">
-                                                <rect key="frame" x="12" y="204" width="183" height="64"/>
+                                                <rect key="frame" x="12" y="204" width="183" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="resize" image="rIconResize.png">
@@ -373,6 +373,26 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="width 320 px" minimumFontSize="17" id="wnC-rL-R25">
+                                                <rect key="frame" x="75" y="256.5" width="183" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="height 480 px" minimumFontSize="17" id="Apn-0E-YZi">
+                                                <rect key="frame" x="75" y="288.5" width="183" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -398,6 +418,8 @@
                         <outlet property="folderView" destination="srd-Qx-0Ji" id="DZh-YZ-e1l"/>
                         <outlet property="navigationView" destination="f0P-aM-3ak" id="MAw-Bj-YpY"/>
                         <outlet property="scrollView" destination="Hhk-gl-51F" id="rKU-wK-aeB"/>
+                        <outlet property="textFieldHeight" destination="Apn-0E-YZi" id="zSr-6o-XM7"/>
+                        <outlet property="textFieldWidth" destination="wnC-rL-R25" id="vwz-NP-SJs"/>
                     </connections>
                 </viewController>
             </objects>
@@ -424,7 +446,7 @@
         <image name="rIconPosition.png" width="128" height="128"/>
         <image name="rIconPositionActive.png" width="128" height="128"/>
         <image name="rIconPull.png" width="366" height="128"/>
-        <image name="rIconResize.png" width="366" height="128"/>
+        <image name="rIconResize.png" width="366" height="256"/>
         <image name="rIconSave.png" width="365" height="128"/>
     </resources>
     <classes>
@@ -477,6 +499,7 @@
                 <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textFieldWidth" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>

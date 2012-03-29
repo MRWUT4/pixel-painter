@@ -32,6 +32,8 @@
 @synthesize buttonPen = _buttonPen;
 @synthesize buttonErase = _buttonErase;
 @synthesize buttonPosition = _buttonPosition;
+@synthesize textFieldWidth = _textFieldWidth;
+@synthesize textFieldHeight = _textFieldHeight;
 
 
 
@@ -168,7 +170,10 @@
     else if(keyPath == @"width" || keyPath == @"height")
     {
         if((self.model.width != 0 && self.model.height != 0) && (self.model.width != self.drawingView.imageView.bounds.size.width || self.model.height != self.drawingView.imageView.bounds.size.height))
-        {      
+        {   
+            self.textFieldWidth.text = [NSString stringWithFormat:FIELD_RESIZE_WIDTH_TEXT, self.model.width];
+            self.textFieldHeight.text = [NSString stringWithFormat:FIELD_RESIZE_HEIGHT_TEXT, self.model.height];
+            
             [self.scrollView setZoomScale:1 animated:NO];
             [self.drawingView changeDrawingViewSize:[NSValue valueWithCGRect:CGRectMake(0, 0, self.model.width, self.model.height)]];       
             [self centerImageWithAnimation:NO];
@@ -205,42 +210,6 @@
     self.model.applicationState = STATE_ERASING;
 }
 
-/* KEYBOARD ANIMATION */
-
-/*
-- (void)keyboardWillShow:(NSNotification*)aNotification
-{
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-        
-    CGRect containerFrame = self.containerView.frame;
-    containerFrame.origin.y = -kbSize.height;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:.25];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    
-    self.containerView.frame = containerFrame;
-    
-    [UIView commitAnimations];
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    CGRect containerFrame = self.containerView.frame;
-    containerFrame.origin.y = 0;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:.25];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    
-    self.containerView.frame = containerFrame;
-    
-    [UIView commitAnimations];
-}
-*/
 
 
 /* 
@@ -399,7 +368,7 @@
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
 {    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resize image" 
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"RESIZE" 
                                                   message:@"\n\n\n" 
                                                   delegate:self 
                                                   cancelButtonTitle:@"NO"
@@ -428,6 +397,9 @@
         [alertView addSubview:field];
     }
 
+    [fieldWidth addTarget:self action:@selector(textSizeWidthEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
+    [fieldHeight addTarget:self action:@selector(textSizeHeightEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
+    
     fieldWidth.text = [NSString stringWithFormat:FIELD_RESIZE_WIDTH_TEXT, self.model.width];
     fieldWidth.tag = ALERTVIEW_RESIZE_FIELD_WIDTH_TAG;
     
@@ -449,6 +421,22 @@
 - (IBAction)textSizeEditingDidBegin:(UITextField *)sender 
 {
     sender.text = @"";
+}
+
+- (IBAction)textSizeWidthEditingDidEnd:(UITextField *)sender
+{
+    [self fillEmptySizeTextField:sender withText:FIELD_RESIZE_WIDTH_TEXT andSize:self.model.width];
+}
+
+- (IBAction)textSizeHeightEditingDidEnd:(UITextField *)sender
+{
+    [self fillEmptySizeTextField:sender withText:FIELD_RESIZE_HEIGHT_TEXT andSize:self.model.height];
+}
+
+- (void)fillEmptySizeTextField:(UITextField *)sender withText:(NSString *)text andSize:(unsigned int)size
+{
+    if([sender.text isEqualToString:@""] || [sender.text isEqualToString:@"0"]) 
+        sender.text = [NSString stringWithFormat:text, size];
 }
 
 
@@ -695,6 +683,8 @@
     [self setButtonErase:nil];
     [self setContainerView:nil];
     [self setButtonPosition:nil];
+    [self setTextFieldWidth:nil];
+    [self setTextFieldHeight:nil];
     [super viewDidUnload];
 }
 

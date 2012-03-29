@@ -60,7 +60,9 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonPosition;
 
+@property (strong, nonatomic) IBOutlet UITextField *textFieldWidth;
 
+@property (strong, nonatomic) IBOutlet UITextField *textFieldHeight;
 
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
@@ -107,5 +109,7 @@
 - (void)centerImageWithAnimation:(BOOL)animation;
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
+
+- (void)fillEmptySizeTextField:(UITextField *)sender withText:(NSString *)text andSize:(unsigned int)size;
 
 @end
