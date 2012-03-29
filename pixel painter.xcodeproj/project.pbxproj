@@ -66,7 +66,6 @@
 		CE161C1A14D5AAF800B8C7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE161C1814D5AAF800B8C7DE /* InfoPlist.strings */; };
 		CE161C1C14D5AAF800B8C7DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C1B14D5AAF800B8C7DE /* main.m */; };
 		CE161C2014D5AAF800B8C7DE /* DOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE161C1F14D5AAF800B8C7DE /* DOAppDelegate.m */; };
-		CE161C2314D5AAF800B8C7DE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */; };
 		CE27CB0014D9F57000500778 /* UIImageView-ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27CAFF14D9F57000500778 /* UIImageView-ColorUtils.m */; };
 		CE62227414F4429600B94622 /* DOPixelPainterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62227314F4429600B94622 /* DOPixelPainterModel.m */; };
 		CE6D7A2E14EF00DC00D707E4 /* DONavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7A2D14EF00DC00D707E4 /* DONavigationView.m */; };
@@ -77,6 +76,7 @@
 		CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F70C14F59FBE003B9C12 /* DOColorPreviewView.m */; };
 		CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */ = {isa = PBXBuildFile; fileRef = CE7BEE2E14E47EC90011D567 /* pixel-painter.psd */; };
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
+		CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -335,7 +335,7 @@
 		CE161C0214D5AAF800B8C7DE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = CE161C0514D5AAF800B8C7DE /* Build configuration list for PBXProject "pixel painter" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -360,7 +360,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE161C1A14D5AAF800B8C7DE /* InfoPlist.strings in Resources */,
-				CE161C2314D5AAF800B8C7DE /* MainStoryboard.storyboard in Resources */,
 				CE7BEE3B14E47EC90011D567 /* pixel-painter.psd in Resources */,
 				A2AEDCD914F3FB31000BD340 /* first.png in Resources */,
 				A2AEDCDA14F3FB31000BD340 /* first@2x.png in Resources */,
@@ -411,6 +410,7 @@
 				A2CBA872151A0E2500F88A79 /* lIconPixelPainter.png in Resources */,
 				A2CBA87C151A1C5A00F88A79 /* appIconPixelPainter-57x57.png in Resources */,
 				A2CBA87E151A1C6000F88A79 /* appIconPixelPainter-114x114.png in Resources */,
+				CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,13 +478,14 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -499,7 +500,7 @@
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -552,7 +553,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
