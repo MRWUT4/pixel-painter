@@ -37,57 +37,50 @@
 
 
 
-- (void)viewDidAppear:(BOOL)animated
-{   
-    if(!self.model.initialized)
-    {
-        [self changeNavigationStatus:[NSNumber numberWithInt:NAVIGATION_STATUS_INITIAL] withAnimation:NO];
-           
-        self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
-        self.model.hue = INIT_HUE;
-        self.model.saturation = INIT_SATURATION;
-        self.model.brightness = INIT_BRIGHTNESS;
-        self.model.navigationStatus = NAVIGATION_STATUS_INITIAL;
-        self.model.applicationState = STATE_DRAWING;
-        self.model.initialized = YES;
-        self.model.width = BEGIN_WIDTH;
-        self.model.height = BEGIN_HEIGHT;
-        
-        self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
-        self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
-        
-        [self.subviewManager addSubview:self.colorPickerView];
-        [self.subviewManager addSubview:self.fileSettingsView];
-        [self.subviewManager hideAlleSubviews];
-
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
-        /*
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
-        */
-        
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-        
-        [doubleTap setNumberOfTapsRequired:2];
-        [self.drawingView addGestureRecognizer:doubleTap];
-
-        UITapGestureRecognizer *doubleTapZoomOut = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapZoomOut:)];
-        
-        [doubleTapZoomOut setNumberOfTapsRequired:2];
-        [doubleTapZoomOut setNumberOfTouchesRequired:2];
-        [self.drawingView addGestureRecognizer:doubleTapZoomOut];
-        
-        
-        self.scrollView.minimumZoomScale = ZOOM_SCALE_MINIMUM;
-        self.scrollView.maximumZoomScale = ZOOM_SCALE_MAXIMUM;
-        self.scrollView.clipsToBounds = YES;
-        self.scrollView.delegate = self;    
-        
-        [self.scrollView setZoomScale:20 animated:NO];
-    }
+- (void)viewDidLoad
+{
+    [self changeNavigationStatus:[NSNumber numberWithInt:NAVIGATION_STATUS_INITIAL] withAnimation:NO];
+    
+    self.model.color = [[UIColor alloc] initWithHue:INIT_HUE saturation:INIT_SATURATION brightness:INIT_BRIGHTNESS alpha:INIT_ALPHA];
+    self.model.hue = INIT_HUE;
+    self.model.saturation = INIT_SATURATION;
+    self.model.brightness = INIT_BRIGHTNESS;
+    self.model.navigationStatus = NAVIGATION_STATUS_INITIAL;
+    self.model.applicationState = STATE_DRAWING;
+    self.model.initialized = YES;
+    self.model.width = BEGIN_WIDTH;
+    self.model.height = BEGIN_HEIGHT;
+    
+    self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
+    self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
+    
+    [self.subviewManager addSubview:self.colorPickerView];
+    [self.subviewManager addSubview:self.fileSettingsView];
+    [self.subviewManager hideAlleSubviews];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewPickedNotificationHandler:) name:NOTIFICATION_COLOR_DRAWINGVIEW_PICKED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorDrawingViewEraseNotificationHandler:) name:NOTIFICATION_COLOR_ERASE_PICKED object:nil];
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.drawingView addGestureRecognizer:doubleTap];
+    
+    UITapGestureRecognizer *doubleTapZoomOut = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapZoomOut:)];
+    
+    [doubleTapZoomOut setNumberOfTapsRequired:2];
+    [doubleTapZoomOut setNumberOfTouchesRequired:2];
+    [self.drawingView addGestureRecognizer:doubleTapZoomOut];
+    
+    
+    self.scrollView.minimumZoomScale = ZOOM_SCALE_MINIMUM;
+    self.scrollView.maximumZoomScale = ZOOM_SCALE_MAXIMUM;
+    self.scrollView.clipsToBounds = YES;
+    self.scrollView.delegate = self;    
+    
+    [self.scrollView setZoomScale:20 animated:NO];
 }
 
 
