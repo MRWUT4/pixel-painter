@@ -176,7 +176,7 @@
                                         </connections>
                                     </button>
                                     <view hidden="YES" autoresizesSubviews="NO" contentMode="scaleToFill" id="Mu0-8J-NR7" customClass="DOColorPickerView">
-                                        <rect key="frame" x="-224" y="0.0" width="224" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleAspectFit" id="sI3-oz-yoE">
@@ -499,6 +499,7 @@
                 <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textFieldHeight" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="textFieldWidth" candidateClass="UITextField"/>
             </relationships>
         </class>

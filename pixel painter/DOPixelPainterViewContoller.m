@@ -310,8 +310,8 @@
 
 - (IBAction)buttonNewTouchUpInsideHandler:(id)sender 
 {   
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Clear image" 
-                                                  message:@"Are you sure you want to clear your image?" 
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"NEW FILE" 
+                                                  message:@"Are you sure you want to clear your current image?" 
                                                   delegate:self 
                                                   cancelButtonTitle:@"NO"
                                                   otherButtonTitles:@"YES",
@@ -443,13 +443,16 @@
     switch (alertView.tag) 
     {
         case ALERTVIEW_CLEARDRAWINGVIEW:
-            if(YES) [self.drawingView clearCompleteView];            
+            if(buttonIndex == 1) [self.drawingView clearCompleteView];            
             break;
             
         case ALERTVIEW_RESIZE:
-            self.model.width = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_WIDTH_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+            if(buttonIndex == 1)
+            {
+                self.model.width = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_WIDTH_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
 
-            self.model.height = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_HEIGHT_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+                self.model.height = [(NSString *)[[((UITextField *)[alertView viewWithTag:ALERTVIEW_RESIZE_FIELD_HEIGHT_TAG]).text componentsSeparatedByString:@" "] objectAtIndex:0] intValue];
+            }
             break;
     }
 }
