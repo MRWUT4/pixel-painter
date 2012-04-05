@@ -56,6 +56,7 @@ typedef enum drawingState
     STATE_MOVING = 2,
     STATE_ERASING = 3,
     STATE_POSITION = 4,
+    STATE_FILLING = 5,
 } DrawingState;
 
 typedef enum color

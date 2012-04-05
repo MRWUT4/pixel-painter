@@ -15,6 +15,7 @@
 
 
 @synthesize color = _color;
+@synthesize fillPickColor = _fillPickColor;
 @synthesize touchDown = _touchDown;
 @synthesize touchPosition = _touchPosition;
 @synthesize imageView = _imageView;
@@ -51,8 +52,20 @@
 {
     self.touchDown = [[touches anyObject] locationInView:self];
     self.touchDown = CGPointMake((int) (self.touchDown.x / 1), (int) (self.touchDown.y / 1));
-    
-    [self modeAction:touches];
+        
+    switch (self.mode) 
+    {
+        case STATE_FILLING:
+            self.fillPickColor = [self.imageView getPixelColorAtLocation:self.touchDown];
+            
+            [self fillImageAtPositionLeft:self.touchDown];
+            [self fillImageAtPositionRight:self.touchDown];
+            break;
+            
+        default:
+            [self modeAction:touches];
+            break;
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -74,7 +87,7 @@
             switch(self.mode) 
             {
                 case STATE_DRAWING:
-                    [self drawAtPosition];
+                    [self drawAtPosition:self.touchPosition];
                     break;
                 case STATE_PICKING:
                     [self pickColorAtPosition];
@@ -85,6 +98,7 @@
                 case STATE_POSITION:
                     [self moveImageToPosition];
                     break;
+
             }
         }
     }
@@ -123,15 +137,17 @@
     UIGraphicsEndImageContext();
 }
 
-- (void)drawAtPosition
+- (void)drawAtPosition:(CGPoint)position
 {    
     UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    NSLog(@"dap %f", CGColorGetAlpha(self.color.CGColor));
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
 
     CGContextRef cgContext = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(cgContext, self.color.CGColor);
-    CGContextFillRect(cgContext, CGRectMake(self.touchPosition.x, self.touchPosition.y, 1, 1));
+    CGContextFillRect(cgContext, CGRectMake(position.x, position.y, 1, 1));
     CGContextFlush(UIGraphicsGetCurrentContext());
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
@@ -145,9 +161,9 @@
 }
 
 - (void)pickColorAtPosition
-{    
+{   
     UIColor *pickedColor = [self.imageView getPixelColorAtLocation:self.touchPosition];
-    
+    NSLog(@"pickColorAtPosition %f", CGColorGetAlpha(pickedColor.CGColor));    
     if(CGColorGetAlpha(pickedColor.CGColor) != 0)
     {    
         self.color = pickedColor;
@@ -158,6 +174,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COLOR_ERASE_PICKED object:self];
     }
 }
+
 
 - (void)changeDrawingViewSize:(NSValue *)rectangle
 {
@@ -202,6 +219,49 @@
 
     self.imageView.frame = positionFrame;
 }
+
+- (void)fillImageAtPositionLeft:(CGPoint)position
+{
+    CGPoint drawPosition = position;
+    
+    //NSLog(@"%i", [[self getPixelColorAtLocation:drawPosition] isEqual:self.fillPickColor]);
+    
+    UIColor *colorAtPosition = [self getPixelColorAtLocation:drawPosition];
+        
+    if([[self getPixelColorAtLocation:drawPosition] isEqual:self.fillPickColor] && ![self.color isEqual:colorAtPosition])
+    {   
+        [self drawAtPosition:drawPosition];
+        
+        drawPosition.x --;
+        if([self positionIsInBounds:drawPosition])
+            [self fillImageAtPositionLeft:drawPosition];
+
+        drawPosition.x ++;
+        drawPosition.y --;
+        if([self positionIsInBounds:drawPosition])
+            [self fillImageAtPositionLeft:drawPosition];
+        
+        drawPosition.y += 2;
+        if([self positionIsInBounds:drawPosition])
+            [self fillImageAtPositionLeft:drawPosition];
+    }
+}
+
+- (void)fillImageAtPositionRight:(CGPoint)position
+{
+    
+}
+
+- (BOOL)positionIsInBounds:(CGPoint)position
+{
+    BOOL inBounds = YES;
+    
+    if(position.x < 0 || position.y < 0 || position.x > self.bounds.size.width || position.y > self.bounds.size.height)
+        inBounds = NO;
+            
+    return inBounds;
+}
+       
 
 /* CLEARVIEW */
 

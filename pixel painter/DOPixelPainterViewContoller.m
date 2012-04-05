@@ -558,6 +558,7 @@
             self.buttonMove.selected = YES;
             self.scrollView.scrollEnabled = YES;
             self.drawingView.scrollEnabled = YES;
+            self.drawingView.mode = STATE_MOVING;
             break;
             
         case STATE_ERASING:
@@ -567,7 +568,8 @@
             
         case STATE_POSITION:
             self.buttonPosition.selected = YES;
-            self.drawingView.mode = STATE_POSITION;            
+//            self.drawingView.mode = STATE_POSITION;
+            self.drawingView.mode = STATE_FILLING;
             break;
     }
 }

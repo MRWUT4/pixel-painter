@@ -11,6 +11,7 @@
 @interface DODrawingView : UIView
 
 @property(strong, nonatomic) UIColor *color;
+@property(strong, nonatomic) UIColor *fillPickColor;
 
 @property (nonatomic, assign) CGPoint touchDown;
 @property (nonatomic, assign) CGPoint touchPosition;
@@ -18,10 +19,15 @@
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) unsigned int mode;
 
-- (void)drawAtPosition;
+- (void)drawAtPosition:(CGPoint)position;
 - (void)clearAtPosition;
 - (void)pickColorAtPosition;
 - (void)moveImageToPosition;
+- (void)fillImageAtPositionLeft:(CGPoint)position;
+- (void)fillImageAtPositionRight:(CGPoint)position;
+
+
+- (BOOL)positionIsInBounds:(CGPoint)position;
 
 - (void)modeAction:(NSSet *)touches;
 - (void)clearCompleteView;
