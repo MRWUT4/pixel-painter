@@ -17,7 +17,7 @@
 #import "DOColorPreviewView.h"
 #import "DODrawingView.h"
 #import "GradientView.h"
-
+#import "DOColorPickerViewController.h"
 
 @interface DOPixelPainterViewContoller : UIViewController <UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

@@ -81,6 +81,11 @@
     self.scrollView.delegate = self;    
     
     [self.scrollView setZoomScale:20 animated:NO];
+    
+    
+    DOColorPickerViewController *controller = [[DOColorPickerViewController alloc] initWithNibName:NSStringFromClass([DOColorPickerViewController class])  bundle:nil];
+    
+    [self.containerView addSubview:controller.view];
 }
 
 

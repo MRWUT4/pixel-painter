@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <development version="4300" defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <development version="4300" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Pixel Painter View Contoller-->
@@ -484,6 +484,8 @@
                 <relationship kind="action" name="sliderHueTouchDragInsideHandler:" candidateClass="UISlider"/>
                 <relationship kind="action" name="sliderSaturationTouchDragInsideHandler:" candidateClass="UISlider"/>
                 <relationship kind="action" name="textSizeEditingDidBegin:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textSizeHeightEditingDidEnd:" candidateClass="UITextField"/>
+                <relationship kind="action" name="textSizeWidthEditingDidEnd:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>

@@ -141,7 +141,7 @@
 {    
     UIGraphicsBeginImageContext(self.imageView.frame.size);
     
-    NSLog(@"dap %f", CGColorGetAlpha(self.color.CGColor));
+//    NSLog(@"dap %f", CGColorGetAlpha(self.color.CGColor));
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height)];
 
