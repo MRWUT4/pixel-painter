@@ -78,6 +78,8 @@
 		CE7FE17B14E1D68200DB367B /* DOPixelPainterViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FE17914E1D68200DB367B /* DOPixelPainterViewContoller.m */; };
 		CE8D44A015CF1B5700DDA6D4 /* DOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D449F15CF1B5700DDA6D4 /* DOColorPickerViewController.m */; };
 		CE8D44A315CF1C7500DDA6D4 /* DOColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8D44A215CF1C7500DDA6D4 /* DOColorPickerViewController.xib */; };
+		CE8F807815D0393700C1803D /* DOFileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F807615D0393700C1803D /* DOFileSettingsViewController.m */; };
+		CE8F807915D0393700C1803D /* DOFileSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8F807715D0393700C1803D /* DOFileSettingsViewController.xib */; };
 		CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +174,9 @@
 		CE8D449E15CF1B5700DDA6D4 /* DOColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOColorPickerViewController.h; sourceTree = "<group>"; };
 		CE8D449F15CF1B5700DDA6D4 /* DOColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOColorPickerViewController.m; sourceTree = "<group>"; };
 		CE8D44A215CF1C7500DDA6D4 /* DOColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DOColorPickerViewController.xib; sourceTree = "<group>"; };
+		CE8F807515D0393700C1803D /* DOFileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOFileSettingsViewController.h; sourceTree = "<group>"; };
+		CE8F807615D0393700C1803D /* DOFileSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOFileSettingsViewController.m; sourceTree = "<group>"; };
+		CE8F807715D0393700C1803D /* DOFileSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DOFileSettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +261,9 @@
 				CE8D449E15CF1B5700DDA6D4 /* DOColorPickerViewController.h */,
 				CE8D449F15CF1B5700DDA6D4 /* DOColorPickerViewController.m */,
 				CE8D44A215CF1C7500DDA6D4 /* DOColorPickerViewController.xib */,
+				CE8F807515D0393700C1803D /* DOFileSettingsViewController.h */,
+				CE8F807615D0393700C1803D /* DOFileSettingsViewController.m */,
+				CE8F807715D0393700C1803D /* DOFileSettingsViewController.xib */,
 			);
 			path = "pixel painter";
 			sourceTree = "<group>";
@@ -420,6 +428,7 @@
 				A2CBA87E151A1C6000F88A79 /* appIconPixelPainter-114x114.png in Resources */,
 				CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */,
 				CE8D44A315CF1C7500DDA6D4 /* DOColorPickerViewController.xib in Resources */,
+				CE8F807915D0393700C1803D /* DOFileSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 				CE73F70D14F59FBE003B9C12 /* DOColorPreviewView.m in Sources */,
 				A24FB40B14F6851500CB1143 /* DODrawingView.m in Sources */,
 				CE8D44A015CF1B5700DDA6D4 /* DOColorPickerViewController.m in Sources */,
+				CE8F807815D0393700C1803D /* DOFileSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

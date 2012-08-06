@@ -14,6 +14,10 @@
 
 @property (strong, nonatomic) UIView *activeSubview;
 
+@property (strong, nonatomic) UIView *subviewContainer;
+
+- (void)initWithSubviewContainer:(UIView *) subviewContainer;
+
 - (void)addSubview:(UIView *) subview;
 
 - (void)displaySubview:(UIView *) subview;

@@ -13,7 +13,6 @@
 @implementation DOPixelPainterViewContoller
 
 
-@synthesize colorPickerView = _colorPickerView;
 @synthesize fileSettingsView = _fileSettingsView;
 @synthesize colorPreviewView = _colorPreviewView;
 @synthesize drawingView = _drawingView;
@@ -34,8 +33,8 @@
 @synthesize buttonPosition = _buttonPosition;
 @synthesize textFieldWidth = _textFieldWidth;
 @synthesize textFieldHeight = _textFieldHeight;
-
-
+@synthesize colorPickerViewController = _colorPickerViewController;
+@synthesize fileSettingsViewController = _fileSettingsViewController;
 
 - (void)viewDidLoad
 {
@@ -54,9 +53,18 @@
     self.subsiteButtonList = [[NSArray alloc] initWithObjects:self.buttonFile, self.buttonColor, nil];    
     self.applicationButtonList = [[NSArray alloc] initWithObjects:self.buttonPen, self.buttonPicker, self.buttonMove, self.buttonErase, self.buttonPosition, nil];
     
-    [self.subviewManager addSubview:self.colorPickerView];
-    [self.subviewManager addSubview:self.fileSettingsView];
-    [self.subviewManager hideAlleSubviews];
+    
+    //COLOR PICKER VIEWCONTROLLER
+    self.colorPickerViewController = [[DOColorPickerViewController alloc] initWithNibName:NSStringFromClass([DOColorPickerViewController class]) bundle:nil];
+    self.colorPickerViewController.model = self.model;
+    
+    //FILE SETTINGS VIEWCONTROLLER
+    self.fileSettingsViewController = [[DOFileSettingsViewController alloc] initWithNibName:NSStringFromClass([DOFileSettingsViewController class]) bundle:nil];
+        
+    [self.subviewManager initWithSubviewContainer:self.navigationView];
+    [self.subviewManager addSubview:self.colorPickerViewController.view];
+    [self.subviewManager addSubview:self.fileSettingsViewController.view];
+//    [self.subviewManager hideAlleSubviews];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPickedNotificationHandler:) name:NOTIFICATION_COLOR_PICKED object:nil];
@@ -81,11 +89,6 @@
     self.scrollView.delegate = self;    
     
     [self.scrollView setZoomScale:20 animated:NO];
-    
-    
-    DOColorPickerViewController *controller = [[DOColorPickerViewController alloc] initWithNibName:NSStringFromClass([DOColorPickerViewController class])  bundle:nil];
-    
-    [self.containerView addSubview:controller.view];
 }
 
 
@@ -139,22 +142,22 @@
         self.colorPreviewView.color = color;
         
         self.drawingView.color = color;
-        self.colorPickerView.color = color;
+        self.colorPickerViewController.color = color;
     }
     else if(keyPath == @"hue")
     {
-        self.colorPickerView.sliderHue.value = self.model.hue;
-        self.colorPickerView.textHue.text = [NSString stringWithFormat:@"HUE %i°", (unsigned int)floor(self.model.hue * 360)];
+        self.colorPickerViewController.sliderHue.value = self.model.hue;
+        self.colorPickerViewController.textHue.text = [NSString stringWithFormat:@"HUE %i°", (unsigned int)floor(self.model.hue * 360)];
     }
     else if(keyPath == @"saturation")
     {
-        self.colorPickerView.sliderSaturation.value = self.model.saturation;
-        self.colorPickerView.textSaturation.text = [NSString stringWithFormat:@"SATURATION %i%%", (unsigned int)floor(self.model.saturation * 100)];
+        self.colorPickerViewController.sliderSaturation.value = self.model.saturation;
+        self.colorPickerViewController.textSaturation.text = [NSString stringWithFormat:@"SATURATION %i%%", (unsigned int)floor(self.model.saturation * 100)];
     }
     else if(keyPath == @"brightness")
     {
-        self.colorPickerView.sliderBrightness.value = self.model.brightness;
-        self.colorPickerView.textBrightness.text = [NSString stringWithFormat:@"BRIGHTNESS %i%%", (unsigned int)floor(self.model.brightness * 100)];
+        self.colorPickerViewController.sliderBrightness.value = self.model.brightness;
+        self.colorPickerViewController.textBrightness.text = [NSString stringWithFormat:@"BRIGHTNESS %i%%", (unsigned int)floor(self.model.brightness * 100)];
     }
     else if(keyPath == @"subsite")
     {
@@ -187,19 +190,19 @@
 
 - (void)colorPickedNotificationHandler:(NSNotification*)notification
 {
-    self.model.color = self.colorPickerView.color;
-    self.model.hue = self.colorPickerView.color.hue;
-    self.model.brightness = self.colorPickerView.color.brightness;
-    self.model.saturation = self.colorPickerView.color.saturation;
+    self.model.color = self.colorPickerViewController.color;
+    self.model.hue = self.colorPickerViewController.color.hue;
+    self.model.brightness = self.colorPickerViewController.color.brightness;
+    self.model.saturation = self.colorPickerViewController.color.saturation;
     self.model.applicationState = STATE_DRAWING;
 }
 
 - (void)colorDrawingViewPickedNotificationHandler:(NSNotification*)notification
 {
     self.model.color = self.drawingView.color;
-    self.model.hue = self.colorPickerView.color.hue;
-    self.model.brightness = self.colorPickerView.color.brightness;
-    self.model.saturation = self.colorPickerView.color.saturation;
+    self.model.hue = self.colorPickerViewController.color.hue;
+    self.model.brightness = self.colorPickerViewController.color.brightness;
+    self.model.saturation = self.colorPickerViewController.color.saturation;
     self.model.applicationState = STATE_DRAWING;
 }
 
@@ -326,42 +329,6 @@
     [alertView show];
 }
 
-/* IACTIONS SLIDER */
-
-- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender 
-{   
-    [self.colorPickerView hideColorPicker];
-    
-    self.model.hue = sender.value;
-    self.model.color = [[UIColor alloc] initWithHue:sender.value 
-                                        saturation:self.model.saturation 
-                                        brightness:self.model.brightness 
-                                        alpha:1];
-}
-
-- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender 
-{    
-    [self.colorPickerView hideColorPicker];
-    
-    self.model.saturation = sender.value;
-    self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
-                                        saturation:sender.value
-                                        brightness:self.model.brightness 
-                                        alpha:1];
-}
-
-- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender 
-{
-    [self.colorPickerView hideColorPicker];
-    
-    self.model.brightness = sender.value;
-    self.model.color = [[UIColor alloc] initWithHue:self.model.hue 
-                                        saturation:self.model.saturation
-                                        brightness:sender.value 
-                                        alpha:1];
-
-}
-
 /* IBACTIONS TEXTFIELD SIZE */
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender 
@@ -474,12 +441,12 @@
     
     if(subsite == SUBSITE_FILE)
     {
-        [self.subviewManager displaySubview:self.fileSettingsView];
+        [self.subviewManager displaySubview:self.fileSettingsViewController.view];
         self.buttonFile.selected = YES;
     }
     else if(subsite == SUBSITE_COLORPICKER)
     {
-        [self.subviewManager displaySubview:self.colorPickerView];
+        [self.subviewManager displaySubview:self.colorPickerViewController.view];
         self.buttonColor.selected = YES;
     }
 }
@@ -674,7 +641,6 @@
     [self setFolderView:nil];
     [self setNavigationView:nil];
     [self setFolderView:nil];
-    [self setColorPickerView:nil];
     [self setFileSettingsView:nil];
     [self setColorPreviewView:nil];
     [self setDrawingView:nil];
@@ -688,6 +654,9 @@
     [self setButtonPosition:nil];
     [self setTextFieldWidth:nil];
     [self setTextFieldHeight:nil];
+    
+    [self.colorPickerViewController setView:nil];
+    
     [super viewDidUnload];
 }
 

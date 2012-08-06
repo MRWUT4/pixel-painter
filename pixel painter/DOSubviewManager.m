@@ -12,7 +12,12 @@
 
 @synthesize subviewList = _subviewList;
 @synthesize activeSubview = _activeSubview;
+@synthesize subviewContainer = _subviewContainer;
 
+-(void) initWithSubviewContainer:(UIView *)subviewContainer
+{
+    self.subviewContainer = subviewContainer;
+}
 
 /* GETTER / SETTER */
 
@@ -34,16 +39,22 @@
     for(int i = 0; i < self.subviewList.count; ++i)
     {
         subview = [self.subviewList objectAtIndex:i];
-        subview.hidden = YES;
+        [subview removeFromSuperview];
+       // self.subviewContainer.removeFromSuperview(subview);
+       // subview.hidden = YES;
     }
 }
 
 -(void) displaySubview:(UIView *)subview
 {
-    if(self.activeSubview) self.activeSubview.hidden = YES;
+    NSLog(@"displaySubview %@", subview);
+    
+    if(self.activeSubview) [self.activeSubview removeFromSuperview];
     
     self.activeSubview = subview;
-    subview.hidden = NO;
+    
+    [self.subviewContainer addSubview:self.activeSubview];
+    [self.subviewContainer bringSubviewToFront:self.activeSubview];
 }
 
 @end

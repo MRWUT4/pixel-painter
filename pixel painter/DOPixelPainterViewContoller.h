@@ -18,6 +18,7 @@
 #import "DODrawingView.h"
 #import "GradientView.h"
 #import "DOColorPickerViewController.h"
+#import "DOFileSettingsViewController.h"
 
 @interface DOPixelPainterViewContoller : UIViewController <UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -30,13 +31,15 @@
 
 @property (strong, nonatomic) NSArray *applicationButtonList;
 
+@property (strong, nonatomic) DOColorPickerViewController *colorPickerViewController;
+
+@property (strong, nonatomic) DOFileSettingsViewController *fileSettingsViewController;
+
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 
 @property (strong, nonatomic) IBOutlet DONavigationView *navigationView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *folderView;
-
-@property (weak, nonatomic) IBOutlet DOColorPickerView *colorPickerView;
 
 @property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
 
@@ -84,18 +87,12 @@
 
 - (IBAction)buttonPositionTouchUpInsideHandler:(id)sender;
 
-- (IBAction)sliderHueTouchDragInsideHandler:(UISlider *)sender;
-
-- (IBAction)sliderSaturationTouchDragInsideHandler:(UISlider *)sender;
-
-- (IBAction)buttonNewTouchUpInsideHandler:(id)sender;
-
-- (IBAction)sliderBrightnessDragInsideHandler:(UISlider *)sender;
-
 
 - (IBAction)buttonResizeTouchUpInsideHandler:(id)sender;
 
 - (IBAction)textSizeEditingDidBegin:(UITextField *)sender;
+
+- (IBAction)buttonNewTouchUpInsideHandler:(id)sender;
 
 
 - (void)changeNavigationStatus:(NSNumber *)status withAnimation:(BOOL)animation;
