@@ -11,12 +11,9 @@
 #import "DOConstants.h"
 #import "DONavigationView.h"
 #import "DOPixelPainterModel.h"
-#import "DOColorPickerView.h"
-#import "DOFileSettingsView.h"
 #import "DOSubviewManager.h"
 #import "DOColorPreviewView.h"
 #import "DODrawingView.h"
-#import "GradientView.h"
 #import "DOColorPickerViewController.h"
 #import "DOFileSettingsViewController.h"
 
@@ -41,7 +38,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *folderView;
 
-@property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
+//@property (weak, nonatomic) IBOutlet DOFileSettingsView *fileSettingsView;
 
 @property (strong, nonatomic) IBOutlet DOColorPreviewView *colorPreviewView;
 
@@ -63,10 +60,6 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonPosition;
 
-@property (strong, nonatomic) IBOutlet UITextField *textFieldWidth;
-
-@property (strong, nonatomic) IBOutlet UITextField *textFieldHeight;
-
 - (IBAction)buttonFolderTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonFileTouchUpInsideHandler:(id)sender;
@@ -77,23 +70,11 @@
 
 - (IBAction)buttonPickerTouchUpInsideHandler:(id)sender;
 
-- (IBAction)buttonSaveTouchUpInsideHandler:(id)sender;
-
-- (IBAction)buttonOpenTouchUpInsideHandler:(id)sender;
-
 - (IBAction)buttonEraseTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonPenTouchUpInsideHandler:(id)sender;
 
 - (IBAction)buttonPositionTouchUpInsideHandler:(id)sender;
-
-
-- (IBAction)buttonResizeTouchUpInsideHandler:(id)sender;
-
-- (IBAction)textSizeEditingDidBegin:(UITextField *)sender;
-
-- (IBAction)buttonNewTouchUpInsideHandler:(id)sender;
-
 
 - (void)changeNavigationStatus:(NSNumber *)status withAnimation:(BOOL)animation;
 
@@ -107,6 +88,6 @@
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
 
-- (void)fillEmptySizeTextField:(UITextField *)sender withText:(NSString *)text andSize:(unsigned int)size;
+//- (void)fillEmptySizeTextField:(UITextField *)sender withText:(NSString *)text andSize:(unsigned int)size;
 
 @end

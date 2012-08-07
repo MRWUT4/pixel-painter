@@ -13,6 +13,7 @@
 
 @property(assign, nonatomic) unsigned int navigationStatus;
 @property(assign, nonatomic) unsigned int applicationState;
+@property(assign, nonatomic) UIImageView *drawingViewImage;
 @property(assign, nonatomic) unsigned int subsite;
 @property(assign, nonatomic) float hue;
 @property(assign, nonatomic) float brightness;

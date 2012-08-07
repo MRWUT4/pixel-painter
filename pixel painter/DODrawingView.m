@@ -163,7 +163,7 @@
 - (void)pickColorAtPosition
 {   
     UIColor *pickedColor = [self.imageView getPixelColorAtLocation:self.touchPosition];
-    NSLog(@"pickColorAtPosition %f", CGColorGetAlpha(pickedColor.CGColor));    
+   
     if(CGColorGetAlpha(pickedColor.CGColor) != 0)
     {    
         self.color = pickedColor;

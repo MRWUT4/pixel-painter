@@ -40,21 +40,17 @@
     {
         subview = [self.subviewList objectAtIndex:i];
         [subview removeFromSuperview];
-       // self.subviewContainer.removeFromSuperview(subview);
-       // subview.hidden = YES;
     }
 }
 
 -(void) displaySubview:(UIView *)subview
 {
-    NSLog(@"displaySubview %@", subview);
-    
     if(self.activeSubview) [self.activeSubview removeFromSuperview];
     
     self.activeSubview = subview;
     
     [self.subviewContainer addSubview:self.activeSubview];
-    [self.subviewContainer bringSubviewToFront:self.activeSubview];
+//    [self.subviewContainer bringSubviewToFront:self.activeSubview];
 }
 
 @end
