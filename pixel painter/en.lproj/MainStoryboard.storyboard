@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ikY-xe-xmH">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Pixel Painter View Contoller-->
         <scene sceneID="mDt-Mu-ieJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ikY-xe-xmH" customClass="DOPixelPainterViewContoller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1OL-yz-koi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -197,6 +196,7 @@
                         <outlet property="scrollView" destination="Hhk-gl-51F" id="rKU-wK-aeB"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQC-UH-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289" y="29"/>
         </scene>
@@ -219,17 +219,11 @@
         <image name="rIconPositionActive.png" width="128" height="128"/>
     </resources>
     <classes>
-        <class className="DOColorPickerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPickerView.h"/>
-        </class>
         <class className="DOColorPreviewView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DOColorPreviewView.h"/>
         </class>
         <class className="DODrawingView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DODrawingView.h"/>
-        </class>
-        <class className="DOFileSettingsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DOFileSettingsView.h"/>
         </class>
         <class className="DONavigationView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DONavigationView.h"/>
@@ -242,19 +236,9 @@
                 <relationship kind="action" name="buttonFileTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonFolderTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonMoveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonNewTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonOpenTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonPenTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonPickerTouchUpInsideHandler:"/>
                 <relationship kind="action" name="buttonPositionTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonResizeTouchUpInsideHandler:"/>
-                <relationship kind="action" name="buttonSaveTouchUpInsideHandler:"/>
-                <relationship kind="action" name="sliderBrightnessDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderHueTouchDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="sliderSaturationTouchDragInsideHandler:" candidateClass="UISlider"/>
-                <relationship kind="action" name="textSizeEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textSizeHeightEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textSizeWidthEditingDidEnd:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="buttonColor" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonErase" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonFile" candidateClass="UIButton"/>
@@ -262,16 +246,12 @@
                 <relationship kind="outlet" name="buttonPen" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonPicker" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonPosition" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="colorPickerView" candidateClass="DOColorPickerView"/>
                 <relationship kind="outlet" name="colorPreviewView" candidateClass="DOColorPreviewView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="drawingView" candidateClass="DODrawingView"/>
-                <relationship kind="outlet" name="fileSettingsView" candidateClass="DOFileSettingsView"/>
                 <relationship kind="outlet" name="folderView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="navigationView" candidateClass="DONavigationView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="textFieldHeight" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textFieldWidth" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>

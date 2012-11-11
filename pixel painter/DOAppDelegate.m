@@ -15,9 +15,64 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self initializeStoryBoardBasedOnScreenSize];
+    
     return YES;
 }
-							
+
+
+-(void)initializeStoryBoardBasedOnScreenSize
+{
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
+    {
+        CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
+        
+        NSLog(@"%f", iOSDeviceScreenSize.height);
+        
+        if(iOSDeviceScreenSize.height == 480)
+        {
+            [self initWindowViewControllerWithName:@"MainStoryboard"];
+        }
+        else
+        if(iOSDeviceScreenSize.height == 568)
+        {
+            // TODO: Create Storyboard for iPhone5
+            
+            /*
+            UIStoryboard *iPhone4Storyboard = [UIStoryboard storyboardWithName:@"Storyboard_iPhone4" bundle:nil];
+            
+            UIViewController *initialViewController = [iPhone4Storyboard instantiateInitialViewController];
+            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            self.window.rootViewController  = initialViewController;
+            
+            [self.window makeKeyAndVisible];
+             */
+        }  
+    }
+    /*
+    else
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate = (id)navigationController.topViewController;
+        
+    }
+    */
+}
+
+- (void)initWindowViewControllerWithName:(NSString *)viewControllerName
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:viewControllerName bundle:nil];
+    UIViewController *initialViewController = [storyboard instantiateInitialViewController];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController  = initialViewController;
+    
+    [self.window makeKeyAndVisible];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

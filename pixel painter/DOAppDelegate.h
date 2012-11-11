@@ -12,4 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+-(void)initializeStoryBoardBasedOnScreenSize;
+
+- (void)initWindowViewControllerWithName:(NSString *)viewControllerName;
+
 @end

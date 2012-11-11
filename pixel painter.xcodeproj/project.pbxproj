@@ -77,6 +77,7 @@
 		CE8D44A315CF1C7500DDA6D4 /* DOColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8D44A215CF1C7500DDA6D4 /* DOColorPickerViewController.xib */; };
 		CE8F807815D0393700C1803D /* DOFileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F807615D0393700C1803D /* DOFileSettingsViewController.m */; };
 		CE8F807915D0393700C1803D /* DOFileSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8F807715D0393700C1803D /* DOFileSettingsViewController.xib */; };
+		CEAFC001165060DE00E28110 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAFC000165060DE00E28110 /* Default-568h@2x.png */; };
 		CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE161C2114D5AAF800B8C7DE /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +169,7 @@
 		CE8F807515D0393700C1803D /* DOFileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOFileSettingsViewController.h; sourceTree = "<group>"; };
 		CE8F807615D0393700C1803D /* DOFileSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOFileSettingsViewController.m; sourceTree = "<group>"; };
 		CE8F807715D0393700C1803D /* DOFileSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DOFileSettingsViewController.xib; sourceTree = "<group>"; };
+		CEAFC000165060DE00E28110 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 		CE161C0014D5AAF800B8C7DE = {
 			isa = PBXGroup;
 			children = (
+				CEAFC000165060DE00E28110 /* Default-568h@2x.png */,
 				A2CBA87D151A1C6000F88A79 /* appIconPixelPainter-114x114.png */,
 				A2CBA87B151A1C5A00F88A79 /* appIconPixelPainter-57x57.png */,
 				A2CBA86F1519E18700F88A79 /* Default.png */,
@@ -414,6 +417,7 @@
 				CEFF48A91524C64E007CA97C /* MainStoryboard.storyboard in Resources */,
 				CE8D44A315CF1C7500DDA6D4 /* DOColorPickerViewController.xib in Resources */,
 				CE8F807915D0393700C1803D /* DOFileSettingsViewController.xib in Resources */,
+				CEAFC001165060DE00E28110 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +488,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -506,7 +510,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -522,7 +526,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "pixel painter/pixel painter-Prefix.pch";
 				INFOPLIST_FILE = "pixel painter/pixel painter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -537,7 +541,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "pixel painter/pixel painter-Prefix.pch";
 				INFOPLIST_FILE = "pixel painter/pixel painter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -559,7 +563,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -576,7 +580,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "pixel painter/pixel painter-Prefix.pch";
 				INFOPLIST_FILE = "pixel painter/pixel painter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
